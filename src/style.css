@@ -1,3 +1,21 @@
+@import url("./assets/fonts/fonts.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.helvetica-700{
+    font-family: 'HelveticaNeueCyr';
+    font-weight: 700;
+}
+
+.helvetica-500{
+    font-family: 'HelveticaNeueCyr';
+    font-weight: 500;
+}
+
+.helvetica-400{
+    font-family: 'HelveticaNeueCyr';
+    font-weight: 400;
+}
