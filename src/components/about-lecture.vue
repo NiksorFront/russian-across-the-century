@@ -13,7 +13,7 @@
         <p class="textik helvetica-500 bg-[#b8cafb] py-[clamp(1px,1vw,5px)] px-[clamp(2px,2vw,20px)] w-max rounded-xl lg:rounded-3xl">
           лекция{{ number }}
         </p>
-        <h2 class="helvetica-700 text-[clamp(24px,5vw,38px)] leading-[clamp(28px,5vw,42px)]">
+        <h2 class="helvetica-700 title-2">
           {{title}}
         </h2>
         <p class="helvetica-400 textik ">

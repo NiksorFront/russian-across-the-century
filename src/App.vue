@@ -6,6 +6,7 @@
   import line from "./assets/images/line.svg";
 
   import AboutLecture from "./components/about-lecture.vue"
+  import SocialNetwork from "./components/social-network.vue"
 </script>
 
 <template>
@@ -29,7 +30,7 @@
       <div class="w-full lg:w-3/5 h-1/2 sm:h-3/5 lg:h-fit lg:my-auto flex flex-wrap flex-col lg:flex-row gap-4 sm:gap-8 lg:gap-0 lg:space-y-12 lg:translate-y-6">
         <h1 class="title helvetica-700 lg:h-1/6 lg:ml-3">Россия: право сквозь века</h1>
         <h3 class="subtitle helvetica-500 h-fit w-[69%] lg:w-3/5 lg:ml-3">Как менялось право в России: от древности до наших дней</h3>
-        <a class="button text-nowrap helvetica-500 h-fit w-fit lg:w-1/4 px-4 lg:px-6 text-center lg:mx-auto lg:box-content bg-blue-700 sm:pb-1 rounded-xl sm:rounded-3xl text-white lg:-translate-x-6">в путь!</a> <!-- bg-[#101fb3] -->
+        <a class="button text-nowrap helvetica-500 h-fit w-fit lg:w-1/4 px-4 lg:px-6 text-center lg:mx-auto lg:box-content bg-[#101fb3] sm:pb-1 rounded-xl sm:rounded-3xl text-white lg:-translate-x-6">в путь!</a> <!-- bg-blue-700 -->
       </div>
     </section>
 
@@ -39,28 +40,46 @@
 Какие вопросы решали на вече?
 Как был устроен первый свод правовых норм Древней Руси — «Русская Правда»?" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/ancient-russian-law"/>
     
-    <AboutLecture number="2" title="Средневековое право" description="В Средние века русские княжества раздроблены, и законы в них разные. Но в 1497 году князь Иван III создаёт единый для всех земель свод законов — Судебник. Этот документ стал первым шагом на пути к первому всенародно признанному закону — Соборному уложению, которое было принято в XVII веке."
-                  modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
+    <section>
+      <AboutLecture number="2" title="Средневековое право" description="В Средние века русские княжества раздроблены, и законы в них разные. Но в 1497 году князь Иван III создаёт единый для всех земель свод законов — Судебник. Этот документ стал первым шагом на пути к первому всенародно признанному закону — Соборному уложению, которое было принято в XVII веке."
+                    modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
 
-    <AboutLecture number="3" title="Право в Российской империи" description="Попытки законодательно закрепить абсолютную власть императора, стремление суда к независимости, систематизация законов — путь к статусу правового государства был непростым. Но именно в это время проводятся реформы, результатами которых мы пользуемся до сих пор."
-                  modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
+      <AboutLecture number="3" title="Право в Российской империи" description="Попытки законодательно закрепить абсолютную власть императора, стремление суда к независимости, систематизация законов — путь к статусу правового государства был непростым. Но именно в это время проводятся реформы, результатами которых мы пользуемся до сих пор."
+                    modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
 
-    <AboutLecture number="4" title="Право в советской России" description="Новое государство — новые законы. После прихода к власти большевики активно формируют революционно новую правовую систему. Создаются колхозы, а вместе с ними — хозяйственное право. Принимаются новые Конституции, а судебный процесс в поисках объективной истины лишается состязательности."
-                  modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
+      <AboutLecture number="4" title="Право в советской России" description="Новое государство — новые законы. После прихода к власти большевики активно формируют революционно новую правовую систему. Создаются колхозы, а вместе с ними — хозяйственное право. Принимаются новые Конституции, а судебный процесс в поисках объективной истины лишается состязательности."
+                    modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
 
-    <AboutLecture number="5" title="Современное право" description="На смену СССР пришла Российская Федерация. Формируется новая система управления — но с опорой на опыт предыдущих поколений. Провозглашается принцип разделения властей. Создаётся новая законодательная база: от Гражданского и Уголовного кодексов до Семейного и Трудового."
-                  modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
+      <AboutLecture number="5" title="Современное право" description="На смену СССР пришла Российская Федерация. Формируется новая система управления — но с опорой на опыт предыдущих поколений. Провозглашается принцип разделения властей. Создаётся новая законодательная база: от Гражданского и Уголовного кодексов до Семейного и Трудового."
+                    modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
+    </section>
     
+    <section>
+      <SocialNetwork title="Telegram" description="Делимся новостями из мира искусства и обсуждаем их в чате с синхродрузьями" btnText="подписаться на канал" url="https://t.me/+gY7XBrs4xvQ0Njcy" />
+      <SocialNetwork title="Email-рассылка" description="Присылаем секретные промокоды и эксклюзивный контент из курсов" btnText="подписаться на рассылку" url="modal-post" />
+      <SocialNetwork title="YouTube-канал Синхронизация. Плюс" description="Подписывайтесь на наш канал, чтобы не пропустить ещё больше бесплатных лекций, интервью и подкастов" btnText="смотреть лекции" url="https://www.youtube.com/@synchronizeplus" />
+    </section>
   </main>
 
   <img :src="bgWhite" class="fixed top-0 left-0 w-screen h-screen object-cover -z-10"/>
 </template>
 
-<style scoped>
-  .title{
+<style>
+  .title{ /*Главный заголовок всей страницы*/
     font-size: clamp(42px, 9vw, 64px);
     line-height: clamp(40px, 9vw, 64px);
   }
+
+  .title-2{ /*Заголовок для компонента лекций*/
+    font-size: clamp(24px, 5vw, 38px);
+    line-height: clamp(28px, 5vw, 42px);
+  }
+
+  .title-3{ /*Заголовок для компонента соцсетей*/
+    font-size: clamp(24px, 4vw, 27px);
+    line-height: clamp(16px, 4vw, 34px);
+  }
+
 
   .subtitle{
     font-size: clamp(16px, 4vw, 27px);
