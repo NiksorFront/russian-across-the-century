@@ -4,6 +4,8 @@
   import allianceLegal from "./assets/images/Alliance-Legal.svg";
   import synchronization from "./assets/images/synchronization.svg";
   import line from "./assets/images/line.svg";
+
+  import AboutLecture from "./components/about-lecture.vue"
 </script>
 
 <template>
@@ -26,10 +28,28 @@
       </div>
       <div class="w-full lg:w-3/5 h-1/2 sm:h-3/5 lg:h-fit lg:my-auto flex flex-wrap flex-col lg:flex-row gap-4 sm:gap-8 lg:gap-0 lg:space-y-12 lg:translate-y-6">
         <h1 class="title helvetica-700 lg:h-1/6 lg:ml-3">Россия: право сквозь века</h1>
-        <h3 class="subtitle helvetica-500 h-fit w-2/3 lg:w-3/5 lg:ml-3">Как менялось право в России: от древности до наших дней</h3>
-        <a class="button text-nowrap helvetica-500 h-fit w-fit lg:w-1/4 px-4 lg:px-6 text-center lg:mx-auto lg:box-content bg-blue-700 sm:pb-1 rounded-xl sm:rounded-3xl text-white lg:-translate-x-6">в путь!</a>
+        <h3 class="subtitle helvetica-500 h-fit w-[69%] lg:w-3/5 lg:ml-3">Как менялось право в России: от древности до наших дней</h3>
+        <a class="button text-nowrap helvetica-500 h-fit w-fit lg:w-1/4 px-4 lg:px-6 text-center lg:mx-auto lg:box-content bg-blue-700 sm:pb-1 rounded-xl sm:rounded-3xl text-white lg:-translate-x-6">в путь!</a> <!-- bg-[#101fb3] -->
       </div>
     </section>
+
+    <AboutLecture number="1" title="Древнерусское право" description="У кого дубина тяжелее, тот и прав — так решались сложные вопросы в Древней Руси. Сейчас это, конечно, звучит дико. Но в IX веке бой на дубинках, копьях или кинжалах считали неплохим способом разрешить спор. Ещё один способ — попросить князя рассудить «справедливо». Но справедливость у каждого правителя была своя."
+                  modalContent="В этой лекции поговорим о судебных традициях прошлого и узнаем:
+Кто выполнял роль судей в Древней Руси?
+Какие вопросы решали на вече?
+Как был устроен первый свод правовых норм Древней Руси — «Русская Правда»?" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/ancient-russian-law"/>
+    
+    <AboutLecture number="2" title="Средневековое право" description="В Средние века русские княжества раздроблены, и законы в них разные. Но в 1497 году князь Иван III создаёт единый для всех земель свод законов — Судебник. Этот документ стал первым шагом на пути к первому всенародно признанному закону — Соборному уложению, которое было принято в XVII веке."
+                  modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
+
+    <AboutLecture number="3" title="Право в Российской империи" description="Попытки законодательно закрепить абсолютную власть императора, стремление суда к независимости, систематизация законов — путь к статусу правового государства был непростым. Но именно в это время проводятся реформы, результатами которых мы пользуемся до сих пор."
+                  modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
+
+    <AboutLecture number="4" title="Право в советской России" description="Новое государство — новые законы. После прихода к власти большевики активно формируют революционно новую правовую систему. Создаются колхозы, а вместе с ними — хозяйственное право. Принимаются новые Конституции, а судебный процесс в поисках объективной истины лишается состязательности."
+                  modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
+
+    <AboutLecture number="5" title="Современное право" description="На смену СССР пришла Российская Федерация. Формируется новая система управления — но с опорой на опыт предыдущих поколений. Провозглашается принцип разделения властей. Создаётся новая законодательная база: от Гражданского и Уголовного кодексов до Семейного и Трудового."
+                  modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
     
   </main>
 
@@ -44,7 +64,11 @@
 
   .subtitle{
     font-size: clamp(16px, 4vw, 27px);
-    line-height: clamp(20px, 4vw, 33px);
+    line-height: clamp(22px, 4vw, 33px);
+  }
+
+  .textik{
+    font-size: clamp(16px,4vw,20px);
   }
 
   .button{
