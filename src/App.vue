@@ -6,8 +6,9 @@
   import line from "./assets/images/line.svg";
   import historicalFigure from "./assets/images/historical-figure.svg";
 
-  import AboutLecture from "./components/about-lecture.vue"
-  import SocialNetwork from "./components/social-network.vue"
+  import AnimationScales from "./components/animation-scales.vue";
+  import AboutLecture from "./components/about-lecture.vue";
+  import SocialNetwork from "./components/social-network.vue";
 </script>
 
 <template>
@@ -23,15 +24,15 @@
       <p class="text-xs md:text-base lg:text-xl helvetica-500 whitespace-pre"> | памятки</p>
     </div>
   </header>
-  <main class="overflow-hidden">
-    <section class="flex w-11/12 max-w-[1200px] h-[720px] sm:h-[800px] lg:h-[700px] flex-wrap mx-auto mt-[35px] gap-9 sm:gap-4 lg:gap-0 lg:flex-row-reverse">
-      <div class="w-full h-1/2 lg:h-full sm:h-3/5 bg-slate-300 lg:w-2/5">
-        <p>тут будет анимашка</p>
+  <main class="overflow-hidden lg:-mt-10">
+    <section class="flex w-11/12 max-w-[1200px] h-[720px] sm:h-[800px] lg:h-[700px] flex-wrap mx-auto mt-[35px] gap-9 sm:gap-4 lg:gap-0 lg:flex-row-reverse relative">
+      <div class="w-full h-1/2 lg:h-full sm:h-3/5 lg:w-2/5 relative -z-10">
+        <AnimationScales />
       </div>
       <div class="w-full lg:w-3/5 h-1/2 sm:h-3/5 lg:h-fit lg:my-auto flex flex-wrap flex-col lg:flex-row gap-4 sm:gap-8 lg:gap-0 lg:space-y-12 lg:translate-y-6">
         <h1 class="title helvetica-700 lg:h-1/6 lg:ml-3">Россия: право сквозь века</h1>
-        <h3 class="subtitle helvetica-500 h-fit w-[69%] lg:w-3/5 lg:ml-3">Как менялось право в России: от древности до наших дней</h3>
-        <a class="button text-nowrap helvetica-500 h-fit w-fit lg:w-1/4 px-4 lg:px-6 text-center lg:mx-auto lg:box-content bg-[#101fb3] sm:pb-1 rounded-xl sm:rounded-3xl text-white lg:-translate-x-6">в путь!</a> <!-- bg-blue-700 -->
+        <h3 class="subtitle helvetica-500 h-fit lg:ml-3 law-changing">Как менялось право в России: от древности до наших дней</h3>
+        <a class="button text-nowrap helvetica-500 h-fit w-fit way px-4 lg:px-6 text-center lg:box-content bg-[#101fb3] sm:pb-1 rounded-xl sm:rounded-3xl text-white z-20">в путь!</a> <!-- bg-blue-700 -->
       </div>
     </section>
     <section>
@@ -94,7 +95,7 @@
     </section>
   </main>
 
-  <img :src="bgWhite" class="fixed top-0 left-0 w-screen h-screen object-cover -z-10"/>
+  <img :src="bgWhite" class="fixed top-0 left-0 w-screen h-screen object-cover -z-20"/>
 </template>
 
 <style>
@@ -129,6 +130,21 @@
     line-height: clamp(32px, 6vw, 50px);
   }
 
+  .law-changing{
+    width: 69%;
+  }
+
+  @media (min-width: 1200px){
+    .law-changing{
+      width: 65%;
+    }
+
+    .way{
+      width: 24%;
+      padding-bottom: 7px;
+    }
+  }
+
   @media(min-width: 1280px){
     .title{
       font-size: 90px;
@@ -138,6 +154,10 @@
     .button{
       font-size: 50px;
       line-height: 66px;
+    }
+
+    .law-changing{
+      width: 60%;
     }
   }
 
