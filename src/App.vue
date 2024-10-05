@@ -4,6 +4,7 @@
   import allianceLegal from "./assets/images/Alliance-Legal.svg";
   import synchronization from "./assets/images/synchronization.svg";
   import line from "./assets/images/line.svg";
+  import historicalFigure from "./assets/images/historical-figure.svg";
 
   import AboutLecture from "./components/about-lecture.vue"
   import SocialNetwork from "./components/social-network.vue"
@@ -12,7 +13,7 @@
 <template>
   <header class="flex w-11/12 max-w-[1200px] h-full flex-wrap gap-5 mx-auto mt-[35px] sm:mt-[70px] justify-between">
     <div class="flex justify-between w-full max-w-[135px] sm:max-w-[260px]">
-      <img :src="synchronization" alt="Synchronization" class="w-11 sm:w-20 lg:w-[91px] object-contain" />
+      <img :src="synchronization" alt="Синхронизация" class="w-11 sm:w-20 lg:w-[91px] object-contain" />
       <img :src="line" alt="line" class="h-7 sm:h-full object-contain pl-2" />
       <img :src="allianceLegal" alt="Alliance Legal" class="w-11 sm:w-20 lg:w-[91px] object-contain" />
     </div>
@@ -22,7 +23,7 @@
       <p class="text-xs md:text-base lg:text-xl helvetica-500 whitespace-pre"> | памятки</p>
     </div>
   </header>
-  <main>
+  <main class="overflow-hidden">
     <section class="flex w-11/12 max-w-[1200px] h-[720px] sm:h-[800px] lg:h-[700px] flex-wrap mx-auto mt-[35px] gap-9 sm:gap-4 lg:gap-0 lg:flex-row-reverse">
       <div class="w-full h-1/2 lg:h-full sm:h-3/5 bg-slate-300 lg:w-2/5">
         <p>тут будет анимашка</p>
@@ -33,14 +34,14 @@
         <a class="button text-nowrap helvetica-500 h-fit w-fit lg:w-1/4 px-4 lg:px-6 text-center lg:mx-auto lg:box-content bg-[#101fb3] sm:pb-1 rounded-xl sm:rounded-3xl text-white lg:-translate-x-6">в путь!</a> <!-- bg-blue-700 -->
       </div>
     </section>
-
-    <AboutLecture number="1" title="Древнерусское право" description="У кого дубина тяжелее, тот и прав — так решались сложные вопросы в Древней Руси. Сейчас это, конечно, звучит дико. Но в IX веке бой на дубинках, копьях или кинжалах считали неплохим способом разрешить спор. Ещё один способ — попросить князя рассудить «справедливо». Но справедливость у каждого правителя была своя."
+    <section>
+      <AboutLecture number="1" title="Древнерусское право" description="У кого дубина тяжелее, тот и прав — так решались сложные вопросы в Древней Руси. Сейчас это, конечно, звучит дико. Но в IX веке бой на дубинках, копьях или кинжалах считали неплохим способом разрешить спор. Ещё один способ — попросить князя рассудить «справедливо». Но справедливость у каждого правителя была своя."
                   modalContent="В этой лекции поговорим о судебных традициях прошлого и узнаем:
 Кто выполнял роль судей в Древней Руси?
 Какие вопросы решали на вече?
 Как был устроен первый свод правовых норм Древней Руси — «Русская Правда»?" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/ancient-russian-law"/>
     
-    <section>
+
       <AboutLecture number="2" title="Средневековое право" description="В Средние века русские княжества раздроблены, и законы в них разные. Но в 1497 году князь Иван III создаёт единый для всех земель свод законов — Судебник. Этот документ стал первым шагом на пути к первому всенародно признанному закону — Соборному уложению, которое было принято в XVII веке."
                     modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
 
@@ -53,11 +54,43 @@
       <AboutLecture number="5" title="Современное право" description="На смену СССР пришла Российская Федерация. Формируется новая система управления — но с опорой на опыт предыдущих поколений. Провозглашается принцип разделения властей. Создаётся новая законодательная база: от Гражданского и Уголовного кодексов до Семейного и Трудового."
                     modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
     </section>
-    
+
     <section>
       <SocialNetwork title="Telegram" description="Делимся новостями из мира искусства и обсуждаем их в чате с синхродрузьями" btnText="подписаться на канал" url="https://t.me/+gY7XBrs4xvQ0Njcy" />
       <SocialNetwork title="Email-рассылка" description="Присылаем секретные промокоды и эксклюзивный контент из курсов" btnText="подписаться на рассылку" url="modal-post" />
       <SocialNetwork title="YouTube-канал Синхронизация. Плюс" description="Подписывайтесь на наш канал, чтобы не пропустить ещё больше бесплатных лекций, интервью и подкастов" btnText="смотреть лекции" url="https://www.youtube.com/@synchronizeplus" />
+    </section>
+
+    <section class="w-11/12 max-w-[1200px] relative bg-white min-h-[700px] h-auto project-partners mx-auto my-12 rounded-[clamp(20px,5vw,50px)] flex flex-wrap">
+      <h2 class="w-full h-fit helvetica-700 title-2">
+          Партнёры проекты
+      </h2>
+      
+      <div class="w-full lg:w-3/4 flex flex-col gap-4 sm:gap-6 lg:gap-14 lg:flex-nowrap lg:flex-row lg:justify-between mt-4 sm:mt-10">
+        <img :src="allianceLegal" alt="логотип AllianceLegal" class="h-fit w-[74px] sm:w-[91px] object-contain" />
+        <div class="flex flex-col gap-2">
+          <h3 class="helvetica-700 title-3">
+            Консалтинговая группа «Альянс Лигал»
+          </h3>
+          <p class="helvetica-400 textik">
+            Российская юридическая фирма. С 2010 года обеспечивает правовое сопровождение крупного бизнеса, в том числе частных инвесторов и госкорпораций.<br> Защита корпоративных и частных клиентов при разрешении споров, расследовании уголовных дел в сфере экономики и должностных преступлений, сопровождение сделок и инвестпроектов, налоговое консультирование и юридическая поддержка реструктуризации бизнеса. Поддержка некоммерческих организаций в рамках развития юридической науки.
+          </p>
+        </div>
+      </div>
+
+      <div class="synchronization-div lg:w-3/4 flex flex-col gap-4 sm:gap-6 lg:gap-14 lg:flex-nowrap lg:flex-row mt-3 sm:mt-10 lg:mt-5">
+        <img :src="synchronization" alt="логотип синхронизации" class="h-fit w-[74px] sm:w-[91px] object-contain mt-3" />
+        <div class="flex flex-col gap-2">
+          <h3 class="helvetica-700 title-3">
+            Синхронизация
+          </h3>
+          <p class="helvetica-400 textik">
+            Онлайн-лекторий с огненным обучением. Подписка Синхронизации — это 1000+ часов образовательного контента по самым разным направлениям: от искусства, кино и литературы до психологии и нейробиологии.
+          </p>
+        </div>
+      </div>
+
+      <img :src="historicalFigure" alt="историческая фигура" className="historical-figure h-[clamp(570px,115vw,1030px)] object-contain absolute"/>
     </section>
   </main>
 
@@ -77,7 +110,7 @@
 
   .title-3{ /*Заголовок для компонента соцсетей*/
     font-size: clamp(24px, 4vw, 27px);
-    line-height: clamp(16px, 4vw, 34px);
+    line-height: clamp(22px, 4vw, 34px);
   }
 
 
@@ -87,7 +120,8 @@
   }
 
   .textik{
-    font-size: clamp(16px,4vw,20px);
+    font-size: clamp(16px,2.75vw,20px);
+    line-height: clamp(19px, 4vw, 27px);
   }
 
   .button{
@@ -104,6 +138,50 @@
     .button{
       font-size: 50px;
       line-height: 66px;
+    }
+  }
+
+  .project-partners{
+    padding: clamp(24px,4vw,50px);
+    padding-bottom: 150px;
+  }
+
+  .synchronization-div{
+    width: 100%;
+  }
+
+  .historical-figure{
+    /* display: flex; */
+    top: 86%;
+    right: calc(10vw + 2vh);
+  }
+
+  @media(min-width: 480px){
+    .synchronization-div{
+      width: 65%;
+    }
+
+    .historical-figure{
+      top: 70%;
+      right: -20px;
+    }
+
+    .project-partners{
+      padding: clamp(24px,4vw,50px);
+    }
+  }
+
+  @media (min-width: 640px) {
+    .historical-figure{
+      top: 63%;
+      right: -12px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .historical-figure{
+      top: 90px;
+      right: -44px;
     }
   }
 </style>
