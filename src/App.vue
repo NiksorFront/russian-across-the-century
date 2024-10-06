@@ -7,6 +7,7 @@
   import historicalFigure from "./assets/images/historical-figure.svg";
 
   import AnimationScales from "./components/animation-scales.vue";
+  import DialogOne from "./components/dialog-one.vue";
   import AboutLecture from "./components/about-lecture.vue";
   import SocialNetwork from "./components/social-network.vue";
 </script>
@@ -24,7 +25,7 @@
       <p class="text-xs md:text-base lg:text-xl helvetica-500 whitespace-pre"> | памятки</p>
     </div>
   </header>
-  <main class="overflow-hidden lg:-mt-10">
+  <main class="overflow-hidden relative lg:-mt-10">
     <section class="flex w-11/12 max-w-[1200px] h-[720px] sm:h-[800px] lg:h-[700px] flex-wrap mx-auto mt-[35px] gap-9 sm:gap-4 lg:gap-0 lg:flex-row-reverse relative">
       <div class="w-full h-1/2 lg:h-full sm:h-3/5 lg:w-2/5 relative -z-10">
         <AnimationScales />
@@ -35,6 +36,7 @@
         <a class="button text-nowrap helvetica-500 h-fit w-fit way px-4 lg:px-6 text-center lg:box-content bg-[#101fb3] sm:pb-1 rounded-xl sm:rounded-3xl text-white z-20">в путь!</a> <!-- bg-blue-700 -->
       </div>
     </section>
+    <DialogOne/>
     <section>
       <AboutLecture number="1" title="Древнерусское право" description="У кого дубина тяжелее, тот и прав — так решались сложные вопросы в Древней Руси. Сейчас это, конечно, звучит дико. Но в IX веке бой на дубинках, копьях или кинжалах считали неплохим способом разрешить спор. Ещё один способ — попросить князя рассудить «справедливо». Но справедливость у каждого правителя была своя."
                   modalContent="В этой лекции поговорим о судебных традициях прошлого и узнаем:
