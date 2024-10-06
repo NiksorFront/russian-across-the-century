@@ -24,12 +24,21 @@ const handleScroll = () => {
   const sectionTop = sectionRect.top;
   const sectionHeight = sectionRect.height;
   const windowHeight = window.innerHeight;
+  const windowWidth = window.innerWidth;
   let scrollPercent = 0;
 
   //Определяем, когда скролл достигает компонента
   if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
+    console.log(Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight)-0.5 , 0), 1));
     //Вычисляем процент прокрутки всего компонента
-    scrollPercent = Math.min(Math.max(1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight, 0), 1);
+    if(windowWidth < 640){
+        scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight) - 0.5, 0), 1);
+    }else if(windowWidth < 1024){
+        scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight) - 0.3 , 0), 1);
+    }
+    else{
+        scrollPercent = Math.min(Math.max(1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight, 0), 1);
+    }
 
     // Управление прозрачностью biba и boba
     if (scrollPercent > 0.375 && scrollPercent < 1) {
@@ -110,17 +119,17 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
 </script>
 
 <template>
-  <section ref="sctin" class="w-11/12 max-w-[1200px] h-[1800px] mx-auto flex justify-around relative">
-    <img ref="biba" :src="bibaSVG" class="w-1/5 max-w-[195px] h-fit biba opacity-0 transition-opacity duration-300" />
-    <div class="w-3/5 mx-auto">
-      <img :src="howResolveDispute1" class="w-[95%] m-[2.5%] mt-60 opacity-0 image" />
+  <section ref="sctin" class="w-11/12 max-w-[1200px] sectionHeight sm:h-[750px] md:h-[1300px] lg:h-[1500px] xl:h-[1800px] mx-auto flex justify-around relative">
+    <img ref="biba" :src="bibaSVG" class="w-[clamp(80px,16%,195px)] h-fit biba -rotate-6 sm:-rotate-12 lg:rotate-0 opacity-0 transition-opacity duration-300" />
+    <div class="w-2/3 sm:w-3/5 mx-auto sm:mt-40 md:mt-96 lg:mt-40 xl:mt-60 z-10">
+      <img :src="howResolveDispute1" class="w-[95%] m-[2.5%] opacity-0 image" />
       <img :src="goOutFieldFight2" class="w-[95%] m-[2.5%] opacity-0 image" />
       <img :src="whatCenturyAreYouFrom3" class="w-[69%] mr-[2.5%] ml-auto opacity-0 image" />
       <img :src="thereLawsNow4" class="w-[95%] m-[2.5%] opacity-0 image" />
       <img :src="whatIsLegislation5" class="w-[76%] m-[2.5%] opacity-0 image" />
       <img :src="listenYouDarkHead6" class="w-[70%] mr-[2.5%] ml-auto opacity-0 image" />
     </div>
-    <img ref="boba" :src="bobaSVG" class="w-1/5 max-w-[171px] h-fit boba opacity-0 transition-opacity duration-300" />
+    <img ref="boba" :src="bobaSVG" class="w-[clamp(80px,16%,171px)] h-fit boba rotate-6 sm:rotate-12 lg:rotate-0 opacity-0 transition-opacity duration-300" />
   </section>
 </template>
 
@@ -128,12 +137,12 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
     .biba {
         position: fixed;
         top: 46%;
-        left: 18%;
+        right: 76%;
     }
     .boba {
         position: fixed;
         top: 50%;
-        right: 19%;
+        left: 75%;
     }
     .image {
         transition: all 0.3s ease;
@@ -142,5 +151,32 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
     @keyframes scaleImage {
         0% {transform: scale(0.5);}
         100% {transform: scale(1);}
+    }
+
+    .sectionHeight{
+        min-height: clamp(575px, 135vw, 800px);
+        margin-top: clamp(20px, 18vw,160px);
+    }
+
+    @media(min-width:400px){
+        .biba {right: 80%; top:40%}
+        .boba {left: 79%; top:41%}
+        .sectionHeight{margin-top: clamp(20px, 45vw, 400px);}
+    }
+
+    @media(min-width:640px){
+        .biba {top: 46%;}
+        .boba {top: 50%;}
+        .sectionHeight{min-height: clamp(800px, 155vw, 1000px); margin-top: 0}
+    }
+
+    @media(min-width:1024px){
+        .biba {right: 82%; top: 46%;}
+        .boba {left: 81%; top: 50%;}
+    }
+
+    @media(min-width:1280px){
+        .biba {right: calc(50vw + 400px);}
+        .boba {left: calc(50vw + 400px);}
     }
 </style>
