@@ -2,12 +2,10 @@
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import bibaSVG from "../assets/images/biba.svg";
 import bobaSVG from "../assets/images/boba.svg";
-import howResolveDispute1 from "../assets/images/dialog-1/how-resolve-dispute-1.png";
-import goOutFieldFight2 from "../assets/images/dialog-1/go-out-field-fight-2.svg";
-import whatCenturyAreYouFrom3 from "../assets/images/dialog-1/what-century-are-you-from-3.svg";
-import thereLawsNow4 from "../assets/images/dialog-1/there-laws-now-4.svg";
-import whatIsLegislation5 from "../assets/images/dialog-1/what-is-legislation-5.svg";
-import listenYouDarkHead6 from "../assets/images/dialog-1/listen-you-dark-head-6.svg";
+import wellNowBecomeClearer1 from "../assets/images/dialog-2/well-now-become-clearer-1.svg";
+import cleverAndComplicated2 from "../assets/images/dialog-2/clever-and-complicated-2.svg";
+import itWasEasierWithBatons3 from "../assets/images/dialog-2/it-was-easier-with-batons-3.svg";
+
 
 const sctin = ref(null);
 const biba = ref(null);
@@ -29,11 +27,12 @@ const handleScroll = () => {
 
   //Определяем, когда скролл достигает компонента
   if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
+    console.log(scrollPercent = Math.min(Math.max(1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight, 0), 1));
     //Вычисляем процент прокрутки всего компонента
     if(windowWidth < 640){
-        scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight) - 0.5, 0), 1);
+        scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight) - 0.3, 0), 1);
     }else if(windowWidth < 1024){
-        scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight) - 0.3 , 0), 1);
+        scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight) - 0.15 , 0), 1);
     }else{
         scrollPercent = Math.min(Math.max(1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight, 0), 1);
     }
@@ -49,7 +48,7 @@ const handleScroll = () => {
 
     // Управление показом картинок
     const imgEls = images.value;
-
+    console.log(imgEls);
     // Первая картинка: 0.375 < scrollPercent < 0.600
     if (scrollPercent > 0.375 && scrollPercent < 0.600) {
       imgEls[0].style.opacity = 1;
@@ -60,7 +59,7 @@ const handleScroll = () => {
     }
 
     // Вторая картинка: 0.500 < scrollPercent < 0.600
-    if (scrollPercent > 0.500 && scrollPercent < 0.600) {
+    if (scrollPercent > 0.600 && scrollPercent < 0.85) {
       imgEls[1].style.opacity = 1;
       imgEls[1].style.scale = 1;
     } else {
@@ -69,45 +68,18 @@ const handleScroll = () => {
     }
 
     // Третья картинка: 0.600 < scrollPercent < 0.800
-    if (scrollPercent > 0.600 && scrollPercent < 0.800) {
+    if (scrollPercent > 0.675 && scrollPercent < 0.9) {
       imgEls[2].style.opacity = 1;
       imgEls[2].style.scale = 1;
     } else {
       imgEls[2].style.opacity = 0.2;
       imgEls[2].style.scale = 0.75;
     }
-
-    // Четвертая картинка: 0.700 < scrollPercent < 0.800
-    if (scrollPercent > 0.700 && scrollPercent < 0.800) {
-      imgEls[3].style.opacity = 1;
-      imgEls[3].style.scale = 1;
-    } else {
-      imgEls[3].style.opacity = 0.2;
-      imgEls[3].style.scale = 0.75;
-    }
-
-    // Пятая картинка: 0.800 < scrollPercent < 0.900
-    if (scrollPercent > 0.800 && scrollPercent < 0.900) {
-      imgEls[4].style.opacity = 1;
-      imgEls[4].style.scale = 1;
-    } else {
-      imgEls[4].style.opacity = 0.2;
-      imgEls[4].style.scale = 0.75;
-    }
-
-    // Шестая картинка: 0.900 < scrollPercent < 0.975
-    if (scrollPercent > 0.900 && scrollPercent < 1) {
-      imgEls[5].style.opacity = 1;
-      imgEls[5].style.scale = 1;
-    } else {
-      imgEls[5].style.opacity = 0.2;
-      imgEls[5].style.scale = 0.75;
-    }
   }
 };
 
 onMounted(() => {
-  images.value = document.querySelectorAll(".image"); // Сохраним ссылки на все изображения
+  images.value = document.querySelectorAll(".image2"); // Сохраним ссылки на все изображения
   handleScroll(); // Чтобы картинки появлялись, если страница перезагружается
   window.addEventListener("scroll", handleScroll); // Подписываемся на событие скролла
 });
@@ -117,15 +89,12 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
 </script>
 
 <template>
-  <section ref="sctin" class="w-11/12 max-w-[1200px] sectionHeight sm:h-[750px] md:h-[1300px] lg:h-[1500px] xl:h-[1800px] mx-auto flex justify-around relative">
+  <section ref="sctin" class="w-11/12 max-w-[1200px] sectionHeight sm:h-[500px] md:h-[1000px] lg:h-[1100px] xl:h-[1400px] mx-auto flex justify-around relative">
     <img ref="biba" :src="bibaSVG" class="w-[clamp(80px,16%,195px)] h-fit biba -rotate-6 sm:-rotate-12 lg:rotate-0 opacity-0 transition-opacity duration-300" />
-    <div class="w-2/3 sm:w-3/5 mx-auto sm:mt-40 md:mt-96 lg:mt-40 xl:mt-60 z-10">
-      <img :src="howResolveDispute1" class="w-[95%] m-[2.5%] opacity-0 image" />
-      <img :src="goOutFieldFight2" class="w-[95%] m-[2.5%] opacity-0 image" />
-      <img :src="whatCenturyAreYouFrom3" class="w-[69%] mr-[2.5%] ml-auto opacity-0 image" />
-      <img :src="thereLawsNow4" class="w-[95%] m-[2.5%] opacity-0 image" />
-      <img :src="whatIsLegislation5" class="w-[76%] m-[2.5%] opacity-0 image" />
-      <img :src="listenYouDarkHead6" class="w-[70%] mr-[2.5%] ml-auto opacity-0 image" />
+    <div class="w-2/3 sm:w-3/5 mx-auto sm:mt-40 md:mt-48 lg:mt-20 z-10">
+        <img :src="wellNowBecomeClearer1" class="w-[95%] m-[2.5%] opacity-0 image2" />
+        <img :src="cleverAndComplicated2" class="w-[76%] m-[2.5%] mr-auto opacity-0 image2" />
+        <img :src="itWasEasierWithBatons3" class="w-[76%] m-[2.5%] mr-auto opacity-0 image2" />
     </div>
     <img ref="boba" :src="bobaSVG" class="w-[clamp(80px,16%,171px)] h-fit boba rotate-6 sm:rotate-12 lg:rotate-0 opacity-0 transition-opacity duration-300" />
   </section>
@@ -142,7 +111,7 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
         top: 50%;
         left: 75%;
     }
-    .image {
+    .image2 {
         transition: all 0.3s ease;
     }
 

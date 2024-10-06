@@ -9,6 +9,7 @@
   import AnimationScales from "./components/animation-scales.vue";
   import DialogOne from "./components/dialog-one.vue";
   import AboutLecture from "./components/about-lecture.vue";
+  import DialogTwo from "./components/dialog-two.vue";
   import SocialNetwork from "./components/social-network.vue";
 </script>
 
@@ -36,7 +37,9 @@
         <a class="button text-nowrap helvetica-500 h-fit w-fit way px-4 lg:px-6 text-center lg:box-content bg-[#101fb3] sm:pb-1 rounded-xl sm:rounded-3xl text-white z-20">в путь!</a> <!-- bg-blue-700 -->
       </div>
     </section>
+
     <DialogOne/>
+
     <section>
       <AboutLecture number="1" title="Древнерусское право" description="У кого дубина тяжелее, тот и прав — так решались сложные вопросы в Древней Руси. Сейчас это, конечно, звучит дико. Но в IX веке бой на дубинках, копьях или кинжалах считали неплохим способом разрешить спор. Ещё один способ — попросить князя рассудить «справедливо». Но справедливость у каждого правителя была своя."
                   modalContent="В этой лекции поговорим о судебных традициях прошлого и узнаем:
@@ -57,6 +60,8 @@
       <AboutLecture number="5" title="Современное право" description="На смену СССР пришла Российская Федерация. Формируется новая система управления — но с опорой на опыт предыдущих поколений. Провозглашается принцип разделения властей. Создаётся новая законодательная база: от Гражданского и Уголовного кодексов до Семейного и Трудового."
                     modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
     </section>
+
+    <DialogTwo/>
 
     <section>
       <SocialNetwork title="Telegram" description="Делимся новостями из мира искусства и обсуждаем их в чате с синхродрузьями" btnText="подписаться на канал" url="https://t.me/+gY7XBrs4xvQ0Njcy" />
