@@ -27,7 +27,6 @@ const handleScroll = () => {
 
   //Определяем, когда скролл достигает компонента
   if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
-    console.log(scrollPercent = Math.min(Math.max(1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight, 0), 1));
     //Вычисляем процент прокрутки всего компонента
     if(windowWidth < 640){
         scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight) - 0.3, 0), 1);
@@ -48,7 +47,7 @@ const handleScroll = () => {
 
     // Управление показом картинок
     const imgEls = images.value;
-    console.log(imgEls);
+    
     // Первая картинка: 0.375 < scrollPercent < 0.600
     if (scrollPercent > 0.375 && scrollPercent < 0.600) {
       imgEls[0].style.opacity = 1;

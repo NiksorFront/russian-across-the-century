@@ -11,10 +11,32 @@
   import AboutLecture from "./components/about-lecture.vue";
   import DialogTwo from "./components/dialog-two.vue";
   import SocialNetwork from "./components/social-network.vue";
+
+  import {ref, onMounted} from "vue";
+  const wayBtn = ref(null);
+  const animationBtn = ref(null);
+
+  onMounted(() => {
+    wayBtn.value.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: window.innerWidth > 450 ? window.innerHeight : window.innerHeight*0.75,
+        behavior: 'smooth'
+      })
+    });
+
+    animationBtn.value.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: window.innerHeight + document.querySelector("#diaolog-one").offsetHeight,
+        behavior: 'smooth'
+      })
+    });
+  })
 </script>
 
 <template>
-  <header class="flex w-11/12 max-w-[1200px] h-full flex-wrap gap-5 mx-auto mt-[35px] sm:mt-[70px] justify-between">
+  <header class="flex w-11/12 max-w-[1200px] h-fit flex-wrap gap-5 mx-auto my-[35px] sm:my-[70px] xl:mb-[35px] justify-between">
     <div class="flex justify-between w-full max-w-[135px] sm:max-w-[260px]">
       <img :src="synchronization" alt="Синхронизация" class="w-11 sm:w-20 lg:w-[91px] object-contain" />
       <img :src="line" alt="line" class="h-7 sm:h-full object-contain pl-2" />
@@ -22,11 +44,11 @@
     </div>
    
     <div class="flex items-center mr-10">
-      <a href="#" class="text-xs md:text-base lg:text-xl text-blue-700 helvetica-500 text-nowrap">анимационные лекции </a>
+      <a ref="animationBtn" class="text-xs md:text-base lg:text-xl text-blue-700 helvetica-500 text-nowrap cursor-pointer z-10">анимационные лекции </a>
       <p class="text-xs md:text-base lg:text-xl helvetica-500 whitespace-pre"> | памятки</p>
     </div>
   </header>
-  <main class="overflow-hidden relative lg:-mt-10">
+  <main class="overflow-hidden">
     <section class="flex w-11/12 max-w-[1200px] h-[720px] sm:h-[800px] lg:h-[700px] flex-wrap mx-auto mt-[35px] gap-9 sm:gap-4 lg:gap-0 lg:flex-row-reverse relative">
       <div class="w-full h-1/2 lg:h-full sm:h-3/5 lg:w-2/5 relative -z-10">
         <AnimationScales />
@@ -34,11 +56,11 @@
       <div class="w-full lg:w-3/5 h-1/2 sm:h-3/5 lg:h-fit lg:my-auto flex flex-wrap flex-col lg:flex-row gap-4 sm:gap-8 lg:gap-0 lg:space-y-12 lg:translate-y-6">
         <h1 class="title helvetica-700 lg:h-1/6 lg:ml-3">Россия: право сквозь века</h1>
         <h3 class="subtitle helvetica-500 h-fit lg:ml-3 law-changing">Как менялось право в России: от древности до наших дней</h3>
-        <a class="button text-nowrap helvetica-500 h-fit w-fit way px-4 lg:px-6 text-center lg:box-content bg-[#101fb3] sm:pb-1 rounded-xl sm:rounded-3xl text-white z-20">в путь!</a> <!-- bg-blue-700 -->
+        <a ref="wayBtn" class="button text-nowrap helvetica-500 h-fit w-fit way px-4 lg:px-6 text-center lg:box-content bg-[#101fb3] sm:pb-1 rounded-xl sm:rounded-3xl text-white z-30 cursor-pointer">в путь!</a> <!-- bg-blue-700 -->
       </div>
     </section>
 
-    <DialogOne/>
+    <DialogOne id="diaolog-one"/>
 
     <section>
       <AboutLecture number="1" title="Древнерусское право" description="У кого дубина тяжелее, тот и прав — так решались сложные вопросы в Древней Руси. Сейчас это, конечно, звучит дико. Но в IX веке бой на дубинках, копьях или кинжалах считали неплохим способом разрешить спор. Ещё один способ — попросить князя рассудить «справедливо». Но справедливость у каждого правителя была своя."
@@ -49,16 +71,16 @@
     
 
       <AboutLecture number="2" title="Средневековое право" description="В Средние века русские княжества раздроблены, и законы в них разные. Но в 1497 году князь Иван III создаёт единый для всех земель свод законов — Судебник. Этот документ стал первым шагом на пути к первому всенародно признанному закону — Соборному уложению, которое было принято в XVII веке."
-                    modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
+                    modalContent="rjytyfgn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
 
       <AboutLecture number="3" title="Право в Российской империи" description="Попытки законодательно закрепить абсолютную власть императора, стремление суда к независимости, систематизация законов — путь к статусу правового государства был непростым. Но именно в это время проводятся реформы, результатами которых мы пользуемся до сих пор."
-                    modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
+                    modalContent="rjytdfghyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
 
       <AboutLecture number="4" title="Право в советской России" description="Новое государство — новые законы. После прихода к власти большевики активно формируют революционно новую правовую систему. Создаются колхозы, а вместе с ними — хозяйственное право. Принимаются новые Конституции, а судебный процесс в поисках объективной истины лишается состязательности."
                     modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
 
       <AboutLecture number="5" title="Современное право" description="На смену СССР пришла Российская Федерация. Формируется новая система управления — но с опорой на опыт предыдущих поколений. Провозглашается принцип разделения властей. Создаётся новая законодательная база: от Гражданского и Уголовного кодексов до Семейного и Трудового."
-                    modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
+                    modalContent="rjytfgyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
     </section>
 
     <DialogTwo/>
@@ -101,11 +123,11 @@
       <img :src="historicalFigure" alt="историческая фигура" className="historical-figure h-[clamp(570px,115vw,1030px)] object-contain absolute"/>
     </section>
   </main>
-
   <img :src="bgWhite" class="fixed top-0 left-0 w-screen h-screen object-cover -z-20"/>
 </template>
 
 <style>
+
   .title{ /*Главный заголовок всей страницы*/
     font-size: clamp(42px, 9vw, 64px);
     line-height: clamp(40px, 9vw, 64px);
