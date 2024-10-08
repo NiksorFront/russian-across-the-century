@@ -38,9 +38,15 @@
 <template>
   <header class="flex w-11/12 max-w-[1200px] h-fit flex-wrap gap-5 mx-auto my-[35px] sm:my-[70px] xl:mb-[35px] justify-between">
     <div class="flex justify-between w-full max-w-[135px] sm:max-w-[260px]">
-      <img :src="synchronization" alt="Синхронизация" class="w-11 sm:w-20 lg:w-[91px] object-contain" />
+      <a href="https://online.synchronize.ru/" target="_blank" class="my-0.5 sm:my-1.5" > 
+        <img :src="synchronization" alt="Синхронизация" class="w-11 sm:w-20 lg:w-[91px] object-contain"/>
+      </a>
+      <!-- <img :src="synchronization" alt="Синхронизация" class="w-11 sm:w-20 lg:w-[91px] object-contain m-0"/> -->
       <img :src="line" alt="line" class="h-7 sm:h-full object-contain pl-2" />
-      <img :src="allianceLegal" alt="Alliance Legal" class="w-11 sm:w-20 lg:w-[91px] object-contain" />
+      <a href="https://al-cg.com/" target="_blank" class="my-0 sm:my-1"> 
+        <img :src="allianceLegal" alt="Alliance Legal" class="w-11 sm:w-20 lg:w-[91px] object-contain" />
+      </a>
+      <!-- <img :src="allianceLegal" alt="Alliance Legal" class="w-11 sm:w-20 lg:w-[91px] object-contain" /> -->
     </div>
    
     <div class="flex items-center mr-10">
@@ -64,31 +70,27 @@
 
     <section>
       <AboutLecture number="1" title="Древнерусское право" description="У кого дубина тяжелее, тот и прав — так решались сложные вопросы в Древней Руси. Сейчас это, конечно, звучит дико. Но в IX веке бой на дубинках, копьях или кинжалах считали неплохим способом разрешить спор. Ещё один способ — попросить князя рассудить «справедливо». Но справедливость у каждого правителя была своя."
-                  modalContent="В этой лекции поговорим о судебных традициях прошлого и узнаем:
-Кто выполнял роль судей в Древней Руси?
-Какие вопросы решали на вече?
-Как был устроен первый свод правовых норм Древней Руси — «Русская Правда»?" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/ancient-russian-law"/>
+                    :modalContent='{heading: "В этой лекции поговорим о судебных традициях прошлого и узнаем:", paragraphs: ["Кто выполнял роль судей в Древней Руси?", "Какие вопросы решали на вече?", "Как был устроен первый свод правовых норм Древней Руси — «Русская Правда»?"]}' videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/ancient-russian-law"/>
     
-
       <AboutLecture number="2" title="Средневековое право" description="В Средние века русские княжества раздроблены, и законы в них разные. Но в 1497 году князь Иван III создаёт единый для всех земель свод законов — Судебник. Этот документ стал первым шагом на пути к первому всенародно признанному закону — Соборному уложению, которое было принято в XVII веке."
-                    modalContent="rjytyfgn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
+                    :modalContent="{heading: 'В этой лекции погрузимся в правовую систему Средних веков и выясним:', paragraphs:['Кому и за что на Руси начали давать взятки?', 'Какие вопросы решала Боярская дума — «правая рука» царя?', 'Как русские княжества от раздроблённости и власти монголов пришли к единому для всех закону?']}" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
 
       <AboutLecture number="3" title="Право в Российской империи" description="Попытки законодательно закрепить абсолютную власть императора, стремление суда к независимости, систематизация законов — путь к статусу правового государства был непростым. Но именно в это время проводятся реформы, результатами которых мы пользуемся до сих пор."
-                    modalContent="rjytdfghyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
+                    :modalContent="{heading: 'В этой лекции мы проследим за историей права от Петра I до Николая II. И узнаем:', paragraphs:['Почему правовая политика Петра I не всегда была объективной?', 'Когда в России появились первые адвокаты, следователи и прокуроры?', 'Почему террористке Вере Засулич удалось избежать наказания за покушение на губернатора?']}" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
 
       <AboutLecture number="4" title="Право в советской России" description="Новое государство — новые законы. После прихода к власти большевики активно формируют революционно новую правовую систему. Создаются колхозы, а вместе с ними — хозяйственное право. Принимаются новые Конституции, а судебный процесс в поисках объективной истины лишается состязательности."
-                    modalContent="rjytyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
+                    :modalContent="{heading: 'В этой лекции узнаем, как было устроено право в эпоху Советов. И разберёмся:', paragraphs:['Каким должно было стать пролетарское государство?', 'Как менялось право в эпохи «оттепели», «застоя» и «перестройки»?', 'На что по закону имел право советский рабочий?']}" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
 
       <AboutLecture number="5" title="Современное право" description="На смену СССР пришла Российская Федерация. Формируется новая система управления — но с опорой на опыт предыдущих поколений. Провозглашается принцип разделения властей. Создаётся новая законодательная база: от Гражданского и Уголовного кодексов до Семейного и Трудового."
-                    modalContent="rjytfgyn" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
+                    :modalContent="{heading: 'В этой лекции разберёмся, как сформировалась правовая система РФ. И выясним:', paragraphs:['Что такое «война законов» и как она повлияла на распад СССР?', 'Кем и как создавалась Конституция 1993 года?', 'Как свободный рынок изменил право в России?']}" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
     </section>
 
     <DialogTwo/>
 
     <section>
       <SocialNetwork title="Telegram" description="Делимся новостями из мира искусства и обсуждаем их в чате с синхродрузьями" btnText="подписаться на канал" url="https://t.me/+gY7XBrs4xvQ0Njcy" />
-      <SocialNetwork title="Email-рассылка" description="Присылаем секретные промокоды и эксклюзивный контент из курсов" btnText="подписаться на рассылку" url="modal-post" />
-      <SocialNetwork title="YouTube-канал Синхронизация. Плюс" description="Подписывайтесь на наш канал, чтобы не пропустить ещё больше бесплатных лекций, интервью и подкастов" btnText="смотреть лекции" url="https://www.youtube.com/@synchronizeplus" />
+      <SocialNetwork title="Email-рассылка" description="Присылаем секретные промокоды и эксклюзивный контент из курсов" btnText="подписаться на рассылку" url="#" />
+      <!-- <SocialNetwork title="YouTube-канал Синхронизация. Плюс" description="Подписывайтесь на наш канал, чтобы не пропустить ещё больше бесплатных лекций, интервью и подкастов" btnText="смотреть лекции" url="https://www.youtube.com/@synchronizeplus" /> -->
     </section>
 
     <section class="w-11/12 max-w-[1200px] relative bg-white min-h-[700px] h-auto project-partners mx-auto my-12 rounded-[clamp(20px,5vw,50px)] flex flex-wrap">
@@ -96,7 +98,7 @@
           Партнёры проекты
       </h2>
       
-      <div class="w-full lg:w-3/4 flex flex-col gap-4 sm:gap-6 lg:gap-14 lg:flex-nowrap lg:flex-row lg:justify-between mt-4 sm:mt-10">
+      <a href='https://al-cg.com/' target="_black" class="w-full lg:w-3/4 flex flex-col gap-4 sm:gap-6 lg:gap-14 lg:flex-nowrap lg:flex-row lg:justify-between mt-4 sm:mt-10">
         <img :src="allianceLegal" alt="логотип AllianceLegal" class="h-fit w-[74px] sm:w-[91px] object-contain" />
         <div class="flex flex-col gap-2">
           <h3 class="helvetica-700 title-3">
@@ -106,9 +108,9 @@
             Российская юридическая фирма. С 2010 года обеспечивает правовое сопровождение крупного бизнеса, в том числе частных инвесторов и госкорпораций.<br> Защита корпоративных и частных клиентов при разрешении споров, расследовании уголовных дел в сфере экономики и должностных преступлений, сопровождение сделок и инвестпроектов, налоговое консультирование и юридическая поддержка реструктуризации бизнеса. Поддержка некоммерческих организаций в рамках развития юридической науки.
           </p>
         </div>
-      </div>
+      </a>
 
-      <div class="synchronization-div lg:w-3/4 flex flex-col gap-4 sm:gap-6 lg:gap-14 lg:flex-nowrap lg:flex-row mt-3 sm:mt-10 lg:mt-5">
+      <a href="https://online.synchronize.ru/" target="_black" class="synchronization-div lg:w-3/4 flex flex-col gap-4 sm:gap-6 lg:gap-14 lg:flex-nowrap lg:flex-row mt-3 sm:mt-10 lg:mt-5">
         <img :src="synchronization" alt="логотип синхронизации" class="h-fit w-[74px] sm:w-[91px] object-contain mt-3" />
         <div class="flex flex-col gap-2">
           <h3 class="helvetica-700 title-3">
@@ -118,7 +120,7 @@
             Онлайн-лекторий с огненным обучением. Подписка Синхронизации — это 1000+ часов образовательного контента по самым разным направлениям: от искусства, кино и литературы до психологии и нейробиологии.
           </p>
         </div>
-      </div>
+      </a>
 
       <img :src="historicalFigure" alt="историческая фигура" className="historical-figure h-[clamp(570px,115vw,1030px)] object-contain absolute"/>
     </section>

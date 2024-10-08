@@ -13,7 +13,7 @@
         </p>
       </div>
 
-      <a class="w-full h-fit lg:w-fit lg:ml-auto lg:my-auto px-8 py-2.5 sm:py-3.5 helvetica-700 bg-[#101fb3] text-white text-center text-nowrap text-[clamp(14px,2.5vw,27px)] rounded-[clamp(10px,2vw,30px)] cursor-pointer">
+      <a :href="url" target="_blank" class="w-full h-fit lg:w-fit lg:ml-auto lg:my-auto px-8 py-2.5 sm:py-3.5 helvetica-700 bg-[#101fb3] text-white text-center text-nowrap text-[clamp(14px,2.5vw,27px)] rounded-[clamp(10px,2vw,30px)] cursor-pointer">
           {{btnText}}
       </a>
     </div>

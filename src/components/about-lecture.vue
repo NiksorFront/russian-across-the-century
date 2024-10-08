@@ -19,7 +19,7 @@
         <p class="helvetica-400 textik ">
           {{ description }}
         </p>
-        <a class="helvetica-400 underline cursor-pointer text-[clamp(14px,3vw,20px)] leading-3 mt-auto" @click="openModal">
+        <a class="helvetica-400 underline cursor-pointer text-[clamp(14px,3vw,20px)] leading-3 mt-auto z-10" @click="openModal">
           Подробнее
         </a>
       </div>
@@ -33,7 +33,7 @@
         </a>
       </div>
     </section>
-    <Modal v-if="stateModal === true" :content="modalContent"/>
+    <Modal v-if="stateModal === true" :content="modalContent" :closeModal="() => stateModal = false"/>
 </template>
 
 <style scoped>
