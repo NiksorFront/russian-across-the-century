@@ -7,6 +7,8 @@
   import historicalFigure from "./assets/images/historical-figure.svg";
 
   import AnimationScales from "./components/animation-scales.vue";
+  import DialogOneMobile from "./components/dialog-one-mobile.vue";
+  import DialogTwoMobile from "./components/dialog-two-mobile.vue";
   import DialogOne from "./components/dialog-one.vue";
   import AboutLecture from "./components/about-lecture.vue";
   import DialogTwo from "./components/dialog-two.vue";
@@ -15,12 +17,17 @@
   import {ref, onMounted} from "vue";
   const wayBtn = ref(null);
   const animationBtn = ref(null);
+  const small = ref(parseInt(window.innerWidth) < 1024);
+  
+  const handleScroll = () => {
+    small.value = parseInt(window.innerWidth) < 1024;
+  }
 
   onMounted(() => {
     wayBtn.value.addEventListener('click', (e) => {
       e.preventDefault();
       window.scrollTo({
-        top: window.innerWidth > 450 ? window.innerHeight : window.innerHeight*0.75,
+        top: window.innerHeight*1.75,
         behavior: 'smooth'
       })
     });
@@ -32,6 +39,8 @@
         behavior: 'smooth'
       })
     });
+
+    window.addEventListener("scroll", handleScroll); // Подписываемся на событие скролла
   })
 </script>
 
@@ -66,7 +75,10 @@
       </div>
     </section>
 
-    <DialogOne id="diaolog-one"/>
+
+    <DialogOneMobile v-if="small" id="diaolog-one"/>
+    <DialogOne v-else id="diaolog-one"/>
+    
 
     <section>
       <AboutLecture number="1" title="Древнерусское право" description="У кого дубина тяжелее, тот и прав — так решались сложные вопросы в Древней Руси. Сейчас это, конечно, звучит дико. Но в IX веке бой на дубинках, копьях или кинжалах считали неплохим способом разрешить спор. Ещё один способ — попросить князя рассудить «справедливо». Но справедливость у каждого правителя была своя."
@@ -85,12 +97,13 @@
                     :modalContent="{heading: 'В этой лекции разберёмся, как сформировалась правовая система РФ. И выясним:', paragraphs:['Что такое «война законов» и как она повлияла на распад СССР?', 'Кем и как создавалась Конституция 1993 года?', 'Как свободный рынок изменил право в России?']}" videoUrl="https://www.youtube.com/watch?v=NQU8b7ZH8Vw" routeMemo="/aq234543"/>
     </section>
 
-    <DialogTwo/>
+    <DialogTwoMobile v-if="small"/>
+    <DialogTwo v-else />
 
     <section>
       <SocialNetwork title="Telegram" description="Делимся новостями из мира искусства и обсуждаем их в чате с синхродрузьями" btnText="подписаться на канал" url="https://t.me/+gY7XBrs4xvQ0Njcy" />
       <SocialNetwork title="Email-рассылка" description="Присылаем секретные промокоды и эксклюзивный контент из курсов" btnText="подписаться на рассылку" url="#" />
-      <!-- <SocialNetwork title="YouTube-канал Синхронизация. Плюс" description="Подписывайтесь на наш канал, чтобы не пропустить ещё больше бесплатных лекций, интервью и подкастов" btnText="смотреть лекции" url="https://www.youtube.com/@synchronizeplus" /> -->
+      <SocialNetwork title="YouTube-канал Синхронизация. Плюс" description="Подписывайтесь на наш канал, чтобы не пропустить ещё больше бесплатных лекций, интервью и подкастов" btnText="смотреть лекции" url="https://www.youtube.com/@synchronizeplus" />
     </section>
 
     <section class="w-11/12 max-w-[1200px] relative bg-white min-h-[700px] h-auto project-partners mx-auto my-12 rounded-[clamp(20px,5vw,50px)] flex flex-wrap">
