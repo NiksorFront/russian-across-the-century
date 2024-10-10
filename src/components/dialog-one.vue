@@ -13,101 +13,203 @@ const sctin = ref(null);
 const biba = ref(null);
 const boba = ref(null);
 const images = ref([]); // Создадим массив ссылок на картинки
+const messages = ref(null);
 
 const handleScroll = () => {
-  const section = sctin.value;
-  const bibaEl = biba.value;
-  const bobaEl = boba.value;
-  
-  // Получаем координаты секции относительно окна
-  const sectionRect = section.getBoundingClientRect();
-  const sectionTop = sectionRect.top;
-  const sectionHeight = sectionRect.height;
-  const windowHeight = window.innerHeight;
   const windowWidth = window.innerWidth;
   let scrollPercent = 0;
 
   //Определяем, когда скролл достигает компонента
-  if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
-    //Вычисляем процент прокрутки всего компонента
-    if(windowWidth < 640){
-        scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight) - 0.5, 0), 1);
-    }else if(windowWidth < 1024){
-        scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight) - 0.3 , 0), 1);
-    }else{
-        scrollPercent = Math.min(Math.max(1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight, 0), 1);
-    }
+  if(windowWidth > 1024){
+    const section = sctin.value;
+    const masges = messages.value;
+    const bibaEl = biba.value;
+    const bobaEl = boba.value;
+    // Получаем координаты секции относительно окна
+    const sectionRect = section.getBoundingClientRect();
+    const sectionTop = sectionRect.top;
+    const sectionHeight = sectionRect.height;
+    const windowHeight = window.innerHeight;
+    if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
+      scrollPercent = Math.min(Math.max(1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight, 0), 1);
 
-    // Управление прозрачностью biba и boba
-    if (scrollPercent > 0.375 && scrollPercent < 1) {
-      bibaEl.style.opacity = Math.min(scrollPercent * 1.75, 1);
-      bobaEl.style.opacity = Math.min(scrollPercent * 1.75, 1);
-    } else {
+      // Управление прозрачностью biba и boba
+      if (scrollPercent > 0.375 && scrollPercent < 1) {
+        bibaEl.style.opacity = Math.min(scrollPercent * 1.75, 1);
+        bobaEl.style.opacity = Math.min(scrollPercent * 1.75, 1);
+      } else {
+        bibaEl.style.opacity = 0;
+        bobaEl.style.opacity = 0;
+      }
+      masges.style.marginLeft = "auto";
+      masges.style.marginRight = "auto";
+
+      // Управление показом картинок
+      const imgEls = images.value;
+
+      // Первая картинка: 0.375 < scrollPercent < 0.600
+      if (scrollPercent > 0.375 && scrollPercent < 0.600) {
+        imgEls[0].style.opacity = 1;
+        imgEls[0].style.scale = 1;
+      } else {
+        windowWidth < 1024 ? imgEls[0].style.opacity = 0 : imgEls[0].style.opacity = 0.2;
+        imgEls[0].style.scale = 0.75;
+      }
+
+      // Вторая картинка: 0.500 < scrollPercent < 0.600
+      if (scrollPercent > 0.500 && scrollPercent < 0.600) {
+        imgEls[1].style.opacity = 1;
+        imgEls[1].style.scale = 1;
+      } else {
+        windowWidth < 1024 ? imgEls[1].style.opacity = 0 : imgEls[1].style.opacity = 0.2;
+        imgEls[1].style.scale = 0.75;
+      }
+
+      // Третья картинка: 0.600 < scrollPercent < 0.800
+      if (scrollPercent > 0.600 && scrollPercent < 0.800) {
+        imgEls[2].style.opacity = 1;
+        imgEls[2].style.scale = 1;
+      } else {
+        windowWidth < 1024 ? imgEls[2].style.opacity = 0 : imgEls[2].style.opacity = 0.2;
+        imgEls[2].style.scale = 0.75;
+      }
+
+      // Четвертая картинка: 0.700 < scrollPercent < 0.800
+      if (scrollPercent > 0.700 && scrollPercent < 0.800) {
+        imgEls[3].style.opacity = 1;
+        imgEls[3].style.scale = 1;
+      } else {
+        windowWidth < 1024 ? imgEls[3].style.opacity = 0 : imgEls[3].style.opacity = 0.2;
+        imgEls[3].style.scale = 0.75;
+      }
+
+      // Пятая картинка: 0.800 < scrollPercent < 0.900
+      if (scrollPercent > 0.800 && scrollPercent < 0.900) {
+        imgEls[4].style.opacity = 1;
+        imgEls[4].style.scale = 1;
+      } else {
+        windowWidth < 1024 ? imgEls[4].style.opacity = 0 : imgEls[4].style.opacity = 0.2;
+        imgEls[4].style.scale = 0.75;
+      }
+
+      // Шестая картинка: 0.900 < scrollPercent < 0.975
+      if (scrollPercent > 0.900 && scrollPercent < 1) {
+        imgEls[5].style.opacity = 1;
+        imgEls[5].style.scale = 1;
+      } else {
+        windowWidth < 1024 ? imgEls[5].style.opacity = 0 : imgEls[5].style.opacity = 0.2;
+        imgEls[5].style.scale = 0.75;
+      }
+    }
+  }else{
+    const section = sctin.value;
+    const masges = messages.value;
+    const bibaEl = biba.value;
+    const bobaEl = boba.value;
+    // Получаем координаты секции относительно окна
+    const sectionRect = section.getBoundingClientRect();
+    const sectionTop = sectionRect.top;
+    const sectionHeight = sectionRect.height;
+    const windowHeight = window.innerHeight;
+    //Вычисляем процент прокрутки всего компонента
+    if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
+      if(windowWidth < 640){
+          masges.style.marginLeft = 0;
+          masges.style.marginRight = 0;
+          scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight) - 0.5, 0), 1);
+      }else{
+          masges.style.marginLeft = "auto";
+          masges.style.marginRight = "auto";
+          scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight) - 0.3 , 0), 1);
+      }
+
       bibaEl.style.opacity = 0;
       bobaEl.style.opacity = 0;
-    }
+      if(scrollPercent > 0.900){masges.style.marginRight = "auto"}
+      console.log(parseInt(windowWidth) > 1024);
+      // // Управление прозрачностью biba и boba
+      // if (scrollPercent > 0.375 && scrollPercent < 1) {
+      //   bibaEl.style.opacity = Math.min(scrollPercent * 1.75, 1);
+      //   bobaEl.style.opacity = Math.min(scrollPercent * 1.75, 1);
+      // } else {
+      //   bibaEl.style.opacity = 0;
+      //   bobaEl.style.opacity = 0;
+      // }
 
-    // Управление показом картинок
-    const imgEls = images.value;
+      // Управление показом картинок
+      const imgEls = images.value;
 
-    // Первая картинка: 0.375 < scrollPercent < 0.600
-    if (scrollPercent > 0.375 && scrollPercent < 0.600) {
-      imgEls[0].style.opacity = 1;
-      imgEls[0].style.scale = 1;
-    } else {
-      imgEls[0].style.opacity = 0.2;
-      imgEls[0].style.scale = 0.75;
-    }
+      // Первая картинка: 0.375 < scrollPercent < 0.600
+      if (scrollPercent > 0.375 && scrollPercent < 0.600) {
+        imgEls[0].style.opacity = 1;
+        imgEls[0].style.scale = 1;
+        bibaEl.style.opacity = 1;
+        masges.style.marginLeft = "auto";
+      } else {
+        windowWidth < 1024 ? imgEls[0].style.opacity = 0 : imgEls[0].style.opacity = 0.2;
+        imgEls[0].style.scale = 0.75;
+      }
 
-    // Вторая картинка: 0.500 < scrollPercent < 0.600
-    if (scrollPercent > 0.500 && scrollPercent < 0.600) {
-      imgEls[1].style.opacity = 1;
-      imgEls[1].style.scale = 1;
-    } else {
-      imgEls[1].style.opacity = 0.2;
-      imgEls[1].style.scale = 0.75;
-    }
+      // Вторая картинка: 0.500 < scrollPercent < 0.600
+      if (scrollPercent > 0.500 && scrollPercent < 0.600) {
+        imgEls[1].style.opacity = 1;
+        imgEls[1].style.scale = 1;
+      } else {
+        windowWidth < 1024 ? imgEls[1].style.opacity = 0 : imgEls[1].style.opacity = 0.2;
+        imgEls[1].style.scale = 0.75;
+        // bobaEl.style.opacity = Math.min(scrollPercent * 1.75, 1);
+      }
 
-    // Третья картинка: 0.600 < scrollPercent < 0.800
-    if (scrollPercent > 0.600 && scrollPercent < 0.800) {
-      imgEls[2].style.opacity = 1;
-      imgEls[2].style.scale = 1;
-    } else {
-      imgEls[2].style.opacity = 0.2;
-      imgEls[2].style.scale = 0.75;
-    }
+      // Третья картинка: 0.600 < scrollPercent < 0.800
+      if (scrollPercent > 0.600 && scrollPercent < 0.800) {
+        imgEls[2].style.opacity = 1;
+        imgEls[2].style.scale = 1;
+        bobaEl.style.opacity = 1;
+        masges.style.marginRight = "auto";
+      } else {
+        windowWidth < 1024 ? imgEls[2].style.opacity = 0 : imgEls[2].style.opacity = 0.2;
+        imgEls[2].style.scale = 0.75;
+      }
 
-    // Четвертая картинка: 0.700 < scrollPercent < 0.800
-    if (scrollPercent > 0.700 && scrollPercent < 0.800) {
-      imgEls[3].style.opacity = 1;
-      imgEls[3].style.scale = 1;
-    } else {
-      imgEls[3].style.opacity = 0.2;
-      imgEls[3].style.scale = 0.75;
-    }
+      // Четвертая картинка: 0.700 < scrollPercent < 0.800
+      if (scrollPercent > 0.700 && scrollPercent < 0.800) {
+        imgEls[3].style.opacity = 1;
+        imgEls[3].style.scale = 1;
+      } else {
+        windowWidth < 1024 ? imgEls[3].style.opacity = 0 : imgEls[3].style.opacity = 0.2;
+        imgEls[3].style.scale = 0.75;
+        // bibaEl.style.opacity = Math.min(scrollPercent * 1.75, 1);
+      }
 
-    // Пятая картинка: 0.800 < scrollPercent < 0.900
-    if (scrollPercent > 0.800 && scrollPercent < 0.900) {
-      imgEls[4].style.opacity = 1;
-      imgEls[4].style.scale = 1;
-    } else {
-      imgEls[4].style.opacity = 0.2;
-      imgEls[4].style.scale = 0.75;
-    }
+      // Пятая картинка: 0.800 < scrollPercent < 0.900
+      if (scrollPercent > 0.800 && scrollPercent < 0.900) {
+        imgEls[4].style.opacity = 1;
+        imgEls[4].style.scale = 1;
+        bibaEl.style.opacity = 1;
+        masges.style.marginLeft = "auto";
+      } else {
+        windowWidth < 1024 ? imgEls[4].style.opacity = 0 : imgEls[4].style.opacity = 0.2;
+        imgEls[4].style.scale = 0.75;
+      }
 
-    // Шестая картинка: 0.900 < scrollPercent < 0.975
-    if (scrollPercent > 0.900 && scrollPercent < 1) {
-      imgEls[5].style.opacity = 1;
-      imgEls[5].style.scale = 1;
-    } else {
-      imgEls[5].style.opacity = 0.2;
-      imgEls[5].style.scale = 0.75;
+      // Шестая картинка: 0.900 < scrollPercent < 0.975
+      if (scrollPercent > 0.900 && scrollPercent < 1) {
+        imgEls[5].style.opacity = 1;
+        imgEls[5].style.scale = 1;
+        bobaEl.style.opacity = 1;
+        masges.style.marginRight = "auto";
+      } else {
+        windowWidth < 1024 ? imgEls[5].style.opacity = 0 : imgEls[5].style.opacity = 0.2;
+        imgEls[5].style.scale = 0.75;
+      }
     }
   }
 };
 
 onMounted(() => {
   images.value = document.querySelectorAll(".image"); // Сохраним ссылки на все изображения
+  // images.value.forEach(imag => imag.classList.add("opacity-0"));
+  // biba.value.classList.add("opacity-0"); boba.value.classList.add("opacity-0");
   handleScroll(); // Чтобы картинки появлялись, если страница перезагружается
   window.addEventListener("scroll", handleScroll); // Подписываемся на событие скролла
 });
@@ -117,17 +219,17 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
 </script>
 
 <template>
-  <section ref="sctin" class="w-11/12 max-w-[1200px] sectionHeight sm:h-[750px] md:h-[1300px] lg:h-[1500px] xl:h-[1800px] mx-auto flex justify-around relative">
-    <img ref="biba" :src="bibaSVG" class="w-[clamp(80px,16%,195px)] h-fit biba -rotate-6 sm:-rotate-12 lg:rotate-0 opacity-0 transition-opacity duration-300" />
-    <div class="w-2/3 sm:w-3/5 mx-auto sm:mt-40 md:mt-96 lg:mt-40 xl:mt-60 z-10">
-      <img :src="howResolveDispute1" class="w-[95%] m-[2.5%] opacity-0 image" />
-      <img :src="goOutFieldFight2" class="w-[95%] m-[2.5%] opacity-0 image" />
-      <img :src="whatCenturyAreYouFrom3" class="w-[69%] mr-[2.5%] ml-auto opacity-0 image" />
-      <img :src="thereLawsNow4" class="w-[95%] m-[2.5%] opacity-0 image" />
-      <img :src="whatIsLegislation5" class="w-[76%] m-[2.5%] opacity-0 image" />
-      <img :src="listenYouDarkHead6" class="w-[70%] mr-[2.5%] ml-auto opacity-0 image" />
+  <section ref="sctin" class="w-11/12 max-w-[1200px] sectionHeight mb-[500px] sm:mb-0 h-[1000px] md:h-[1300px] lg:h-[1500px] xl:h-[1800px] mx-auto flex justify-around relative">
+    <img ref="biba" :src="bibaSVG" class="w-[clamp(80px,16%,195px)] h-fit biba -rotate-6 sm:-rotate-12 transition-opacity lg:rotate-0 opacity-0" />
+    <div ref="messages" class="w-4/5 sm:w-3/5 lg:mx-auto sm:mt-40 md:mt-96 lg:mt-40 xl:mt-60 z-10">
+        <img :src="howResolveDispute1" class="w-[95%] m-[2.5%] mt-96 sm:m-[2.5%] opacity-0 image" />
+        <img :src="goOutFieldFight2" class="w-[95%] m-[2.5%] opacity-0 image" />
+        <img :src="whatCenturyAreYouFrom3" class="w-[69%] opacity-0 mt-40 sm:m-[2.5%] mr-[2.5%] ml-auto image" />
+        <img :src="thereLawsNow4" class="w-[95%] m-[2.5%] opacity-0 image" />
+        <img :src="whatIsLegislation5" class="w-[76%] m-[2.5%] opacity-0 image" />
+        <img :src="listenYouDarkHead6" class="w-[70%] mr-[2.5%] ml-auto opacity-0 image" />
     </div>
-    <img ref="boba" :src="bobaSVG" class="w-[clamp(80px,16%,171px)] h-fit boba rotate-6 sm:rotate-12 lg:rotate-0 opacity-0 transition-opacity duration-300" />
+    <img ref="boba" :src="bobaSVG" class="w-[clamp(80px,16%,171px)] h-fit boba rotate-6 sm:rotate-12 transition-opacity lg:rotate-0 opacity-0" />
   </section>
 </template>
 
@@ -157,8 +259,8 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
     }
 
     @media(min-width:400px){
-        .biba {right: 80%; top:40%}
-        .boba {left: 79%; top:41%}
+        .biba {right: 80%; top:57%}
+        .boba {left: 79%; top:58%}
         .sectionHeight{margin-top: clamp(20px, 45vw, 400px);}
     }
 
