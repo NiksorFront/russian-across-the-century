@@ -221,12 +221,13 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
   <section ref="sctin" class="w-11/12 max-w-[1200px] sectionHeight mb-[500px] sm:mb-0 h-[1000px] md:h-[1300px] lg:h-[1500px] xl:h-[1800px] mx-auto flex justify-around relative">
     <img ref="biba" :src="bibaSVG" class="w-[clamp(80px,16%,195px)] h-fit biba -rotate-6 sm:-rotate-12 transition-opacity lg:rotate-0 opacity-0" />
     <div ref="messages" class="w-4/5 sm:w-3/5 lg:mx-auto sm:mt-40 md:mt-96 lg:mt-40 xl:mt-60 z-10">
-        <img :src="howResolveDispute1" class="w-[95%] m-[2.5%] mt-96 sm:m-[2.5%] opacity-0 image" />
+        <img :src="howResolveDispute1" class="w-[95%] m-[2.5%] opacity-0 image" />
         <img :src="goOutFieldFight2" class="w-[95%] m-[2.5%] opacity-0 image" />
-        <img :src="whatCenturyAreYouFrom3" class="w-[69%] opacity-0 mt-40 sm:m-[2.5%] mr-[2.5%] ml-auto image" />
-        <img :src="thereLawsNow4" class="w-[95%] m-[2.5%] opacity-0 image" />
+        <!-- dark:sepia dark:brightness-90 dark:saturate-200 dark:contrast-125 не работает, потому что sepia почему-то применяться лишь в конце -->
+        <img :src="whatCenturyAreYouFrom3" class="w-[69%] m-[2.5%] ml-auto opacity-0 image image-dark-mode" />
+        <img :src="thereLawsNow4" class="w-[95%] m-[2.5%] opacity-0 image image-dark-mode" />
         <img :src="whatIsLegislation5" class="w-[76%] m-[2.5%] opacity-0 image" />
-        <img :src="listenYouDarkHead6" class="w-[70%] mr-[2.5%] ml-auto opacity-0 image" />
+        <img :src="listenYouDarkHead6" class="w-[70%] mr-[2.5%] ml-auto opacity-0 image image-dark-mode" />
     </div>
     <img ref="boba" :src="bobaSVG" class="w-[clamp(80px,16%,171px)] h-fit boba rotate-6 sm:rotate-12 transition-opacity lg:rotate-0 opacity-0" />
   </section>
@@ -245,6 +246,12 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
     }
     .image {
         transition: all 0.3s ease;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .image-dark-mode {
+        filter: sepia(97%) brightness(84%) saturate(190%) contrast(125%); 
+      }
     }
 
     @keyframes scaleImage {

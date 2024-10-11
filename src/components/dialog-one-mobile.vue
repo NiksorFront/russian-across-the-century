@@ -114,11 +114,11 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
       <img :src="goOutFieldFight2" class="w-[clamp(100px,70vw,500px)] image mt-1 sm:mt-3" />
     </div>
     <div class="top-[30%] right-[21vw] fixed">
-      <img :src="whatCenturyAreYouFrom3" class="w-[clamp(77px,54vw,385px)] image ml-auto" />
-      <img :src="thereLawsNow4" class="w-[clamp(100px,70vw,500px)] image mt-1 sm:mt-3" />
+      <img :src="whatCenturyAreYouFrom3" class="w-[clamp(77px,54vw,385px)] image ml-auto image-dark-mode" />
+      <img :src="thereLawsNow4" class="w-[clamp(100px,70vw,500px)] image mt-1 sm:mt-3 image-dark-mode" />
     </div>
     <img :src="whatIsLegislation5" class="w-[clamp(100px,57.5vw,495px)] image fixed top-[33%] left-[20vw]" />
-    <img :src="listenYouDarkHead6" class="w-[clamp(100px,58vw,500px)] image fixed top-[33%] right-[21vw]" />
+    <img :src="listenYouDarkHead6" class="w-[clamp(100px,58vw,500px)] image fixed top-[33%] right-[21vw] image-dark-mode" />
 
     <img ref="boba" :src="bobaSVG" class="w-[clamp(80px,16%,171px)] h-fit boba rotate-6 sm:rotate-12 lg:rotate-0 opacity-0 transition-opacity duration-300 -z-10" />
   </section>
@@ -139,6 +139,12 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
         transition: all 0.3s ease;
         object-fit: contain;
         opacity: 0;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .image-dark-mode {
+        filter: sepia(97%) brightness(84%) saturate(190%) contrast(125%); 
+      }
     }
 
     @keyframes scaleImage {

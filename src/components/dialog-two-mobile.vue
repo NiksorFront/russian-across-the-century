@@ -82,7 +82,7 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
   <section ref="sctin" class="w-11/12 max-w-[1200px] sectionHeight mx-auto flex justify-around relative">
     <img ref="biba" :src="bibaSVG" class="w-[clamp(80px,16%,195px)] h-fit biba -rotate-6 sm:-rotate-12 lg:rotate-0 opacity-0 transition-opacity duration-300" />
     
-    <img :src="wellNowBecomeClearer1" class="w-[clamp(100px,70vw,500px)] mt-10 top-[33%] right-[20vw] image2 fixed" />
+    <img :src="wellNowBecomeClearer1" class="w-[clamp(100px,70vw,500px)] mt-10 top-[33%] right-[20vw] image2 image-dark-mode fixed" />
     <div class="top-[30%] left-[21vw] fixed">
       <img :src="cleverAndComplicated2" class="w-[clamp(100px,58vw,500px)] image2" />
       <img :src="itWasEasierWithBatons3" class="w-[clamp(100px,58vw,500px)] image2 mt-1 sm:mt-3" />
@@ -107,6 +107,12 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
         transition: all 0.3s ease;
         object-fit: contain;
         opacity: 0;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .image-dark-mode{
+        filter: sepia(97%) brightness(84%) saturate(190%) contrast(125%); 
+      }
     }
 
     @keyframes scaleImage {
