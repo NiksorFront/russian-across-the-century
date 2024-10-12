@@ -10,6 +10,7 @@ export default createRouter({
     history: createWebHistory(),
     routes: [
         {path: "/", component: MainPage},
+        {path: "/russian-across-the-century/", component: MainPage},
         {path: "/ancient-russian-law", component: AncientRussianLawPage},
         {path: "/medieval-law", component: MedievalLawPage},
         {path: "/law-in-russian-empire", component: LawInRussianEmpirePage},

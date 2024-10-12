@@ -28,9 +28,9 @@
         <div class="block h-4/5 min-h-[170px] text-center bg-gray-200 rounded-[clamp(5px,3vw,50px)] cursor-pointer">
           Блок с видео {{ videoUrl }}
         </div>
-        <a :href="routeMemo" class="helvetica-400 h-[5%] text-[clamp(20px,5vw,27px)] leading-[clamp(12px,2vw,35px)] underline rounded-lg cursor-pointer lg:pl-7">
+        <router-link :to="routeMemo" class="helvetica-400 h-[5%] text-[clamp(20px,5vw,27px)] leading-[clamp(12px,2vw,35px)] underline rounded-lg cursor-pointer lg:pl-7">
           Памятка о видео
-        </a>
+        </router-link>
       </div>
     </section>
     <Modal v-if="stateModal === true" :content="modalContent" :closeModal="() => stateModal = false"/>

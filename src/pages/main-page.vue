@@ -1,6 +1,4 @@
 <script setup>
-  // import bgDark from "./assets/images/bg-dark.jpg";
-  import bgWhite from "../assets/images/bg-white.jpg"
   import allianceLegal from "../assets/images/Alliance-Legal.svg";
   import synchronization from "../assets/images/synchronization.svg";
   import line from "../assets/images/line.svg";
@@ -23,17 +21,7 @@
     small.value = parseInt(window.innerWidth) < 1024;
   }
 
-  // Переменная для хранения текущей темы
-  const darkMode = ref(false);
-
   onMounted(() => {
-    // Проверяем системную тему
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      darkMode.value = true; // Установить 'dark', если система в тёмной теме
-    } else {
-      darkMode.value = false; // Установить 'light', если система в светлой теме
-    }
-
     wayBtn.value.addEventListener('click', (e) => {
       e.preventDefault();
       window.scrollTo({
@@ -79,7 +67,7 @@
   <main class="overflow-hidden">
     <section class="flex w-11/12 max-w-[1200px] h-[720px] sm:h-[800px] lg:h-[700px] flex-wrap mx-auto mt-[35px] gap-9 sm:gap-4 lg:gap-0 lg:flex-row-reverse relative">
       <div class="w-full h-1/2 lg:h-full sm:h-3/5 lg:w-2/5 relative -z-10">
-        <AnimationScales :darkMode="darkMode" />
+        <AnimationScales />
       </div>
       <div class="w-full lg:w-3/5 h-1/2 sm:h-3/5 lg:h-fit lg:my-auto flex flex-wrap flex-col lg:flex-row gap-4 sm:gap-8 lg:gap-0 lg:space-y-12 lg:translate-y-6">
         <h1 class="title helvetica-700 lg:h-1/6 lg:ml-3 dark:text-white">Россия: право сквозь века</h1>
@@ -152,7 +140,6 @@
       <img :src="historicalFigure" alt="историческая фигура" className="historical-figure h-[clamp(570px,115vw,1030px)] object-contain absolute"/>
     </section>
   </main>
-  <img :src="bgWhite" class="fixed top-0 left-0 w-screen h-screen object-cover -z-20 dark:invert-[.94]" />
 </template>
 
 <style>
@@ -171,7 +158,6 @@
     font-size: clamp(24px, 4vw, 27px);
     line-height: clamp(22px, 4vw, 34px);
   }
-
 
   .subtitle{
     font-size: clamp(16px, 4vw, 27px);
