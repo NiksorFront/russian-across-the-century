@@ -2,7 +2,7 @@
     const {number, title, description, modalContent, videoUrl, routeMemo} = defineProps(["number", "title", "description", "modalContent", "videoUrl", "routeMemo"])
     import Modal from "../components/modal.vue";
     import {ref} from "vue";
-    console.log(modalContent, number)
+    
     const stateModal = ref(false);
     const openModal = () => {stateModal.value = true}; // Логика открытия модалки с подробной информацией о лекции
 </script>
@@ -28,7 +28,7 @@
         <div class="block h-4/5 min-h-[170px] text-center bg-gray-200 rounded-[clamp(5px,3vw,50px)] cursor-pointer">
           Блок с видео {{ videoUrl }}
         </div>
-        <a class="helvetica-400 h-[5%] text-[clamp(20px,5vw,27px)] leading-[clamp(12px,2vw,35px)] underline rounded-lg cursor-pointer lg:pl-7">
+        <a :href="routeMemo" class="helvetica-400 h-[5%] text-[clamp(20px,5vw,27px)] leading-[clamp(12px,2vw,35px)] underline rounded-lg cursor-pointer lg:pl-7">
           Памятка о видео
         </a>
       </div>
