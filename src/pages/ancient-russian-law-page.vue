@@ -2,6 +2,18 @@
     import Header from "../components/header.vue";
     import bibaFull from "../assets/images/biba-full.svg";
     import historicalFigure from "../assets/images/historical-figure.svg";
+    // import SliderWrapper from "../components/slider-wrapper.vue";
+    import Slider from "../components/slider.vue";
+
+    import image1 from "../assets/images/ancient-russian-law-page/1.jpg";
+    import image2 from "../assets/images/ancient-russian-law-page/2.jpg";
+    import image3 from "../assets/images/ancient-russian-law-page/3.jpg"
+
+    const slides1 = [{title:"Как на Руси появилось государство?", image: image1, modalText:"Отправной точкой русской государственности считается призвание варягов — так на Руси называли выходцев из скандинавских племен. В 862 году некоторые славянские племена приглашают на княжение Рюрика, его братьев Синеуса и Трувора.Сторонники «норманнской» теории утверждают, что варяги сыграли решающую роль в формировании русской государственности. С этим согласны далеко не все исследователи, учитывая что сам Рюрик — фигура полулегендарная, о нем до сих пор довольно мало известно.Точная дата и даже век возникновения вечевых собраний неизвестны — ученые до сих пор об этом спорят."}, 
+                     {title:"В чьих руках была власть?", image: image2, modalText:"Жителям Древней Руси нужно было не только решать важные вопросы, но и защищаться от врагов. И никто не мог справиться с этим лучше, чем князья — профессиональные военные. Поэтому именно князья отвечали за порядок — причём как на границах государства, так и внутри него. За охрану территории они получали от населения что-то вроде зарплаты.Рюриковичи работали армией и полицией в одном лице, так что было логично поручить им задерживать и наказывать преступников. В итоге князья стали выполнять и роль суда."}, 
+                     {title:"Была ли на Руси демократия?", image: image3, modalText:"Вече считается аналогом парламента в Древней Руси. С решениями этого органа приходилось считаться даже князьям. На вечевых собраниях прямым голосованием решались вопросы государственной важности: как торговать и собирать «налоги», кого пригласить на княжение и что делать с врагами. Некоторые исследователи считают, что в вече участвовала только знать, другие говорят, что на сход собирались все свободные жители, а третьи утверждают, что в каждой земле было по-разному.Точная дата и даже век возникновения вечевых собраний неизвестны — ученые до сих пор об этом спорят."},]
+                    //  {title:"", image: "", modalText:""}]
+
 </script>
 
 <template>
@@ -13,7 +25,7 @@
                 <h3 class="subtitle helvetica-400 h-fit my-auto dark:text-white">Россия: право сквозь века</h3>
                 <h1 class="title helvetica-700 -mt-2 lg:h-1/6 max-w-[550px] dark:text-white">Древнерусское право</h1>
             </div>
-            <div class="w-full lg:w-2/5 min-w-80 min-h-[310px] sm:min-h-[285px] -mt-3 relative overflow-y-hidden lg:overflow-y-visible -z-10">  
+            <div class="w-full lg:w-2/5 min-w-80 min-h-[310px] sm:min-h-[285px] -mt-3 relative overflow-hidden lg:overflow-visible -z-10">  
                 <img :src="bibaFull" alt="биба в полный рост" className="biba-pos h-[clamp(320px,50vw,440px)] lg:h-[clamp(440px,43vw,525px)] object-contain absolute z-10"/>
                 <img :src="historicalFigure" alt="историческая фигура" className="historical-pos translate-x-1 h-[clamp(650px,98vw,820px)] lg:h-[clamp(820px,80vw,1005px)] object-contain absolute"/>
             </div>
@@ -28,10 +40,14 @@
                 </p> -->
             </div>
         </section>
+        <section class="w-full max-w-[1280px] sm:mx-auto h-hit relative">
+            <Slider title="Государство и общество" :items="slides1"/>
+        </section>
      </main>
 </template>
 
 <style scoped>
+
     .historical-pos{
         top: 0;
         right: 1vw;
