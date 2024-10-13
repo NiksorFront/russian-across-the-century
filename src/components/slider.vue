@@ -34,12 +34,12 @@
   };
 
   // Логика для слайдера: переключение слайдов (для стрелок)
-  const nextSlide = () => {
-    slider.value.scrollLeft += slider.value.offsetWidth;
+  const nextSlide = (scrollDelta) => {
+    slider.value.scrollLeft += slider.value.offsetWidth/2 + scrollDelta;
   };
 
-  const prevSlide = () => {
-    slider.value.scrollLeft -= slider.value.offsetWidth;
+  const prevSlide = (scrollDelta) => {
+    slider.value.scrollLeft -= slider.value.offsetWidth/2 + scrollDelta;
   };
 
   // Логика для перетаскивания (общая для тача и мыши)
@@ -59,10 +59,10 @@
     // При завершении свайпа, корректируем позицию слайда
     const slideWidth = slider.value.offsetWidth;
     const scrollDelta = scrollLeft - slider.value.scrollLeft;
-    if (scrollDelta > slideWidth / 3) {
-      prevSlide();
-    } else if (scrollDelta < -slideWidth / 3) {
-      nextSlide();
+    if (scrollDelta > slideWidth / 10) {
+      prevSlide(scrollDelta);
+    } else { // if (scrollDelta < -slideWidth / 10)
+      nextSlide(scrollDelta);
     } 
     // else {
     //   slider.value.scrollLeft = scrollLeft;
