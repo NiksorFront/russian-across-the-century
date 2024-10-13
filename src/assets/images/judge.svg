@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 505 665">
+  <path d="M273 227c27-5 15-84 3-117l-114 5c-11 24-44 60-34 88 10 33 112 31 145 24Z" fill="#CB8454" stroke="#262626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M168 118c-21 0-9 37-4 44 2 3 4 4 6 3l-2 26c0 7 24 25 36 33 7 6 22 19 27 20 7 0 8-10 12-13 4-2 7-17 7-21 6-5 18-16 24-50 8-42 3-94-46-94-53 0-61 30-60 52Z" fill="#FFDACE"/>
+  <path d="m173 162-3 3m80 45c6-5 18-16 24-50 8-42 3-94-46-94-53 0-61 30-60 52-21 0-9 37-4 44 2 3 4 4 6 3m80 45c0 4-3 19-7 21-4 3-5 13-12 13-5-1-20-14-27-20-12-8-36-26-36-33l2-26m80 45c-10 7-40 9-57-15" stroke="#262626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M191 118c17 0 36-19 44-28 5 22 34 29 48 31-2-21-23-60-55-60-60 0-67 37-67 57h30Z" fill="#CB8454" stroke="#262626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m161 128 10 12-4 9m51 31c3 2 12 5 17 5s10-4 12-6m-20-41c-13-14-26 0-26 0m26-8c-13-13-26 0-26 0" stroke="#262626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M214 141a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" fill="#262626"/>
+  <path d="M270 138c-13-14-25 0-25 0m25-8c-13-13-25 0-25 0" stroke="#262626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M257 141a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" fill="#262626"/>
+  <path d="M239 131c1 8 4 25 7 33 2 7-9 5-16 3" stroke="#262626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M34 338c11-56 47-83 64-90l64-35 6-28 54 33c6 3 13 16 15 24 0-13 9-28 17-33l-4 17 21 2c26 5 112 137 123 155 9 14 6 36 3 45l98 143-300 68L9 547c3-46 13-153 25-209Z" fill="#111"/>
+  <path d="m168 185 54 33c7 4 16 21 15 28-2-14 8-32 17-37l-4 17 21 2c26 5 112 137 123 155 9 14 6 36 3 45l98 143-300 68L9 547c3-46 13-153 25-209 11-56 47-83 64-90l64-35 6-28Z" stroke="#262626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M254 237h-41l-15 85h17l3 13h14l5 18 42-5-7-19 13-3-31-89Z" fill="#fff"/>
+  <circle cx="200.4" cy="243" r="6.4" fill="#fff"/>
+  <circle cx="267.3" cy="243" r="6.4" fill="#fff"/>
+</svg>
