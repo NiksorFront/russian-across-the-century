@@ -1,40 +1,32 @@
-
 <script setup>
   import { ref, onMounted } from 'vue';
   import gradient from "../assets/images/gradient.svg";
 
-  // Принятие свойств через defineProps
   const props = defineProps({
     title: String,
     items: Array
   });
 
-  // Состояния для модального окна
   const showModal = ref(false);
   const currentItem = ref(null);
 
-  // Слайдер переменные
   const slider = ref(null);
   const isDragging = ref(false);
   let startX;
   let scrollLeft;
 
-  // Состояния для стрелок
   const canScrollLeft = ref(false);
   const canScrollRight = ref(false);
 
-  // Открытие модального окна
   const openModal = (item) => {
     currentItem.value = item;
     showModal.value = true;
   };
 
-  // Закрытие модального окна
   const closeModal = () => {
     showModal.value = false;
   };
 
-  // Логика для слайдера: переключение слайдов
   const nextSlide = () => {
     slider.value.scrollLeft += slider.value.offsetWidth;
   };
@@ -43,44 +35,44 @@
     slider.value.scrollLeft -= slider.value.offsetWidth;
   };
 
-  // Логика для перетаскивания слайдов мышкой или пальцем
   const startDrag = (e) => {
-    e.target.classList.add('cursor-grabbing');
+    if (e.type === 'touchstart') {
+      startX = e.touches[0].pageX;
+    } else {
+      startX = e.pageX;
+      e.target.classList.add('cursor-grabbing');
+    }
     isDragging.value = true;
-    slider.value.classList.remove('scroll-smooth'); // Отключаем плавность
-    startX = e.pageX || e.touches[0].pageX;
+    slider.value.classList.remove('scroll-smooth'); 
     scrollLeft = slider.value.scrollLeft;
   };
 
   const endDrag = (e) => {
-    e.target.classList.remove('cursor-grabbing')
+    if (e.type !== 'touchend') {
+      e.target.classList.remove('cursor-grabbing');
+    }
     isDragging.value = false;
-    slider.value.classList.add('scroll-smooth'); // Включаем плавность
+    slider.value.classList.add('scroll-smooth');
   };
 
   const drag = (e) => {
     if (!isDragging.value) return;
-    const x = e.pageX || e.touches[0].pageX;
-    const walk = (x - startX) * 1.5; // Скорость прокрутки
+    const x = e.type === 'touchmove' ? e.touches[0].pageX : e.pageX;
+    const walk = (x - startX) * (e.type === 'touchmove' ? 1.2 : 1.5); // Уменьшение скорости для касания
     slider.value.scrollLeft = scrollLeft - walk;
   };
 
-  // Проверка возможности скролла
   const checkScroll = () => {
     const maxScrollLeft = slider.value.scrollWidth - slider.value.clientWidth;
-
-    // Проверяем, можно ли скроллить влево
     canScrollLeft.value = slider.value.scrollLeft > 0;
-
-    // Проверяем, можно ли скроллить вправо
     canScrollRight.value = slider.value.scrollLeft < maxScrollLeft;
   };
 
-  // Выполняем проверку при монтировании компонента
   onMounted(() => {
     checkScroll();
   });
 </script>
+
 
 <template>
   <div class="w-full overflow-hidden relative mt-[clamp(45px,7vw,90px)]">

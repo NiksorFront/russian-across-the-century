@@ -42,6 +42,10 @@
         </section>
         <section class="w-full max-w-[1280px] sm:mx-auto h-hit relative">
             <Slider title="Государство и общество" :items="slides1"/>
+
+            <Slider title="Правовая система" :items="[...slides1, ...slides1]"/>
+
+            <!-- <Slider title="Судебная система и судебный процесс" :items="slides3"/> -->
         </section>
      </main>
 </template>
