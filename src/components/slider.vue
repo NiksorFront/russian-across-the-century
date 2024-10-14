@@ -1,6 +1,6 @@
 <script setup>
   import { ref, onMounted } from 'vue';
-  import gradient from "../assets/images/gradient.svg";
+  import modalTwo from "../components/modal-two.vue";
 
   // Принятие свойств через defineProps
   const props = defineProps({
@@ -9,7 +9,7 @@
   });
 
   // Состояния для модального окна
-  const showModal = ref(false);
+  const stateModal = ref(false);
   const currentItem = ref(null);
 
   // Слайдер переменные
@@ -25,21 +25,16 @@
   // Открытие модального окна
   const openModal = (item) => {
     currentItem.value = item;
-    showModal.value = true;
-  };
-
-  // Закрытие модального окна
-  const closeModal = () => {
-    showModal.value = false;
+    stateModal.value = true;
   };
 
   // Логика для слайдера: переключение слайдов (для стрелок)
-  const nextSlide = (scrollDelta) => {
-    slider.value.scrollLeft += slider.value.offsetWidth/2 + scrollDelta;
+  const nextSlide = () => {
+    slider.value.scrollLeft += slider.value.offsetWidth ;
   };
 
-  const prevSlide = (scrollDelta) => {
-    slider.value.scrollLeft -= slider.value.offsetWidth/2 + scrollDelta;
+  const prevSlide = () => {
+    slider.value.scrollLeft -= slider.value.offsetWidth;
   };
 
   // Логика для перетаскивания (общая для тача и мыши)
@@ -60,7 +55,7 @@
     const childrens = slider.value.querySelectorAll("li");
     const numSlides = childrens.length - 1; //Потому что 0 тоже считается
     const oneSlideWidth = childrens[0].offsetWidth + slider.value.offsetWidth * 0.063; //ширина + left и right margin'ы
-    const scrollDelta = -(scrollLeft - slider.value.scrollLeft)*3;
+    const scrollDelta = -(scrollLeft - slider.value.scrollLeft)*4;
     const currentSlide = scrollDelta/oneSlideWidth > numSlides-1 ? numSlides : Math.round(slider.value.scrollLeft/oneSlideWidth);
     slider.value.scrollLeft = oneSlideWidth * currentSlide ;
   };
@@ -140,7 +135,7 @@
     </button>
 
 
-    <!-- Модальное окно -->
+    <!-- Модальное окно
     <div v-if="showModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
       <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
         <h2 class="text-2xl mb-4">{{ currentItem.title }}</h2>
@@ -149,8 +144,10 @@
           Закрыть
         </button>
       </div>
-    </div>
+    </div>-->
   </div>
+
+  <modalTwo v-if="stateModal === true" :content="{heading: currentItem.title, paragraphs: currentItem.modalText}" :closeModal="() => stateModal = false"/>
 </template>
 
 <style scoped>
@@ -169,6 +166,7 @@
   .aspect-for-img {
     margin-top: 10px;
     aspect-ratio: 20/19;
+    max-height: 240px;
   }
 
   @media (min-width: 490px) {
