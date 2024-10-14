@@ -54,19 +54,13 @@
   const endDrag = () => {
     isDragging.value = false;
     slider.value.classList.add('scroll-smooth'); // Включаем плавность
-    // e.target.classList.remove('cursor-grabbing');
 
     // При завершении свайпа, корректируем позицию слайда
-    const slideWidth = slider.value.offsetWidth;
-    const scrollDelta = scrollLeft - slider.value.scrollLeft;
-    if (scrollDelta > slideWidth / 10) {
-      prevSlide(scrollDelta);
-    } else { // if (scrollDelta < -slideWidth / 10)
-      nextSlide(scrollDelta);
-    } 
-    // else {
-    //   slider.value.scrollLeft = scrollLeft;
-    // }
+    const childrens = slider.value.querySelectorAll("li");
+    const numSlides = childrens.length - 1; //Потому что 0 тоже считается
+    const oneSlideWidth = childrens[0].offsetWidth + slider.value.offsetWidth * 0.063; //ширина + left и right margin'ы
+    const currentSlide = slider.value.scrollLeft/oneSlideWidth > numSlides-1 ? numSlides : Math.round(slider.value.scrollLeft/oneSlideWidth);
+    slider.value.scrollLeft = oneSlideWidth * currentSlide;
   };
 
   const drag = (e) => {
@@ -134,7 +128,7 @@
           </button>
         </li>
         <!-- Мини костыль -->
-        <span class="ml-[2.5%]"></span>
+        <span class="ml-[3.75%]"></span>
       </ul>
     </div>
 
