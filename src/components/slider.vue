@@ -55,7 +55,7 @@
     const childrens = slider.value.querySelectorAll("li");
     const numSlides = childrens.length - 1; //Потому что 0 тоже считается
     const oneSlideWidth = childrens[0].offsetWidth + slider.value.offsetWidth * 0.063; //ширина + left и right margin'ы
-    const scrollDelta = -(scrollLeft - slider.value.scrollLeft)*4;
+    const scrollDelta = -(scrollLeft - slider.value.scrollLeft)*3.2;
     const currentSlide = scrollDelta/oneSlideWidth > numSlides-1 ? numSlides : Math.round(slider.value.scrollLeft/oneSlideWidth);
     slider.value.scrollLeft = oneSlideWidth * currentSlide ;
   };
@@ -85,7 +85,7 @@
 </script>
 
 <template>
-  <div class="w-full overflow-hidden relative mt-[clamp(45px,7vw,90px)]">
+  <div class="w-full relative mt-[clamp(45px,7vw,90px)]">
     <!-- Заголовок -->
     <h2 class="title-2 helvetica-700 dark:text-white ml-[3.15%] my-3 sm:my-6">{{ title }}</h2>
 
@@ -113,10 +113,10 @@
         <li
           v-for="(item, index) in items"
           :key="index"
-          class="flex-shrink-0 w-[clamp(250px,50vw,370px)] h-[clamp(293px,50vw,350px)] relative rounded-[clamp(20px,2vw,45px)] mx-[3.15%] sm:mr-0 my-3 bg-white"
+          class="flex flex-col flex-shrink-0 w-[clamp(250px,50vw,370px)] h-[clamp(293px,50vw,350px)] relative rounded-[clamp(20px,3vw,45px)] mx-[3.15%] sm:mr-0 my-3 bg-white"
         >
-          <h3 class="w-4/5 sm:w-2/3 mx-auto sm:ml-8 h-10 sm:h-[70px] mt-6 textik helvetica-700">{{ item.title }}</h3>
-          <img v-if="item.image" :src="item.image" alt="Image" @mousedown.prevent class="w-10/12 h-fit object-cover aspect-for-img rounded-[clamp(10px,0.5vw,40px)] mx-auto" />
+          <h3 class="w-4/5 whitespace-pre-line mx-auto h-10 sm:h-[70px] mt-6 text-[clamp(14px,2.75vw,19.25px)] leading-[clamp(19px,2.4vw,23px)] helvetica-700">{{ item.title }}</h3>
+          <img v-if="item.image" :src="item.image" alt="Image" @mousedown.prevent class="w-10/12 h-[64.5%] object-cover aspect-for-img rounded-[clamp(10px,0.5vw,40px)] m-auto" />
           <button 
             v-if="item.modalText"
             @click="openModal(item)"
@@ -134,17 +134,6 @@
       <svg class="w-5 lg:w-7 fill-black dark:fill-slate-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.67 42.79"> <path d="m0 35.38 13.33-14.33L.19 6.92 6.63 0l20.03 21.53L6.88 42.79 0 35.38Z"/></svg>
     </button>
 
-
-    <!-- Модальное окно
-    <div v-if="showModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-      <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
-        <h2 class="text-2xl mb-4">{{ currentItem.title }}</h2>
-        <p>{{ currentItem.modalText }}</p>
-        <button @click="closeModal" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">
-          Закрыть
-        </button>
-      </div>
-    </div>-->
   </div>
 
   <modalTwo v-if="stateModal === true" :content="{heading: currentItem.title, paragraphs: currentItem.modalText}" :closeModal="() => stateModal = false"/>
@@ -164,7 +153,6 @@
   }
 
   .aspect-for-img {
-    margin-top: 10px;
     aspect-ratio: 20/19;
     max-height: 240px;
   }
@@ -172,7 +160,6 @@
   @media (min-width: 490px) {
     .aspect-for-img {
       aspect-ratio: auto;
-      margin-top: 30px;
     }
   }
 

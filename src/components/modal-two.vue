@@ -4,7 +4,7 @@
 
     const window = ref(null);
     const close = (e) => {
-        if (e.target !== window.value){
+        if (e.target.classList.contains("background-modal")){
             closeModal();
         }
     }
@@ -15,9 +15,9 @@
     <!-- скорее всего придётся кастылить -->
     <Teleport to="body">
         <div class="fixed top-0 left-0 w-screen h-screen flex z-10 background-modal" v-on:click="close">
-            <div ref="window" class="w-[clamp(200px,85vw,910px)] h-fit min-h-48 flex flex-wrap flex-col m-auto rounded-[clamp(20px,5vw,50px)] p-[clamp(24px,4vw,48px)]  bg-white relative">
+            <div ref="window" class="w-[clamp(200px,85vw,910px)] h-fit min-h-48 flex flex-wrap flex-col m-auto rounded-[clamp(20px,5vw,50px)] p-[clamp(24px,4vw,48px)] bg-white relative z-10">
                 <h3 class="helvetica-700 textik w-full">{{content.heading}}</h3>
-                <ul class="w-full">
+                <ul class="w-full -z-10">
                     <li v-for="paragraph in content.paragraphs" class="w-full flex flex-row whitespace-pre-wrap mt-3">
                         <p class='helvetica-400 textik' > {{paragraph}}</p>
                     </li>

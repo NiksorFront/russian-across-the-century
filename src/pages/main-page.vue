@@ -144,36 +144,6 @@
 
 <style>
 
-  .title{ /*Главный заголовок всей страницы*/
-    font-size: clamp(42px, 9vw, 64px);
-    line-height: clamp(40px, 9vw, 64px);
-  }
-
-  .title-2{ /*Заголовок для компонента лекций*/
-    font-size: clamp(24px, 5vw, 38px);
-    line-height: clamp(28px, 5vw, 42px);
-  }
-
-  .title-3{ /*Заголовок для компонента соцсетей*/
-    font-size: clamp(24px, 4vw, 27px);
-    line-height: clamp(22px, 4vw, 34px);
-  }
-
-  .subtitle{
-    font-size: clamp(16px, 4vw, 27px);
-    line-height: clamp(22px, 4vw, 33px);
-  }
-
-  .textik{
-    font-size: clamp(16px,2.75vw,20px);
-    line-height: clamp(19px, 4vw, 27px);
-  }
-
-  .textik-small{
-    font-size: clamp(14px,2.5vw,20px);
-    line-height: clamp(19px, 4vw, 27px);
-  }
-
   .button{
     font-size: clamp(19px, 5vw, 50px);
     line-height: clamp(32px, 6vw, 50px);
@@ -195,11 +165,6 @@
   }
 
   @media(min-width: 1280px){
-    .title{
-      font-size: 90px;
-      line-height: 90px;
-    }
-
     .button{
       font-size: 50px;
       line-height: 66px;
