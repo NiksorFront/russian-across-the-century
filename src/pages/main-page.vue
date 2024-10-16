@@ -13,6 +13,7 @@
   import SocialNetwork from "../components/social-network.vue";
 
   import {ref, onMounted} from "vue";
+  const firstSection = ref(null);
   const wayBtn = ref(null);
   const animationBtn = ref(null);
   const small = ref(parseInt(window.innerWidth) < 1024);
@@ -25,9 +26,9 @@
     wayBtn.value.addEventListener('click', (e) => {
       e.preventDefault();
       window.scrollTo({
-        // window.innerWidth > 450 ? window.innerHeight : window.innerHeight*0.75
-        top: parseInt(window.innerWidth) > 1024 ? window.innerHeight : 
-             parseInt(window.innerWidth) > 640 ? window.innerHeight*1.25 : window.innerHeight*1.5,
+        top: parseInt(window.innerWidth) > 1024 ? (document.querySelector("header").offsetHeight + firstSection.value.offsetHeight) :
+             parseInt(window.innerWidth) > 640 ? (document.querySelector("header").offsetHeight + firstSection.value.offsetHeight)*1.5 
+                                               : (document.querySelector("header").offsetHeight + firstSection.value.offsetHeight)*1.75,
         behavior: 'smooth'
       })
     });
@@ -45,7 +46,7 @@
 </script>
 
 <template>
-  <header class="flex w-11/12 max-w-[1200px] h-fit flex-wrap gap-5 mx-auto my-[35px] sm:my-[70px] xl:mb-[35px] justify-between">
+  <header class="flex w-10/12 sm:w-11/12 max-w-[1200px] h-fit flex-wrap gap-5 mx-auto my-[35px] sm:my-[70px] xl:mb-[35px] justify-between">
     <div class="flex justify-between w-full max-w-[135px] sm:max-w-[260px]">
       <a href="https://online.synchronize.ru/" target="_blank" class="my-0.5 sm:my-1.5"> 
         <img :src="synchronization" alt="Синхронизация" class="w-11 sm:w-20 lg:w-[91px] object-contain dark:invert" />
@@ -64,14 +65,14 @@
     </div>
   </header>
 
-  <main class="overflow-hidden">
-    <section class="flex w-11/12 max-w-[1200px] h-[720px] sm:h-[800px] lg:h-[700px] flex-wrap mx-auto mt-[35px] gap-9 sm:gap-4 lg:gap-0 lg:flex-row-reverse relative">
+  <main class="w-11/12 sm:w-full mx-auto overflow-hidden">
+    <section ref="firstSection" class="flex w-11/12 max-w-[1200px] h-[720px] sm:h-[800px] lg:h-[700px] flex-wrap mx-auto mt-[35px] gap-9 sm:gap-4 lg:gap-0 lg:flex-row-reverse relative">
       <div class="w-full h-1/2 lg:h-full sm:h-3/5 lg:w-2/5 relative -z-10">
         <AnimationScales />
       </div>
       <div class="w-full lg:w-3/5 h-1/2 sm:h-3/5 lg:h-fit lg:my-auto flex flex-wrap flex-col lg:flex-row gap-4 sm:gap-8 lg:gap-0 lg:space-y-12 lg:translate-y-6">
         <h1 class="title helvetica-700 lg:h-1/6 lg:ml-3 dark:text-white">Россия: право сквозь века</h1>
-        <h3 class="subtitle helvetica-500 h-fit lg:ml-3 law-changing dark:text-white">Как менялось право в России: от древности до наших дней</h3>
+        <h3 class="subtitle whitespace-pre-line helvetica-500 h-fit lg:ml-3 law-changing dark:text-white">{{"Как менялось право в России:\nот древности до наших дней"}}</h3>
         <a ref="wayBtn" class="button text-nowrap helvetica-500 h-fit w-fit way px-4 lg:px-6 text-center lg:box-content bg-[#101fb3] sm:pb-1 rounded-xl sm:rounded-3xl text-white z-30 cursor-pointer dark:bg-[#FF4800]">в путь!</a>
       </div>
     </section>
@@ -150,7 +151,7 @@
   }
 
   .law-changing{
-    width: 69%;
+    width: 100%;
   }
 
   @media (min-width: 1200px){
@@ -187,7 +188,7 @@
   .historical-figure{
     /* display: flex; */
     top: 86%;
-    right: calc(10vw + 2vh);
+    right: calc((100vw - 208px)/3.5);
   }
 
   @media(min-width: 480px){

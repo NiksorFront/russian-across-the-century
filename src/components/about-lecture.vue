@@ -29,7 +29,7 @@
           Блок с видео {{ videoUrl }}
         </div>
         <router-link :to="routeMemo" class="helvetica-400 h-[5%] text-[clamp(20px,5vw,27px)] leading-[clamp(12px,2vw,35px)] underline rounded-lg cursor-pointer lg:pl-7">
-          Памятка о видео
+          Памятка о лекции
         </router-link>
       </div>
     </section>

@@ -5,7 +5,7 @@
 </script>
 
 <template>
-    <header class="flex w-11/12 max-w-[1200px] h-fit flex-wrap gap-5 mx-auto my-[35px] sm:my-[70px] xl:mb-[35px] justify-between">
+    <header class="flex w-10/12 sm:w-11/12 max-w-[1200px] h-fit flex-wrap gap-5 mx-auto my-[35px] sm:my-[70px] xl:mb-[35px] justify-between">
         <div class="flex justify-between w-full max-w-[135px] sm:max-w-[260px]">
         <a href="https://online.synchronize.ru/" target="_blank" class="my-0.5 sm:my-1.5"> 
             <img :src="synchronization" alt="Синхронизация" class="w-11 sm:w-20 lg:w-[91px] object-contain dark:invert" />
