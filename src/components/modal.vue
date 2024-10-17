@@ -15,9 +15,9 @@
     <!-- скорее всего придётся кастылить -->
     <Teleport to="body">
         <div class="fixed top-0 left-0 w-screen h-screen flex z-10 background-modal" @click="close">
-            <div ref="window" class="w-[clamp(200px,75vw,540px)] h-fit min-h-48 flex flex-wrap flex-col m-auto rounded-[clamp(20px,5vw,50px)] p-[clamp(24px,4vw,48px)] gap-4 bg-white relative">
+            <div ref="window" class="w-[clamp(200px,75vw,540px)] h-fit min-h-48 max-h-[80vh] flex flex-wrap flex-col m-auto rounded-[clamp(20px,5vw,50px)] p-[clamp(24px,4vw,48px)] gap-4 bg-white relative">
                 <p class="helvetica-400 textik w-full">{{content.heading}}</p>
-                <ul class="w-full">
+                <ul class="w-full overflow-y-auto">
                     <li v-for="paragraph in content.paragraphs" class="w-full flex flex-row whitespace-pre-wrap">
                         <span class="min-w-3">•</span> 
                         <p class='helvetica-400 textik' > {{paragraph}}</p>

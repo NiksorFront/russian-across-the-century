@@ -98,15 +98,12 @@
     <div class="flex items-center blur-border">
 
       <ul
-        class="flex w-full overflow-x-hidden cursor-grab"
+        class="flex w-full overflow-x-auto cursor-grab"
         ref="slider"
         @mousedown="startDrag"
         @mouseup="endDrag"
         @mouseleave="endDrag"
         @mousemove="drag"
-        @touchstart="startDrag"
-        @touchend="endDrag"
-        @touchmove="drag"
         @scroll="checkScroll"
         :class="{ 'scroll-smooth': !isDragging }"
       >
@@ -150,6 +147,11 @@
     mask-repeat: no-repeat;
     mask-position: right;
     mask-size: cover;
+  }
+  
+  ul{
+    /* scroll-snap-type: x mandatory; */
+    scrollbar-width: none;
   }
 
   .aspect-for-img {
