@@ -107,10 +107,32 @@
     };
 
     const toggleFullScreenMode = () => {
-        if (document.fullscreenElement == null) {
-            videoContainer.value.requestFullscreen();
+        if (document.fullscreenElement === null || 
+            document.mozFullScreenElement === null || 
+            document.webkitFullscreenElement === null || 
+            document.msFullscreenElement === null) {
+                
+            // Включаем полноэкранный режим
+            if (videoContainer.value.requestFullscreen) {
+                videoContainer.value.requestFullscreen();
+            } else if (videoContainer.value.mozRequestFullScreen) { // Firefox
+                videoContainer.value.mozRequestFullScreen();
+            } else if (videoContainer.value.webkitRequestFullscreen) { // Chrome, Safari, Opera
+                videoContainer.value.webkitRequestFullscreen();
+            } else if (videoContainer.value.msRequestFullscreen) { // IE/Edge
+                videoContainer.value.msRequestFullscreen();
+            }
         } else {
-            document.exitFullscreen();
+            // Выходим из полноэкранного режима
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) { // Firefox
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { // IE/Edge
+                document.msExitFullscreen();
+            }
         }
         isFullScreen.value = !isFullScreen.value;
     };
@@ -214,7 +236,7 @@
                 </div>
             </div>
             <div class="controls">
-                <button class="play-pause-btn" @click="togglePlay">
+                <button @click="togglePlay">
                     <svg v-if="isPaused" height="100%" version="1.1" viewBox="0 0 36 36" width="100%"><use class="ytp-svg-shadow" xlink:href="#ytp-id-132"></use><path class="ytp-svg-fill" d="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z" fill="#fff"></path></svg>
                     <svg v-else height="100%" version="1.1" viewBox="0 0 36 36" width="100%"><use class="ytp-svg-shadow" xlink:href="#ytp-id-173"></use><path class="ytp-svg-fill" d="M 12,26 16,26 16,10 12,10 z M 21,26 25,26 25,10 21,10 z" fill="#fff"></path></svg>
                 </button>
@@ -314,6 +336,7 @@
         height: 36px;
         width: fit-content;
         min-width: 36px;
+        max-width: 50px;
         font-size: 0.95rem;
         cursor: pointer;
         opacity: .85;
