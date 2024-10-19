@@ -107,37 +107,64 @@
     };
 
     const toggleFullScreenMode = () => {
-        const video = videoContainer.value;
+        const videoCont = videoContainer.value;
 
-        // Проверка на отсутствие элемента в полноэкранном режиме
-        if (document.fullscreenElement === null || 
-            document.mozFullScreenElement === null || 
-            document.webkitFullscreenElement === null || 
-            document.msFullscreenElement === null) {
+        // Проверка на платформу: iOS или Android
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-            // Включаем полноэкранный режим
-            if (video.requestFullscreen) {
-                video.requestFullscreen();
-            } else if (video.mozRequestFullScreen) { // Firefox
-                video.mozRequestFullScreen();
-            } else if (video.webkitRequestFullscreen) { // Chrome, Safari, Opera
-                video.webkitRequestFullscreen();
-            } else if (video.msRequestFullscreen) { // IE/Edge
-                video.msRequestFullscreen();
-            } else if (video.webkitEnterFullscreen) { // Для iOS Safari
-                video.webkitEnterFullscreen(); // Этот метод специфичен для iOS Safari и работает только с видео
+        if (document.fullscreenElement || 
+            document.mozFullScreenElement || 
+            document.webkitFullscreenElement || 
+            document.msFullscreenElement) {
+            // Если видео уже в полноэкранном режиме, выходим из него
+            console.log('Выход из полноэкранного режима');
+            
+            if (document.exitFullscreen) {
+                document.exitFullscreen().catch(err => {
+                    console.log('Ошибка при выходе из Fullscreen:', err);
+                });
+            } else if (document.mozCancelFullScreen) { // Firefox
+                document.mozCancelFullScreen().catch(err => {
+                    console.log('Ошибка при выходе из Fullscreen (Firefox):', err);
+                });
+            } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+                document.webkitExitFullscreen().catch(err => {
+                    console.log('Ошибка при выходе из Fullscreen (Webkit):', err);
+                });
+            } else if (document.msExitFullscreen) { // IE/Edge
+                document.msExitFullscreen().catch(err => {
+                    console.log('Ошибка при выходе из Fullscreen (IE/Edge):', err);
+                });
+            } else {
+                console.log('Ваш браузер не поддерживает выход из полноэкранного режима');
             }
 
         } else {
-            // Если элемент уже в полноэкранном режиме, то выходим из него
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.mozCancelFullScreen) { // Firefox
-                document.mozCancelFullScreen();
-            } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
-                document.webkitExitFullscreen();
-            } else if (document.msExitFullscreen) { // IE/Edge
-                document.msExitFullscreen();
+            // Если видео еще не в полноэкранном режиме
+            if (isIOS) {
+                video.value.webkitEnterFullscreen(); // iOS Safari
+            } else {
+                // Для других устройств, включая Android
+                console.log('Открытие видео в полноэкранном режиме через стандартный Fullscreen API');
+                if (videoCont.requestFullscreen) {
+                    videoCont.requestFullscreen().catch(err => {
+                        console.log('Ошибка при открытии в Fullscreen на Android:', err);
+                    });
+                } else if (videoCont.webkitRequestFullscreen) { // Chrome, Safari
+                    videoCont.webkitRequestFullscreen().catch(err => {
+                        console.log('Ошибка при открытии в Fullscreen на Webkit:', err);
+                    });
+                } else if (videoCont.mozRequestFullScreen) { // Firefox
+                    videoCont.mozRequestFullScreen().catch(err => {
+                        console.log('Ошибка при открытии в Fullscreen на Firefox:', err);
+                    });
+                } else if (videoCont.msRequestFullscreen) { // IE/Edge
+                    videoCont.msRequestFullscreen().catch(err => {
+                        console.log('Ошибка при открытии в Fullscreen на IE/Edge:', err);
+                    });
+                } else {
+                    console.log('Ваш браузер не поддерживает Fullscreen API');
+                }
             }
         }
 
@@ -343,7 +370,7 @@
         height: 36px;
         width: fit-content;
         min-width: 36px;
-        max-width: 50px;
+        max-width: 36px;
         font-size: 0.95rem;
         cursor: pointer;
         opacity: .85;
@@ -397,8 +424,13 @@
     }
     
     .volume-container {
+        max-width: 36px;
         display: flex;
         align-items: center;
+    }
+
+    .volume-container:hover{
+        max-width: 200px;
     }
     
     .volume-slider {
@@ -408,8 +440,7 @@
         transition: width 150ms ease-in-out, transform 150ms ease-in-out;
     }
     
-    .volume-container:hover .volume-slider,
-    .volume-slider:focus-within {
+    .volume-container:hover .volume-slider, .volume-slider:focus-within {
         width: 100px;
         transform: scaleX(1);
     }
