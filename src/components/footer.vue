@@ -9,9 +9,9 @@
 
 <template>
     <div class="w-full max-w-[1200px] mx-auto text-white">
-        <div class="container mx-auto py-6 sm:py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="container mx-auto py-6 sm:py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-8 gap-4">
             <!-- Логотипы -->
-            <div class="grid grid-cols-4 sm:grid-cols-2 m-4 gap-1 sm:max-w-[160px] sm:max-h-[125px] lg:col-start-1 lg:row-start-1">
+            <div class="grid grid-cols-4 sm:grid-cols-2 m-4 gap-1 sm:max-w-[160px] sm:max-h-[125px] lg:col-start-1 lg:col-span-2 lg:row-start-1">
                 <a href="https://online.synchronize.ru/" target="_blank"><img :src="synchronization" alt="Синхронизация" class="w-20 object-contain invert" /></a>
                 <a href="https://sk.ru/" target="_blank"><img :src="skolkovo" alt="участник Хуёлково" class="w-[62px] object-contain ml-auto translate-x-2 sm:translate-x-0" /></a>
                 <div class="grid col-span-2 grid-cols-3 ml-auto gap-1 sm:w-full sm:ml-0">
@@ -22,8 +22,8 @@
             </div>
             
             <!-- Форма подписки -->
-            <div class="mb-5 w-hit h-full max-h-[280px] sm:max-w-[280px] lg:max-h-[340px] xl:lg:max-h-[320px] bg-[#2a282f] rounded-2xl mx-4 sm:col-start-2 sm:row-start-2  lg:col-start-4 lg:row-start-1">
-                <h5 class="helvetica-700 textik-small ml-5 mt-5 mb-3.5">ХОЧУ БЫТЬ В КУРСЕ ВСЕГО</h5>
+            <div class="mb-5 w-hit h-full max-h-[280px] sm:max-w-[280px] bg-[#2a282f] rounded-2xl mx-4 sm:col-start-2 sm:row-start-2 lg:col-span-4 lg:col-start-7 lg:row-start-1">
+                <h5 class="helvetica-700 footer__text ml-5 mt-5 mb-3.5">ХОЧУ БЫТЬ В КУРСЕ ВСЕГО</h5>
                 <form class="space-y-4 flex flex-col w-fit mx-5">
                     <input type="email" placeholder="Введите email" class="w-full h-12 p-2 border border-white bg-[#2a282f] rounded-xl"/>
                     <div class="flex flex-wrap gap-2">
@@ -35,37 +35,37 @@
             </div>
 
             <!-- Ссылки на разделы -->
-            <div class="m-4 mt-4 space-y-3.5 sm:col-start-2 lg:col-start-3 sm:row-start-1">
-                <a href="https://online.synchronize.ru/referal_lk" target="_blank" class="block underline decoration-2 helvetica-700 textik-small hover:opacity-75 hover:decoration-1 cursor-pointer transition-all">ПРИГЛАСИТЬ ДРУГА</a>
-                <a href="https://online.synchronize.ru/#catalogue" target="_blank" class="block underline decoration-2 helvetica-700 textik-small hover:opacity-75 hover:decoration-1 cursor-pointer transition-all">КАТАЛОГ КУРСОВ</a>
-                <a href="https://special.synchronize.ru/joinus" target="_blank" class="block underline decoration-2 helvetica-700 textik-small hover:opacity-75 hover:decoration-1 cursor-pointer transition-all">ВАКАНСИИ</a>
+            <div class="m-4 mt-4 space-y-3.5 sm:col-start-2 lg:col-start-5 lg:col-span-2 lg:mx-0 sm:row-start-1">
+                <a href="https://online.synchronize.ru/referal_lk" target="_blank" class="block underline decoration-2 helvetica-700 footer__text hover:opacity-75 hover:decoration-1 cursor-pointer transition-all">ПРИГЛАСИТЬ ДРУГА</a>
+                <a href="https://online.synchronize.ru/#catalogue" target="_blank" class="block underline decoration-2 helvetica-700 footer__text hover:opacity-75 hover:decoration-1 cursor-pointer transition-all">КАТАЛОГ КУРСОВ</a>
+                <a href="https://special.synchronize.ru/joinus" target="_blank" class="block underline decoration-2 helvetica-700 footer__text hover:opacity-75 hover:decoration-1 cursor-pointer transition-all">ВАКАНСИИ</a>
             </div>
 
-            <div class="mx-4 my-0 space-y-2 col-start-1 row-start-1 hidden lg:block mt-[80%]">
-                <p href="tel:74993914639" target="_blank" class="block helvetica-500 textik-small hover:opacity-75 cursor-pointer transition-all">+ 7(499) 39 146 39</p>
-                <a href="mailto:hello@synchronize.ru" target="_blank" class="block helvetica-500 textik-small hover:opacity-75 cursor-pointer transition-all">hello@synchronize.ru</a>
-                <a href="https://t.me/SynchronizeSupportBot?start=link_nTOgfsLiCm" target="_blank" class="block helvetica-500 textik-small hover:opacity-75 cursor-pointer transition-all">Поддержка в Telegram</a>
+            <div class="mx-4 my-0 space-y-2 col-start-1 row-start-1 col-span-2 hidden lg:block mt-[auto]">
+                <p href="tel:74993914639" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">+ 7(499) 39 146 39</p>
+                <a href="mailto:hello@synchronize.ru" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">hello@synchronize.ru</a>
+                <a href="https://t.me/SynchronizeSupportBot?start=link_nTOgfsLiCm" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">Поддержка в Telegram</a>
             </div>
 
-            <div class="m-4 my-0 flex flex-col gap-6 sm:col-start-1 sm:row-start-2 lg:col-start-2 lg:row-start-1">
+            <div class="m-4 my-0 flex flex-col gap-6 sm:col-start-1 sm:row-start-2 lg:col-start-3 lg:col-span-2 lg:row-start-1 lg:flex-col-reverse lg:mx-0">
                 <!-- Контакты -->
                 <div class="space-y-2 lg:hidden">
-                    <p href="tel:74993914639" target="_blank" class="block helvetica-500 textik-small hover:opacity-75 cursor-pointer transition-all">+ 7(499) 39 146 39</p>
-                    <a href="mailto:hello@synchronize.ru" target="_blank" class="block helvetica-500 textik-small hover:opacity-75 cursor-pointer transition-all">hello@synchronize.ru</a>
-                    <a href="https://t.me/SynchronizeSupportBot?start=link_nTOgfsLiCm" target="_blank" class="block helvetica-500 textik-small hover:opacity-75 cursor-pointer transition-all">Поддержка в Telegram</a>
+                    <p href="tel:74993914639" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">+ 7(499) 39 146 39</p>
+                    <a href="mailto:hello@synchronize.ru" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">hello@synchronize.ru</a>
+                    <a href="https://t.me/SynchronizeSupportBot?start=link_nTOgfsLiCm" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">Поддержка в Telegram</a>
                 </div>
                 <!-- Для бизнеса -->
-                <div class="space-y-2">
+                <div class="space-y-2 lg:mb-[33%]">
                     <h3 class="helvetica-500 text-xs opacity-50">ДЛЯ БИЗНЕСА</h3>
-                    <a href="https://online.synchronize.ru/b2b" target="_blank" class="block helvetica-500 textik-small hover:opacity-75 cursor-pointer transition-all">Корпоративное обучение</a>
-                    <a href="https://online.synchronize.ru/b2b/cert" target="_blank" class="block helvetica-500 textik-small hover:opacity-75 cursor-pointer transition-all">Сертификаты на курсы</a>
+                    <a href="https://online.synchronize.ru/b2b" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">Корпоративное обучение</a>
+                    <a href="https://online.synchronize.ru/b2b/cert" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">Сертификаты на курсы</a>
                 </div>
 
                 <!-- Спецпредложения -->
-                <div class="space-y-2 mt-4">
+                <div class="space-y-2">
                     <h3 class="helvetica-500 text-xs opacity-50">СПЕЦПРЕДЛОЖЕНИЯ</h3>
-                    <a href="https://online.synchronize.ru/sub" target="_blank" class="block helvetica-500 textik-small hover:opacity-75 cursor-pointer transition-all">Подписка на все курсы</a>
-                    <a href="https://online.synchronize.ru/gifts" target="_blank" class="block helvetica-500 textik-small hover:opacity-75 cursor-pointer transition-all">Подарочные сертификаты</a>
+                    <a href="https://online.synchronize.ru/sub" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">Подписка на все курсы</a>
+                    <a href="https://online.synchronize.ru/gifts" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">Подарочные сертификаты</a>
                 </div>
             </div>
         </div>
@@ -89,4 +89,8 @@
         text-align: left;
     }
 
+    .footer__text{
+        font-size: 14px;
+        line-height: 19px;
+    }
 </style>

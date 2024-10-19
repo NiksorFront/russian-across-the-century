@@ -56,7 +56,7 @@
                 </p>
             </div>
         </section>
-        <section class="w-full max-w-[1280px] sm:mx-auto h-hit relative">
+        <section class="w-full max-w-[1280px] sm:mx-auto h-hit relative mt-[clamp(45px,7vw,90px)]">
             <Slider title="Государство и общество" :items="slides1"/>
 
             <Slider title="Правовая система" :items="slides2"/>

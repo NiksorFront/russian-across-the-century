@@ -85,7 +85,7 @@
 </script>
 
 <template>
-  <div class="w-full relative mt-[clamp(45px,7vw,90px)]">
+  <div class="w-full relative mb-[clamp(45px,7vw,90px)]">
     <!-- Заголовок -->
     <h2 class="title-2 helvetica-700 dark:text-white ml-[3.15%] my-3 sm:my-6">{{ title }}</h2>
 
