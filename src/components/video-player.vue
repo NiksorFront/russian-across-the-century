@@ -107,23 +107,29 @@
     };
 
     const toggleFullScreenMode = () => {
+        const video = videoContainer.value;
+
+        // Проверка на отсутствие элемента в полноэкранном режиме
         if (document.fullscreenElement === null || 
             document.mozFullScreenElement === null || 
             document.webkitFullscreenElement === null || 
             document.msFullscreenElement === null) {
-                
+
             // Включаем полноэкранный режим
-            if (videoContainer.value.requestFullscreen) {
-                videoContainer.value.requestFullscreen();
-            } else if (videoContainer.value.mozRequestFullScreen) { // Firefox
-                videoContainer.value.mozRequestFullScreen();
-            } else if (videoContainer.value.webkitRequestFullscreen) { // Chrome, Safari, Opera
-                videoContainer.value.webkitRequestFullscreen();
-            } else if (videoContainer.value.msRequestFullscreen) { // IE/Edge
-                videoContainer.value.msRequestFullscreen();
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.mozRequestFullScreen) { // Firefox
+                video.mozRequestFullScreen();
+            } else if (video.webkitRequestFullscreen) { // Chrome, Safari, Opera
+                video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) { // IE/Edge
+                video.msRequestFullscreen();
+            } else if (video.webkitEnterFullscreen) { // Для iOS Safari
+                video.webkitEnterFullscreen(); // Этот метод специфичен для iOS Safari и работает только с видео
             }
+
         } else {
-            // Выходим из полноэкранного режима
+            // Если элемент уже в полноэкранном режиме, то выходим из него
             if (document.exitFullscreen) {
                 document.exitFullscreen();
             } else if (document.mozCancelFullScreen) { // Firefox
@@ -134,6 +140,7 @@
                 document.msExitFullscreen();
             }
         }
+
         isFullScreen.value = !isFullScreen.value;
     };
 
@@ -408,6 +415,7 @@
     }
     
     .duration-container {
+        max-width: 100px;
         display: flex;
         align-items: center;
         gap: .25rem;
