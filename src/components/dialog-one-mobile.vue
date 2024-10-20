@@ -18,6 +18,7 @@ const handleScroll = () => {
   const section = sctin.value;
   const bibaEl = biba.value;
   const bobaEl = boba.value;
+  const imgEls = images.value;
   
   // Получаем координаты секции относительно окна
   const sectionRect = section.getBoundingClientRect();
@@ -29,6 +30,9 @@ const handleScroll = () => {
 
   //Определяем, когда скролл достигает компонента
   if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
+    bibaEl.classList.remove("hidden")
+    bobaEl.classList.remove("hidden")
+    imgEls.forEach(imgEl => imgEl.classList.remove("hidden"));
     //Вычисляем процент прокрутки всего компонента
     if(windowWidth < 640){
         scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight) - 0.5, 0), 1);
@@ -42,7 +46,6 @@ const handleScroll = () => {
 
 
     // Управление показом картинок
-    const imgEls = images.value;
 
     // Первая и вторая картинки: 0.375 < scrollPercent < 0.600
     if (scrollPercent > 0.175 && scrollPercent < 0.400) {
@@ -92,6 +95,10 @@ const handleScroll = () => {
       imgEls[5].style.opacity = 0;
       imgEls[5].style.scale = 0.75;
     }
+  }else{
+    bibaEl.classList.add("hidden")
+    bobaEl.classList.add("hidden")
+    imgEls.forEach(imgEl => imgEl.classList.add("hidden"));
   }
 };
 
@@ -107,20 +114,20 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
 
 <template>
   <section ref="sctin" class="w-11/12 max-w-[1200px] sectionHeight mx-auto flex justify-around relative">
-    <img ref="biba" :src="bibaSVG" class="w-[clamp(80px,16%,195px)] h-fit biba -rotate-6 sm:-rotate-12 lg:rotate-0 opacity-0 transition-opacity duration-300" />
+    <img ref="biba" :src="bibaSVG" class="w-[clamp(80px,16%,195px)] h-fit biba -rotate-6 sm:-rotate-12 lg:rotate-0 opacity-0 transition-opacity duration-300 hidden" />
     
     <div class="top-[30%] left-[20vw] fixed"> 
-      <img :src="howResolveDispute1" class="w-[clamp(100px,70vw,500px)] image" />
-      <img :src="goOutFieldFight2" class="w-[clamp(100px,70vw,500px)] image mt-1 sm:mt-3" />
+      <img :src="howResolveDispute1" class="w-[clamp(100px,70vw,500px)] image hidden" />
+      <img :src="goOutFieldFight2" class="w-[clamp(100px,70vw,500px)] image mt-1 sm:mt-3 hidden" />
     </div>
     <div class="top-[30%] right-[21vw] fixed">
-      <img :src="whatCenturyAreYouFrom3" class="w-[clamp(77px,54vw,385px)] image ml-auto image-dark-mode" />
-      <img :src="thereLawsNow4" class="w-[clamp(100px,70vw,500px)] image mt-1 sm:mt-3 image-dark-mode" />
+      <img :src="whatCenturyAreYouFrom3" class="w-[clamp(77px,54vw,385px)] image ml-auto image-dark-mode hidden" />
+      <img :src="thereLawsNow4" class="w-[clamp(100px,70vw,500px)] image mt-1 sm:mt-3 image-dark-mode hidden" />
     </div>
-    <img :src="whatIsLegislation5" class="w-[clamp(100px,57.5vw,495px)] image fixed top-[33%] left-[20vw]" />
-    <img :src="listenYouDarkHead6" class="w-[clamp(100px,58vw,500px)] image fixed top-[33%] right-[21vw] image-dark-mode" />
+    <img :src="whatIsLegislation5" class="w-[clamp(100px,57.5vw,495px)] image fixed top-[33%] left-[20vw] hidden" />
+    <img :src="listenYouDarkHead6" class="w-[clamp(100px,58vw,500px)] image fixed top-[33%] right-[21vw] image-dark-mode hidden" />
 
-    <img ref="boba" :src="bobaSVG" class="w-[clamp(80px,16%,171px)] h-fit boba rotate-6 sm:rotate-12 lg:rotate-0 opacity-0 transition-opacity duration-300 -z-10" />
+    <img ref="boba" :src="bobaSVG" class="w-[clamp(80px,16%,171px)] h-fit boba rotate-6 sm:rotate-12 lg:rotate-0 opacity-0 transition-opacity duration-300 -z-10 hidden" />
   </section>
 </template>
 

@@ -19,13 +19,19 @@ const handleScroll = () => {
   const section = sctin.value;
     const bibaEl = biba.value;
     const bobaEl = boba.value;
+    const imgEls = images.value;
+
     // Получаем координаты секции относительно окна
     const sectionRect = section.getBoundingClientRect();
     const sectionTop = sectionRect.top;
     const sectionHeight = sectionRect.height;
     const windowHeight = window.innerHeight;
+
     //Определяем, когда скролл достигает компонента
     if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
+      bibaEl.classList.remove("hidden")
+      bobaEl.classList.remove("hidden")
+      imgEls.forEach(imgEl => imgEl.classList.remove("hidden"));
       //Вычисляем процент прокрутки всего компонента
       scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight) - 0.3 , 0), 1);
 
@@ -40,7 +46,6 @@ const handleScroll = () => {
     
 
       // Управление показом картинок
-      const imgEls = images.value;
       
       // Первая картинка: 0.375 < scrollPercent < 0.600
       if (scrollPercent > 0.275 && scrollPercent < 0.600) {
@@ -65,6 +70,10 @@ const handleScroll = () => {
         imgEls[2].style.opacity = 0;
         imgEls[2].style.scale = 0.75;
       }
+    }else{
+      bibaEl.classList.add("hidden")
+      bobaEl.classList.add("hidden")
+      imgEls.forEach(imgEl => imgEl.classList.add("hidden"));
     }
 };
 
@@ -80,15 +89,15 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
 
 <template>
   <section ref="sctin" class="w-11/12 max-w-[1200px] sectionHeight mx-auto flex justify-around relative">
-    <img ref="biba" :src="bibaSVG" class="w-[clamp(80px,16%,195px)] h-fit biba -rotate-6 sm:-rotate-12 lg:rotate-0 opacity-0 transition-opacity duration-300" />
+    <img ref="biba" :src="bibaSVG" class="w-[clamp(80px,16%,195px)] h-fit biba -rotate-6 sm:-rotate-12 lg:rotate-0 opacity-0 transition-opacity duration-300 hidden" />
     
-    <img :src="wellNowBecomeClearer1" class="w-[clamp(100px,70vw,500px)] mt-10 top-[33%] right-[20vw] image2 image-dark-mode fixed" />
+    <img :src="wellNowBecomeClearer1" class="w-[clamp(100px,70vw,500px)] mt-10 top-[33%] right-[20vw] image2 image-dark-mode fixed hidden" />
     <div class="top-[30%] left-[21vw] fixed">
-      <img :src="cleverAndComplicated2" class="w-[clamp(100px,58vw,500px)] image2" />
-      <img :src="itWasEasierWithBatons3" class="w-[clamp(100px,58vw,500px)] image2 mt-1 sm:mt-3" />
+      <img :src="cleverAndComplicated2" class="w-[clamp(100px,58vw,500px)] image2 hidden" />
+      <img :src="itWasEasierWithBatons3" class="w-[clamp(100px,58vw,500px)] image2 mt-1 sm:mt-3 hidden" />
     </div>
 
-    <img ref="boba" :src="bobaSVG" class="w-[clamp(80px,16%,171px)] h-fit boba rotate-6 sm:rotate-12 lg:rotate-0 opacity-0 transition-opacity duration-300" />
+    <img ref="boba" :src="bobaSVG" class="w-[clamp(80px,16%,171px)] h-fit boba rotate-6 sm:rotate-12 lg:rotate-0 opacity-0 transition-opacity duration-300 hidden" />
   </section>
 </template>
 

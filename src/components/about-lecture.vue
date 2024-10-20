@@ -10,7 +10,7 @@
 </script>
 
 <template>
-    <section class="w-11/12 max-w-[1200px] bg-white min-h-[475px] sm:h-[auto] mx-auto my-12 rounded-[clamp(20px,5vw,50px)] p-[clamp(24px,4vw,48px)] flex flex-wrap gap-6 lg:flex-nowrap lg:flex-row lg:justify-between">
+    <div class="w-11/12 max-w-[1200px] bg-white min-h-[475px] sm:h-[auto] mx-auto my-12 rounded-[clamp(20px,5vw,50px)] p-[clamp(24px,4vw,48px)] flex flex-wrap gap-6 lg:flex-nowrap lg:flex-row lg:justify-between">
       <div class="w-full lg:w-1/2 flex flex-col gap-4">
         <p class="textik helvetica-500 bg-[#b8cafb] py-[clamp(1px,1vw,5px)] px-[clamp(2px,2vw,20px)] w-max rounded-xl lg:rounded-3xl dark:bg-[#FFE576]">
           лекция {{number}}
@@ -31,9 +31,9 @@
           <VideoPlayer :videoUrl="videoUrl" :videoPoster="videoPoster"/>
         </div>
         <router-link :to="routeMemo" class="helvetica-400 h-[5%] text-[clamp(20px,5vw,27px)] leading-[clamp(12px,2vw,35px)] underline rounded-lg cursor-pointer lg:pl-7">
-          Памятка о лекции
+          Памятка по лекции
         </router-link>
       </div>
-    </section>
+    </div>
     <Modal v-if="stateModal === true" :content="modalContent" :closeModal="() => stateModal = false"/>
 </template>

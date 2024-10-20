@@ -111,6 +111,7 @@
 
         // Проверка на платформу: iOS или Android
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        const isAndroid = /Android/.test(navigator.userAgent);
 
         if (document.fullscreenElement || 
             document.mozFullScreenElement || 
@@ -142,7 +143,13 @@
         } else {
             // Если видео еще не в полноэкранном режиме
             if (isIOS) {
-                video.value.webkitEnterFullscreen(); // iOS Safari
+                if (video.value.requestFullscreen) {
+                    video.value.webkitEnterFullscreen(); // iOS Safari
+                }
+            } else if(isAndroid){
+                if (video.value.requestFullscreen) {
+                    video.value.requestFullscreen();
+                }
             } else {
                 // Для других устройств, включая Android
                 console.log('Открытие видео в полноэкранном режиме через стандартный Fullscreen API');
