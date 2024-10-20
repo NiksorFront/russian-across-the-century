@@ -143,13 +143,9 @@
         } else {
             // Если видео еще не в полноэкранном режиме
             if (isIOS) {
-                if (video.value.requestFullscreen) {
-                    video.value.webkitEnterFullscreen(); // iOS Safari
-                }
+                video.value.webkitEnterFullscreen(); // iOS Safari
             } else if(isAndroid){
-                if (video.value.requestFullscreen) {
-                    video.value.requestFullscreen();
-                }
+                video.value.requestFullscreen();
             } else {
                 // Для других устройств, включая Android
                 console.log('Открытие видео в полноэкранном режиме через стандартный Fullscreen API');
