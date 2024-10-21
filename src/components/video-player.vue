@@ -111,7 +111,7 @@
 
         // Проверка на платформу: iOS или Android
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        const isAndroid = /Android/.test(navigator.userAgent);
+        // const isAndroid = /Android/.test(navigator.userAgent) || useragent.search("android");
 
         if (document.fullscreenElement || 
             document.mozFullScreenElement || 
@@ -144,8 +144,6 @@
             // Если видео еще не в полноэкранном режиме
             if (isIOS) {
                 video.value.webkitEnterFullscreen(); // iOS Safari
-            } else if(isAndroid){
-                video.value.requestFullscreen();
             } else {
                 // Для других устройств, включая Android
                 console.log('Открытие видео в полноэкранном режиме через стандартный Fullscreen API');
@@ -166,7 +164,10 @@
                         console.log('Ошибка при открытии в Fullscreen на IE/Edge:', err);
                     });
                 } else {
-                    console.log('Ваш браузер не поддерживает Fullscreen API');
+                    video.value.requestFullscreen().catch(err => {
+                        console.log('Ваш браузер не поддерживает Fullscreen API', err);
+                    });;
+                    // console.log('Ваш браузер не поддерживает Fullscreen API');
                 }
             }
         }
@@ -246,7 +247,7 @@
         const rect = timelineContainer.value.getBoundingClientRect();
         const percent = Math.min(Math.max(0, e.x - rect.x), rect.width) / rect.width;
         const previewImgNumber = Math.max(1, Math.floor((percent * video.value.duration) / 10));
-        const previewImgSrc = `assets/previewImgs/preview${previewImgNumber}.jpg`;
+        const previewImgSrc = `https://previewImgs.ru/preview${previewImgNumber}.jpg`;
         previewImg.value.src = previewImgSrc;
         timelineContainer.value.style.setProperty("--preview-position", percent);
 
