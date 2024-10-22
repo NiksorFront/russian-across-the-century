@@ -3,7 +3,7 @@
     import VideoPlayer from "./video-player.vue";
     import {ref} from "vue";
 
-    const {number, title, description, modalContent, videoUrl, videoPoster, routeMemo} = defineProps(["number", "title", "description", "modalContent", "videoUrl", "videoPoster", "routeMemo"])
+    const {number, title, description, modalContent, videoInfo, routeMemo} = defineProps(["number", "title", "description", "modalContent", "videoInfo", "routeMemo"])
     
     const stateModal = ref(false);
     const openModal = () => {stateModal.value = true}; // Логика открытия модалки с подробной информацией о лекции
@@ -28,7 +28,7 @@
 
       <div class="w-full lg:w-1/2 flex flex-col gap-4 lg:pl-10 ">
         <div class="block aspect-video text-center bg-gray-200 rounded-[clamp(5px,3vw,30px)] cursor-pointer overflow-hidden">
-          <VideoPlayer :videoUrl="videoUrl" :videoPoster="videoPoster"/>
+          <VideoPlayer :videoInfo="videoInfo"/>
         </div>
         <router-link :to="routeMemo" class="helvetica-400 h-[5%] text-[clamp(20px,5vw,27px)] leading-[clamp(12px,2vw,35px)] underline rounded-lg cursor-pointer lg:pl-7">
           Памятка по лекции

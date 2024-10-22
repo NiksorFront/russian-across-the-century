@@ -18,6 +18,56 @@
   import preview4 from "../assets/images/previews/preview-4.jpg";
   import preview5 from "../assets/images/previews/preview-5.jpg";
 
+  const video1 = {
+    144: "https://files.flowwit.ru/upload/ancient-russian-law/144.mp4",
+    240: "https://files.flowwit.ru/upload/ancient-russian-law/240.mp4",
+    360: "https://files.flowwit.ru/upload/ancient-russian-law/360.mp4",
+    480: "https://files.flowwit.ru/upload/ancient-russian-law/480.mp4",
+    720: "https://files.flowwit.ru/upload/ancient-russian-law/720.mp4",
+    1080: "https://files.flowwit.ru/upload/ancient-russian-law/1080.mp4",
+    preview: preview1,
+    urlFrames: "https://files.flowwit.ru/upload/ancient-russian-law/"
+  }
+  const video2 = {
+    144: "https://files.flowwit.ru/upload/medieval-law/144.mp4",
+    240: "https://files.flowwit.ru/upload/medieval-law/240.mp4",
+    360: "https://files.flowwit.ru/upload/medieval-law/360.mp4",
+    480: "https://files.flowwit.ru/upload/medieval-law/480.mp4",
+    720: "https://files.flowwit.ru/upload/medieval-law/720.mp4",
+    1080: "https://files.flowwit.ru/upload/medieval-law/1080.mp4",
+    preview: preview2,
+    urlFrames: "https://files.flowwit.ru/upload/medieval-law/"
+  }
+  const video3 = {
+    144: "https://files.flowwit.ru/upload/law-russian-empire/144.mp4",
+    240: "https://files.flowwit.ru/upload/law-russian-empire/240.mp4",
+    360: "https://files.flowwit.ru/upload/law-russian-empire/360.mp4",
+    480: "https://files.flowwit.ru/upload/law-russian-empire/480.mp4",
+    720: "https://files.flowwit.ru/upload/law-russian-empire/720.mp4",
+    1080: "https://files.flowwit.ru/upload/law-russian-empire/1080.mp4",
+    preview: preview3,
+    urlFrames: "https://files.flowwit.ru/upload/law-russian-empire/"
+  }
+  const video4 = {
+    144: "https://files.flowwit.ru/upload/law-soviet-russia/144.mp4",
+    240: "https://files.flowwit.ru/upload/law-soviet-russia/240.mp4",
+    360: "https://files.flowwit.ru/upload/law-soviet-russia/360.mp4",
+    480: "https://files.flowwit.ru/upload/law-soviet-russia/480.mp4",
+    720: "https://files.flowwit.ru/upload/law-soviet-russia/720.mp4",
+    1080: "https://files.flowwit.ru/upload/law-soviet-russia/1080.mp4",
+    preview: preview4,
+    urlFrames: "https://files.flowwit.ru/upload/law-soviet-russia/"
+  }
+  const video5 = {
+    144: "https://files.flowwit.ru/upload/modern-law/144.mp4",
+    240: "https://files.flowwit.ru/upload/modern-law/240.mp4",
+    360: "https://files.flowwit.ru/upload/modern-law/360.mp4",
+    480: "https://files.flowwit.ru/upload/modern-law/480.mp4",
+    720: "https://files.flowwit.ru/upload/modern-law/720.mp4",
+    1080: "https://files.flowwit.ru/upload/modern-law/1080.mp4",
+    preview: preview5,
+    urlFrames: "https://files.flowwit.ru/upload/modern-law/"
+  }
 
 
   import {ref, onMounted} from "vue";
@@ -93,19 +143,19 @@
 
     <section>
       <AboutLecture number="1" title="Древнерусское право" description="У кого дубина тяжелее, тот и прав — так решались сложные вопросы в Древней Руси. Сейчас это, конечно, звучит дико. Но в IX веке бой на дубинках, копьях или кинжалах считали неплохим способом разрешить спор. Ещё один способ — попросить князя рассудить «справедливо». Но справедливость у каждого правителя была своя."
-                    :modalContent='{heading: "В этой лекции поговорим о судебных традициях прошлого и узнаем:", paragraphs: ["Кто выполнял роль судей в Древней Руси?", "Какие вопросы решали на вече?", "Как был устроен первый свод правовых норм Древней Руси — «Русская Правда»?"]}' videoUrl="https://files.flowwit.ru/upload/Alliance1_youtube.mp4" :videoPoster="preview1" routeMemo="/ancient-russian-law"/>
+                    :modalContent='{heading: "В этой лекции поговорим о судебных традициях прошлого и узнаем:", paragraphs: ["Кто выполнял роль судей в Древней Руси?", "Какие вопросы решали на вече?", "Как был устроен первый свод правовых норм Древней Руси — «Русская Правда»?"]}' :videoInfo="video1" routeMemo="/ancient-russian-law"/>
     
       <AboutLecture number="2" title="Средневековое право" description="В Средние века русские княжества раздроблены, и законы в них разные. Но в 1497 году князь Иван III создаёт единый для всех земель свод законов — Судебник. Этот документ стал первым шагом на пути к первому всенародно признанному закону — Соборному уложению, которое было принято в XVII веке."
-                    :modalContent="{heading: 'В этой лекции погрузимся в правовую систему Средних веков и выясним:', paragraphs:['Кому и за что на Руси начали давать взятки?', 'Какие вопросы решала Боярская дума — «правая рука» царя?', 'Как русские княжества от раздроблённости и власти монголов пришли к единому для всех закону?']}" videoUrl="https://files.flowwit.ru/upload/Alliance2_master_youtube.mp4" :videoPoster="preview2" routeMemo="/medieval-law"/>
+                    :modalContent="{heading: 'В этой лекции погрузимся в правовую систему Средних веков и выясним:', paragraphs:['Кому и за что на Руси начали давать взятки?', 'Какие вопросы решала Боярская дума — «правая рука» царя?', 'Как русские княжества от раздроблённости и власти монголов пришли к единому для всех закону?']}" :videoInfo="video2" routeMemo="/medieval-law"/>
 
       <AboutLecture number="3" title="Право в Российской империи" description="Попытки законодательно закрепить абсолютную власть императора, стремление суда к независимости, систематизация законов — путь к статусу правового государства был непростым. Но именно в это время проводятся реформы, результатами которых мы пользуемся до сих пор."
-                    :modalContent="{heading: 'В этой лекции мы проследим за историей права от Петра I до Николая II. И узнаем:', paragraphs:['Почему правовая политика Петра I не всегда была объективной?', 'Когда в России появились первые адвокаты, следователи и прокуроры?', 'Почему террористке Вере Засулич удалось избежать наказания за покушение на губернатора?']}" videoUrl="https://files.flowwit.ru/upload/All3_vk_master.mp4" :videoPoster="preview3" routeMemo="/law-in-russian-empire"/>
+                    :modalContent="{heading: 'В этой лекции мы проследим за историей права от Петра I до Николая II. И узнаем:', paragraphs:['Почему правовая политика Петра I не всегда была объективной?', 'Когда в России появились первые адвокаты, следователи и прокуроры?', 'Почему террористке Вере Засулич удалось избежать наказания за покушение на губернатора?']}" :videoInfo="video3" routeMemo="/law-in-russian-empire"/>
 
       <AboutLecture number="4" title="Право в советской России" description="Новое государство — новые законы. После прихода к власти большевики активно формируют революционно новую правовую систему. Создаются колхозы, а вместе с ними — хозяйственное право. Принимаются новые Конституции, а судебный процесс в поисках объективной истины лишается состязательности."
-                    :modalContent="{heading: 'В этой лекции узнаем, как было устроено право в эпоху Советов. И разберёмся:', paragraphs:['Каким должно было стать пролетарское государство?', 'Как менялось право в эпохи «оттепели», «застоя» и «перестройки»?', 'На что по закону имел право советский рабочий?']}" videoUrl="https://files.flowwit.ru/upload/Pravo4_master_youtube.mp4" :videoPoster="preview4" routeMemo="/law-in-soviet-russia"/>
+                    :modalContent="{heading: 'В этой лекции узнаем, как было устроено право в эпоху Советов. И разберёмся:', paragraphs:['Каким должно было стать пролетарское государство?', 'Как менялось право в эпохи «оттепели», «застоя» и «перестройки»?', 'На что по закону имел право советский рабочий?']}" :videoInfo="video4" routeMemo="/law-in-soviet-russia"/>
 
       <AboutLecture number="5" title="Современное право" description="На смену СССР пришла Российская Федерация. Формируется новая система управления — но с опорой на опыт предыдущих поколений. Провозглашается принцип разделения властей. Создаётся новая законодательная база: от Гражданского и Уголовного кодексов до Семейного и Трудового."
-                    :modalContent="{heading: 'В этой лекции разберёмся, как сформировалась правовая система РФ. И выясним:', paragraphs:['Что такое «война законов» и как она повлияла на распад СССР?', 'Кем и как создавалась Конституция 1993 года?', 'Как свободный рынок изменил право в России?']}" videoUrl="https://files.flowwit.ru/upload/Al_5_master_youtube.mp4" :videoPoster="preview5" routeMemo="/modern-law"/>
+                    :modalContent="{heading: 'В этой лекции разберёмся, как сформировалась правовая система РФ. И выясним:', paragraphs:['Что такое «война законов» и как она повлияла на распад СССР?', 'Кем и как создавалась Конституция 1993 года?', 'Как свободный рынок изменил право в России?']}" :videoInfo="video5" routeMemo="/modern-law"/>
     </section>
 
     <DialogTwoMobile v-if="small"/>

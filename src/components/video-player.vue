@@ -1,7 +1,7 @@
 <script setup>
     import { ref, onMounted, onBeforeUnmount } from "vue";
 
-    const {videoUrl, videoPoster} = defineProps(["videoUrl", "videoPoster"]);
+    const {videoInfo} = defineProps(["videoInfo"]);
 
     // Реактивные свойства для управления состоянием плеера
     // const startBrowsing = ref(false);
@@ -23,6 +23,16 @@
     const timelineContainer = ref(null);
     const previewImg = ref(null);
     const thumbnailImg = ref(null);
+
+    // Окно настроек воспроизведения и качества
+    const isSettingsVisible = ref(false);
+    const isPlaybackRateMenu = ref(false);
+    const isQualityMenu = ref(false);
+
+    // Доступные варианты скорости и качества
+    const playbackRates = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
+    const qualities = ["144", "240", "360", "480", "720", "1080"];
+    const selectedQuality = ref("720");
 
     const leadingZeroFormatter = new Intl.NumberFormat(undefined, {minimumIntegerDigits: 2,});
     onMounted(() => {
@@ -97,9 +107,27 @@
         volume.value = video.value.volume;
     };
 
-    const changePlaybackSpeed = () => {
-        playbackRate.value = playbackRate.value + 0.25 > 2 ? 0.25 : playbackRate.value + 0.25;
-        video.value.playbackRate = playbackRate.value;
+    const changePlaybackRate = (rate) => {
+        playbackRate.value = rate;
+        video.value.playbackRate = rate;
+    };
+
+    const toggleSettingsMenu = () => {
+        isSettingsVisible.value = !isSettingsVisible.value;
+    };
+
+    const selectPlaybackRateMenu = () => {
+        isPlaybackRateMenu.value = true;
+        isQualityMenu.value = false;
+    };
+
+    const selectQualityMenu = () => {
+        isPlaybackRateMenu.value = false;
+        isQualityMenu.value = true;
+    };
+
+    const selectQuality = (quality) => {
+        selectedQuality.value = quality;
     };
 
     const skip = (duration) => {
@@ -257,12 +285,13 @@
             timelineContainer.value.style.setProperty("--progress-position", percent);
         }
     };
+    console.log(videoInfo);
 </script>
 
 <template>
     <div ref="posterImg" class="w-full h-full z-10 relative" @click="() => {posterImg.classList.add('hidden'); togglePlay()}">
         <button class="absolute top-[39.58%] left-[41.666%] w-1/6 object-contain" aria-label="Смотреть" title="Смотреть"><svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%"><path class="ytp-large-play-button-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path><path d="M 45,24 27,14 27,34" fill="#fff"></path></svg></button>
-        <img :src="videoPoster" class="w-full h-full"/>
+        <img :src="videoInfo.preview" class="w-full h-full"/>
     </div>
     <div ref="videoContainer" class="video-container" :class="{'theater': isTheaterMode, 'full-screen': isFullScreen, 'mini-player': isMiniPlayer, 'paused': isPaused}">
         <img ref="thumbnailImg" class="thumbnail-img" />
@@ -290,14 +319,48 @@
                     /
                     <span class="helvetica-500 text-sm">{{totalTime}}</span>
                 </div>
-                <button class="w-fit helvetica-500 text-sm ml-[auto] -translate-y-0.5" @click="changePlaybackSpeed">{{ playbackRate }}x</button>
+
+                <!-- Кнопка открытия меню настроек скорости и качества -->
+                <button class="w-fit helvetica-500 text-sm ml-[auto] -translate-y-0.5" @click="toggleSettingsMenu">
+                    <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%"><path d="m 23.94,18.78 c .03,-0.25 .05,-0.51 .05,-0.78 0,-0.27 -0.02,-0.52 -0.05,-0.78 l 1.68,-1.32 c .15,-0.12 .19,-0.33 .09,-0.51 l -1.6,-2.76 c -0.09,-0.17 -0.31,-0.24 -0.48,-0.17 l -1.99,.8 c -0.41,-0.32 -0.86,-0.58 -1.35,-0.78 l -0.30,-2.12 c -0.02,-0.19 -0.19,-0.33 -0.39,-0.33 l -3.2,0 c -0.2,0 -0.36,.14 -0.39,.33 l -0.30,2.12 c -0.48,.2 -0.93,.47 -1.35,.78 l -1.99,-0.8 c -0.18,-0.07 -0.39,0 -0.48,.17 l -1.6,2.76 c -0.10,.17 -0.05,.39 .09,.51 l 1.68,1.32 c -0.03,.25 -0.05,.52 -0.05,.78 0,.26 .02,.52 .05,.78 l -1.68,1.32 c -0.15,.12 -0.19,.33 -0.09,.51 l 1.6,2.76 c .09,.17 .31,.24 .48,.17 l 1.99,-0.8 c .41,.32 .86,.58 1.35,.78 l .30,2.12 c .02,.19 .19,.33 .39,.33 l 3.2,0 c .2,0 .36,-0.14 .39,-0.33 l .30,-2.12 c .48,-0.2 .93,-0.47 1.35,-0.78 l 1.99,.8 c .18,.07 .39,0 .48,-0.17 l 1.6,-2.76 c .09,-0.17 .05,-0.39 -0.09,-0.51 l -1.68,-1.32 0,0 z m -5.94,2.01 c -1.54,0 -2.8,-1.25 -2.8,-2.8 0,-1.54 1.25,-2.8 2.8,-2.8 1.54,0 2.8,1.25 2.8,2.8 0,1.54 -1.25,2.8 -2.8,2.8 l 0,0 z" fill="#fff"></path></svg>
+                </button>
+                <!-- Окно настроек -->
+                <div v-if="isSettingsVisible" class="settings-menu helvetica-300">
+                    <!-- Основное меню с вариантами выбора -->
+                    <div v-if="!isPlaybackRateMenu && !isQualityMenu" class="flex flex-col">
+                        <a @click="selectPlaybackRateMenu">Скорость воспроизведения: {{ playbackRate }}x ></a>
+                        <a @click="selectQualityMenu">Качество: {{ selectedQuality }}p ></a>
+                    </div>
+
+                    <!-- Меню выбора скорости воспроизведения -->
+                    <ul v-else-if="isPlaybackRateMenu">
+                        <li v-for="rate in playbackRates" :key="rate" @click="changePlaybackRate(rate)" class="flex flex-row">
+                            <svg class="size-4 my-auto mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.94 511.94" xml:space="preserve" fill="white" stroke="white" stroke-width="15">
+                                <path v-if="playbackRate === rate" d="m500.29 61.9-344.4 365.44L11.02 289.38 0 300.96l156.51 149.07L511.94 72.88z"/>
+                            </svg>
+                            {{ rate === 1 ? 'обычная' : rate }}
+                        </li>
+                    </ul>
+
+                    <!-- Меню выбора качества -->
+                    <ul v-else-if="isQualityMenu">
+                        <li v-for="quality in qualities" :key="quality" @click="selectQuality(quality)" class="flex flex-row">
+                            <svg class="size-4 my-auto mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.94 511.94" xml:space="preserve" fill="white" stroke="white" stroke-width="15">
+                                <path v-if="selectedQuality === quality" d="m500.29 61.9-344.4 365.44L11.02 289.38 0 300.96l156.51 149.07L511.94 72.88z"/>
+                            </svg>
+                            {{ quality }}p
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Кнопка открытия полноэкранного режима  -->
                 <button class="full-screen-btn" @click="toggleFullScreenMode">
                     <svg v-if="!isFullScreen" class="open" viewBox="0 0 30 30"><path fill="currentColor" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
                     <svg v-else class="close" viewBox="0 0 30 30"><path fill="currentColor" d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>
                 </button>
             </div>
         </div>
-        <video ref="video" :src="videoUrl" class="w-full h-hull" @click="togglePlay"></video>
+        <video ref="video" :src="videoInfo[selectedQuality]" class="w-full h-hull" @click="togglePlay"></video>
     </div>
 </template>
 
@@ -467,6 +530,40 @@
         cursor: pointer;
         display: flex;
         align-items: center;
+    }
+
+    .settings-menu {
+        position: absolute;
+        bottom: 55px;
+        right: clamp(5px,10%,10px);
+        padding: 5px;
+        background-color: rgba(0, 0, 0, 0.8);
+        width: clamp(50px, w-fit, 250px);
+        font-size: clamp(5px, 1.75vw, 18px);
+        text-align: left;
+        color: white;
+        z-index: 200;
+        border-radius: clamp(5px, 1vw, 25px);
+    }
+
+    /* .settings-menu div{
+        width: clamp(50px, 25vw, 450px);
+    } */
+
+    .settings-menu a, li{
+        cursor: pointer;
+        margin-right: 5px;
+        transition: background-color 0.2s;
+    }
+
+    .settings-menu a:hover, li:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    @media (width > 640px){
+        .settings-menu div, li{
+            padding-left: 6px;
+        }
     }
     
     .timeline {
