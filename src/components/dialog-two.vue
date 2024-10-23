@@ -52,7 +52,7 @@ const handleScroll = () => {
         imgEls[0].style.opacity = 1;
         imgEls[0].style.scale = 1;
       } else {
-        imgEls[0].style.opacity = 0.2;
+        imgEls[0].style.opacity = 0;
         imgEls[0].style.scale = 0.75;
       }
 
@@ -61,7 +61,7 @@ const handleScroll = () => {
         imgEls[1].style.opacity = 1;
         imgEls[1].style.scale = 1;
       } else {
-        imgEls[1].style.opacity = 0.2;
+        imgEls[1].style.opacity = 0;
         imgEls[1].style.scale = 0.75;
       }
 
@@ -70,71 +70,10 @@ const handleScroll = () => {
         imgEls[2].style.opacity = 1;
         imgEls[2].style.scale = 1;
       } else {
-        imgEls[2].style.opacity = 0.2;
+        imgEls[2].style.opacity = 0;
         imgEls[2].style.scale = 0.75;
       }
     }
-  // }else{
-  //   const section = sctin.value;
-  //   const masges = messages.value;
-  //   const bibaEl = biba.value;
-  //   const bobaEl = boba.value;
-  //   // Получаем координаты секции относительно окна
-  //   const sectionRect = section.getBoundingClientRect();
-  //   const sectionTop = sectionRect.top;
-  //   const sectionHeight = sectionRect.height;
-  //   const windowHeight = window.innerHeight;
-
-  //   //Вычисляем процент прокрутки всего компонента
-  //   if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
-  //     if(windowWidth < 640){
-  //         masges.style.marginLeft = 0;
-  //         masges.style.marginRight = 0;
-  //         scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight) - 0.5, 0), 1);
-  //     }else{
-  //         masges.style.marginLeft = "auto";
-  //         masges.style.marginRight = "auto";
-  //         scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight) - 0.3 , 0), 1);
-  //     }
-
-  //     bibaEl.style.opacity = 0;
-  //     bobaEl.style.opacity = 0;
-  //     if(scrollPercent > 0.800){masges.style.marginLeft = "auto";}
-  //     // Управление показом картинок
-  //     const imgEls = images.value;
-
-  //     // Первая картинка: 0.375 < scrollPercent < 0.600
-  //     if (scrollPercent > 0.375 && scrollPercent < 0.600) {
-  //       imgEls[0].style.opacity = 1;
-  //       imgEls[0].style.scale = 1;
-  //       bobaEl.style.opacity = 1;
-  //       masges.style.marginRight = "auto";
-  //     } else {
-  //       imgEls[0].style.opacity = 0;
-  //       imgEls[0].style.scale = 0.75;
-  //     }
-
-  //     // Вторая картинка: 0.500 < scrollPercent < 0.600
-  //     if (scrollPercent > 0.600 && scrollPercent < 0.85) {
-  //       imgEls[1].style.opacity = 1;
-  //       imgEls[1].style.scale = 1;
-  //       bibaEl.style.opacity = 1;
-  //       masges.style.marginLeft = "auto";
-  //     } else {
-  //       imgEls[1].style.opacity = 0;
-  //       imgEls[1].style.scale = 0.75;
-  //     }
-
-  //     // Третья картинка: 0.600 < scrollPercent < 0.800
-  //     if (scrollPercent > 0.675 && scrollPercent < 0.9) {
-  //       imgEls[2].style.opacity = 1;
-  //       imgEls[2].style.scale = 1;
-  //     } else {
-  //       imgEls[2].style.opacity = 0;
-  //       imgEls[2].style.scale = 0.75;
-  //     } 
-  //   }
-  // }
 };
 
 onMounted(() => {
