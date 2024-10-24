@@ -27,6 +27,7 @@
     // Окно настроек воспроизведения и качества
     const isSettingsVisible = ref(false);
     const isPlaybackRateMenu = ref(false);
+    const menuSettings = ref(null);
     const isQualityMenu = ref(false);
 
     // Доступные варианты скорости и качества
@@ -51,11 +52,19 @@
             totalTime.value = `${minutes}:${leadingZeroFormatter.format(seconds)}`;
         });
 
+        //Установка точно такой же минуты после обновления разрешения 
+        video.value.addEventListener("loadedmetadata", () => {
+            video.value.currentTime = currentTime.value;
+        });
+        
         // Обновление времени воспроизведения
         video.value.addEventListener('timeupdate', () => {
-            currentTime.value = video.value.currentTime;
-            updateTimelineProgress();
+            if(video.value.currentTime !== 0){
+                currentTime.value = video.value.currentTime;
+                updateTimelineProgress();
+            }
         });
+        document.addEventListener('click', closigMenuWhenCkickOutside)
 
         // Обработчики событий
         document.addEventListener("keydown", handleKeyDown);
@@ -71,6 +80,7 @@
         timelineContainer.value.removeEventListener("mousedown", startScrubbing);
         document.removeEventListener("mouseup", stopScrubbing);
         document.removeEventListener("mousemove", handleTimelineUpdate);
+        document.removeEventListener('click', closigMenuWhenCkickOutside)
     });
 
     // Функция для начала скраббинга
@@ -114,7 +124,18 @@
 
     const toggleSettingsMenu = () => {
         isSettingsVisible.value = !isSettingsVisible.value;
+        isPlaybackRateMenu.value = false;
+        isQualityMenu.value = false;
     };
+
+    const closigMenuWhenCkickOutside = (e) => {
+        if (!e.target.classList.contains("settings-menu") && isSettingsVisible.value && e.target.id !== "elementMenu"){
+            // console.log(1235)
+            isSettingsVisible.value = false;
+            isPlaybackRateMenu.value = false;
+            isQualityMenu.value = false;
+        }
+    }
 
     const selectPlaybackRateMenu = () => {
         isPlaybackRateMenu.value = true;
@@ -275,7 +296,7 @@
         const rect = timelineContainer.value.getBoundingClientRect();
         const percent = Math.min(Math.max(0, e.x - rect.x), rect.width) / rect.width;
         const previewImgNumber = Math.max(1, Math.floor((percent * video.value.duration) / 10));
-        const previewImgSrc = `https://previewImgs.ru/preview${previewImgNumber}.jpg`;
+        const previewImgSrc = `${videoInfo.urlFrames}${previewImgNumber}.jpg`;
         previewImg.value.src = previewImgSrc;
         timelineContainer.value.style.setProperty("--preview-position", percent);
 
@@ -285,7 +306,6 @@
             timelineContainer.value.style.setProperty("--progress-position", percent);
         }
     };
-    console.log(videoInfo);
 </script>
 
 <template>
@@ -321,32 +341,32 @@
                 </div>
 
                 <!-- Кнопка открытия меню настроек скорости и качества -->
-                <button class="w-fit helvetica-500 text-sm ml-[auto] -translate-y-0.5" @click="toggleSettingsMenu">
-                    <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%"><path d="m 23.94,18.78 c .03,-0.25 .05,-0.51 .05,-0.78 0,-0.27 -0.02,-0.52 -0.05,-0.78 l 1.68,-1.32 c .15,-0.12 .19,-0.33 .09,-0.51 l -1.6,-2.76 c -0.09,-0.17 -0.31,-0.24 -0.48,-0.17 l -1.99,.8 c -0.41,-0.32 -0.86,-0.58 -1.35,-0.78 l -0.30,-2.12 c -0.02,-0.19 -0.19,-0.33 -0.39,-0.33 l -3.2,0 c -0.2,0 -0.36,.14 -0.39,.33 l -0.30,2.12 c -0.48,.2 -0.93,.47 -1.35,.78 l -1.99,-0.8 c -0.18,-0.07 -0.39,0 -0.48,.17 l -1.6,2.76 c -0.10,.17 -0.05,.39 .09,.51 l 1.68,1.32 c -0.03,.25 -0.05,.52 -0.05,.78 0,.26 .02,.52 .05,.78 l -1.68,1.32 c -0.15,.12 -0.19,.33 -0.09,.51 l 1.6,2.76 c .09,.17 .31,.24 .48,.17 l 1.99,-0.8 c .41,.32 .86,.58 1.35,.78 l .30,2.12 c .02,.19 .19,.33 .39,.33 l 3.2,0 c .2,0 .36,-0.14 .39,-0.33 l .30,-2.12 c .48,-0.2 .93,-0.47 1.35,-0.78 l 1.99,.8 c .18,.07 .39,0 .48,-0.17 l 1.6,-2.76 c .09,-0.17 .05,-0.39 -0.09,-0.51 l -1.68,-1.32 0,0 z m -5.94,2.01 c -1.54,0 -2.8,-1.25 -2.8,-2.8 0,-1.54 1.25,-2.8 2.8,-2.8 1.54,0 2.8,1.25 2.8,2.8 0,1.54 -1.25,2.8 -2.8,2.8 l 0,0 z" fill="#fff"></path></svg>
+                <button id="elementMenu" class="w-fit helvetica-500 text-sm ml-[auto] -translate-y-0.5" @click="toggleSettingsMenu">
+                    <svg id="elementMenu" height="100%" version="1.1" viewBox="0 0 36 36" width="100%"><path id="elementMenu" d="m 23.94,18.78 c .03,-0.25 .05,-0.51 .05,-0.78 0,-0.27 -0.02,-0.52 -0.05,-0.78 l 1.68,-1.32 c .15,-0.12 .19,-0.33 .09,-0.51 l -1.6,-2.76 c -0.09,-0.17 -0.31,-0.24 -0.48,-0.17 l -1.99,.8 c -0.41,-0.32 -0.86,-0.58 -1.35,-0.78 l -0.30,-2.12 c -0.02,-0.19 -0.19,-0.33 -0.39,-0.33 l -3.2,0 c -0.2,0 -0.36,.14 -0.39,.33 l -0.30,2.12 c -0.48,.2 -0.93,.47 -1.35,.78 l -1.99,-0.8 c -0.18,-0.07 -0.39,0 -0.48,.17 l -1.6,2.76 c -0.10,.17 -0.05,.39 .09,.51 l 1.68,1.32 c -0.03,.25 -0.05,.52 -0.05,.78 0,.26 .02,.52 .05,.78 l -1.68,1.32 c -0.15,.12 -0.19,.33 -0.09,.51 l 1.6,2.76 c .09,.17 .31,.24 .48,.17 l 1.99,-0.8 c .41,.32 .86,.58 1.35,.78 l .30,2.12 c .02,.19 .19,.33 .39,.33 l 3.2,0 c .2,0 .36,-0.14 .39,-0.33 l .30,-2.12 c .48,-0.2 .93,-0.47 1.35,-0.78 l 1.99,.8 c .18,.07 .39,0 .48,-0.17 l 1.6,-2.76 c .09,-0.17 .05,-0.39 -0.09,-0.51 l -1.68,-1.32 0,0 z m -5.94,2.01 c -1.54,0 -2.8,-1.25 -2.8,-2.8 0,-1.54 1.25,-2.8 2.8,-2.8 1.54,0 2.8,1.25 2.8,2.8 0,1.54 -1.25,2.8 -2.8,2.8 l 0,0 z" fill="#fff"></path></svg>
                 </button>
                 <!-- Окно настроек -->
-                <div v-if="isSettingsVisible" class="settings-menu helvetica-300">
+                <div id="elementMenu" v-if="isSettingsVisible" class="settings-menu helvetica-300">
                     <!-- Основное меню с вариантами выбора -->
-                    <div v-if="!isPlaybackRateMenu && !isQualityMenu" class="flex flex-col">
-                        <a @click="selectPlaybackRateMenu">Скорость воспроизведения: {{ playbackRate }}x ></a>
-                        <a @click="selectQualityMenu">Качество: {{ selectedQuality }}p ></a>
+                    <div id="elementMenu" v-if="!isPlaybackRateMenu && !isQualityMenu" class="flex flex-col justify-between gap-4">
+                        <a id="elementMenu" @click="selectPlaybackRateMenu" class="whitespace-pre">{{`Скорость воспроизведения:             ${ playbackRate }x >`}}</a>
+                        <a id="elementMenu" @click="selectQualityMenu" class="whitespace-pre">{{`Качество:                                        ${ selectedQuality }p >`}}</a>
                     </div>
 
                     <!-- Меню выбора скорости воспроизведения -->
-                    <ul v-else-if="isPlaybackRateMenu">
-                        <li v-for="rate in playbackRates" :key="rate" @click="changePlaybackRate(rate)" class="flex flex-row">
-                            <svg class="size-4 my-auto mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.94 511.94" xml:space="preserve" fill="white" stroke="white" stroke-width="15">
-                                <path v-if="playbackRate === rate" d="m500.29 61.9-344.4 365.44L11.02 289.38 0 300.96l156.51 149.07L511.94 72.88z"/>
+                    <ul id="elementMenu" v-else-if="isPlaybackRateMenu">
+                        <li id="elementMenu" v-for="rate in playbackRates" :key="rate" @click="changePlaybackRate(rate)" class="flex flex-row">
+                            <svg id="elementMenu" class="size-4 my-auto mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.94 511.94" xml:space="preserve" fill="white" stroke="white" stroke-width="15">
+                                <path id="elementMenu" v-if="playbackRate === rate" d="m500.29 61.9-344.4 365.44L11.02 289.38 0 300.96l156.51 149.07L511.94 72.88z"/>
                             </svg>
                             {{ rate === 1 ? 'обычная' : rate }}
                         </li>
                     </ul>
 
                     <!-- Меню выбора качества -->
-                    <ul v-else-if="isQualityMenu">
-                        <li v-for="quality in qualities" :key="quality" @click="selectQuality(quality)" class="flex flex-row">
-                            <svg class="size-4 my-auto mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.94 511.94" xml:space="preserve" fill="white" stroke="white" stroke-width="15">
-                                <path v-if="selectedQuality === quality" d="m500.29 61.9-344.4 365.44L11.02 289.38 0 300.96l156.51 149.07L511.94 72.88z"/>
+                    <ul id="elementMenu" v-else-if="isQualityMenu">
+                        <li id="elementMenu" v-for="quality in qualities" :key="quality" @click="selectQuality(quality)" class="flex flex-row">
+                            <svg id="elementMenu" class="size-4 my-auto mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.94 511.94" xml:space="preserve" fill="white" stroke="white" stroke-width="15">
+                                <path id="elementMenu`" v-if="selectedQuality === quality" d="m500.29 61.9-344.4 365.44L11.02 289.38 0 300.96l156.51 149.07L511.94 72.88z"/>
                             </svg>
                             {{ quality }}p
                         </li>
@@ -536,14 +556,15 @@
         position: absolute;
         bottom: 55px;
         right: clamp(5px,10%,10px);
-        padding: 5px;
-        background-color: rgba(0, 0, 0, 0.8);
-        width: clamp(50px, w-fit, 250px);
-        font-size: clamp(5px, 1.75vw, 18px);
+        padding: min(5%, 20px) min(2%, 10px);
+        background-color: rgba(0, 0, 0, 0.85);
+        /* width: 35vw; */
+        width: clamp(50px, w-fit, 300px);
+        font-size: clamp(5px, 2.5vw, 15px);
         text-align: left;
         color: white;
         z-index: 200;
-        border-radius: clamp(5px, 1vw, 25px);
+        border-radius: clamp(5px, 1vw, 15px);
     }
 
     /* .settings-menu div{
