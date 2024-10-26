@@ -68,13 +68,13 @@
             <div class="mx-4 my-0 space-y-1.5 col-start-2 row-start-1 hidden lg:block mt-3">
                     <a href="tel:74996780120" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">+7 499 678-01-20</a>
                     <a href="mailto:alcg@live.ru" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">alcg@live.ru</a>
-                    <p href="https://t.me/SynchronizeSupportBot?start=link_nTOgfsLiCm" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">125375, Москва<br>ул. Тверская, дом 16, строение 1<br> БЦ «Галерея Актер», офис А-501</p>
+                    <p class="block helvetica-500 footer__text transition-all">125375, Москва<br>ул. Тверская, дом 16, строение 1<br> БЦ «Галерея Актер», офис А-501</p>
             </div>
             <!-- Контакты 2-->
             <div class="mx-4 my-0 space-y-1.5 col-start-2 row-start-2 hidden lg:block mt-0">
                 <a href="tel:73432867053" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">+7 343 286-70-53</a>
                 <a href="mailto:alcg@live.ru" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">alcg@live.ru</a>
-                <p class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">620144, Екатеринбург<br>ул. Шейнкмана, дом 121, 3 этаж<br>БЦ «Антарес-бизнес»</p>
+                <p class="block helvetica-500 footer__text transition-all">620144, Екатеринбург<br>ул. Шейнкмана, дом 121, 3 этаж<br>БЦ «Антарес-бизнес»</p>
             </div>
 
             <div class="m-4 my-0 flex flex-col gap-6 sm:col-start-1 sm:row-start-2 lg:col-start-3 lg:col-span-2 lg:row-start-1 lg:flex-col-reverse lg:mx-0">
@@ -85,13 +85,13 @@
                     <a href="https://t.me/SynchronizeSupportBot?start=link_nTOgfsLiCm" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">Поддержка в Telegram</a>-->
                     <a href="tel:74996780120" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">+7 499 678-01-20</a>
                     <a href="mailto:alcg@live.ru" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">alcg@live.ru</a>
-                    <p class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">125375, Москва<br> ул. Тверская, дом 16, строение 1<br> БЦ «Галерея Актер», офис А-501</p>
+                    <p class="block helvetica-500 footer__text transition-all">125375, Москва<br> ул. Тверская, дом 16, строение 1<br> БЦ «Галерея Актер», офис А-501</p>
                 </div>
                 <!-- Контакты 2-->
                 <div class="space-y-2 lg:hidden">
                     <p href="tel:73432867053" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">+7 343 286-70-53</p>
                     <a href="mailto:alcg@live.ru" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">alcg@live.ru</a>
-                    <p class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">620144, Екатеринбург<br>ул. Шейнкмана, дом 121, 3 этаж<br>БЦ «Антарес-бизнес»</p>
+                    <p class="block helvetica-500 footer__text transition-all">620144, Екатеринбург<br>ул. Шейнкмана, дом 121, 3 этаж<br>БЦ «Антарес-бизнес»</p>
                 </div>
                 <!-- Для бизнеса -->
                 <div class="space-y-2">
