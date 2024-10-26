@@ -17,7 +17,7 @@ const handleScroll = () => {
   const windowWidth = window.innerWidth;
   let scrollPercent = 0;
 
-  if(windowWidth > 1024){
+
     const section = sctin.value;
     const masges = messages.value;
     const bibaEl = biba.value;
@@ -29,50 +29,56 @@ const handleScroll = () => {
     const windowHeight = window.innerHeight;
     //Определяем, когда скролл достигает компонента
     // if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
-      //Вычисляем процент прокрутки всего компонента
-      scrollPercent = Math.min(Math.max(1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight, 0), 1);
-
-      // Управление прозрачностью biba и boba
-      if (scrollPercent > 0.375 && scrollPercent < 1) {
+    //Вычисляем процент прокрутки всего компонента
+    scrollPercent = Math.min(Math.max(1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight, 0), 1);
+    // bibaEl.classList.remove("hidden")
+    // bobaEl.classList.remove("hidden")
+    // Управление прозрачностью biba и boba
+    if (scrollPercent > 0.375 && scrollPercent < 1) {
         bibaEl.style.opacity = Math.min(scrollPercent * 1.75, 1);
         bobaEl.style.opacity = Math.min(scrollPercent * 1.75, 1);
-      } else {
+    } else {
         bibaEl.style.opacity = 0;
         bobaEl.style.opacity = 0;
-      }
+    }
       
-      masges.style.marginLeft = "auto";
-      masges.style.marginRight = "auto";
+    masges.style.marginLeft = "auto";
+    masges.style.marginRight = "auto";
 
-      // Управление показом картинок
-      const imgEls = images.value;
-      
+    // Управление показом картинок
+    const imgEls = images.value;
+    if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
+      bibaEl.classList.remove("hidden")
+      bobaEl.classList.remove("hidden")
       // Первая картинка: 0.375 < scrollPercent < 0.600
       if (scrollPercent > 0.375 && scrollPercent < 0.600) {
-        imgEls[0].style.opacity = 1;
-        imgEls[0].style.scale = 1;
+          imgEls[0].style.opacity = 1;
+          imgEls[0].style.scale = 1;
       } else {
-        imgEls[0].style.opacity = 0;
-        imgEls[0].style.scale = 0.75;
+          imgEls[0].style.opacity = 0;
+          imgEls[0].style.scale = 0.75;
       }
 
       // Вторая картинка: 0.500 < scrollPercent < 0.600
       if (scrollPercent > 0.600 && scrollPercent < 0.85) {
-        imgEls[1].style.opacity = 1;
-        imgEls[1].style.scale = 1;
+          imgEls[1].style.opacity = 1;
+          imgEls[1].style.scale = 1;
       } else {
-        imgEls[1].style.opacity = 0;
-        imgEls[1].style.scale = 0.75;
+          imgEls[1].style.opacity = 0;
+          imgEls[1].style.scale = 0.75;
       }
 
       // Третья картинка: 0.600 < scrollPercent < 0.800
       if (scrollPercent > 0.675 && scrollPercent < 0.9) {
-        imgEls[2].style.opacity = 1;
-        imgEls[2].style.scale = 1;
+          imgEls[2].style.opacity = 1;
+          imgEls[2].style.scale = 1;
       } else {
-        imgEls[2].style.opacity = 0;
-        imgEls[2].style.scale = 0.75;
+          imgEls[2].style.opacity = 0;
+          imgEls[2].style.scale = 0.75;
       }
+    }else{
+      bibaEl.classList.add("hidden")
+      bobaEl.classList.add("hidden")
     }
 };
 
@@ -88,13 +94,13 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
 
 <template>
   <section ref="sctin" class="w-11/12 max-w-[1200px] sectionHeight sm:h-[500px] md:h-[1000px] lg:h-[1100px] xl:h-[1400px] mx-auto flex justify-around relative">
-    <img ref="biba" :src="bibaSVG" class="w-[clamp(80px,16%,195px)] h-fit biba -rotate-6 sm:-rotate-12 lg:rotate-0 opacity-0 transition-opacity" />
+    <img ref="biba" :src="bibaSVG" class="w-[clamp(80px,16%,195px)] h-fit biba -rotate-6 sm:-rotate-12 lg:rotate-0 transition-opacity" />
     <div ref="messages" class="w-4/5 sm:w-3/5 lg:mx-auto sm:mt-40 md:mt-48 lg:mt-20 z-10">
         <img :src="wellNowBecomeClearer1" class="w-[95%] mt-10 sm:m-[2.5%] opacity-0 image2 image-dark-mode" />
         <img :src="cleverAndComplicated2" class="w-[76%] mt-20 sm:m-[2.5%] mr-auto opacity-0 image2" />
         <img :src="itWasEasierWithBatons3" class="w-[76%] m-[2.5%] mr-auto opacity-0 image2" />
     </div>
-    <img ref="boba" :src="bobaSVG" class="w-[clamp(80px,16%,171px)] h-fit boba rotate-6 sm:rotate-12 lg:rotate-0 opacity-0 transition-opacity" />
+    <img ref="boba" :src="bobaSVG" class="w-[clamp(80px,16%,171px)] h-fit boba rotate-6 sm:rotate-12 lg:rotate-0 transition-opacity" />
   </section>
 </template>
 

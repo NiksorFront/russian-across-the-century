@@ -31,6 +31,8 @@ const handleScroll = () => {
     const sectionHeight = sectionRect.height;
     const windowHeight = window.innerHeight;
     if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
+      bibaEl.classList.remove("hidden")
+      bobaEl.classList.remove("hidden")
       scrollPercent = Math.min(Math.max(1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight, 0), 1);
 
       // Управление прозрачностью biba и boba
@@ -100,6 +102,9 @@ const handleScroll = () => {
         imgEls[5].style.opacity = 0;
         imgEls[5].style.scale = 0.75;
       }
+    }else{
+      bibaEl.classList.add("hidden")
+      bobaEl.classList.add("hidden")
     }
 };
 
@@ -117,7 +122,7 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
 
 <template>
   <section ref="sctin" class="w-11/12 max-w-[1200px] sectionHeight mb-[500px] sm:mb-0 h-[1000px] md:h-[1300px] lg:h-[1500px] xl:h-[1800px] mx-auto flex justify-around relative">
-    <img ref="biba" :src="bibaSVG" class="w-[clamp(80px,16%,195px)] h-fit biba -rotate-6 sm:-rotate-12 transition-opacity lg:rotate-0 opacity-0" />
+    <img ref="biba" :src="bibaSVG" class="w-[clamp(80px,16%,195px)] h-fit biba transition-opacity hidden opacity-0" />
     <div ref="messages" class="w-4/5 sm:w-3/5 lg:mx-auto sm:mt-40 md:mt-96 lg:mt-40 xl:mt-60 z-10">
         <img :src="howResolveDispute1" class="w-[95%] m-[2.5%] opacity-0 image" />
         <img :src="goOutFieldFight2" class="w-[95%] m-[2.5%] opacity-0 image" />
@@ -127,7 +132,7 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
         <img :src="whatIsLegislation5" class="w-[76%] m-[2.5%] opacity-0 image" />
         <img :src="listenYouDarkHead6" class="w-[70%] mr-[2.5%] ml-auto opacity-0 image image-dark-mode" />
     </div>
-    <img ref="boba" :src="bobaSVG" class="w-[clamp(80px,16%,171px)] h-fit boba rotate-6 sm:rotate-12 transition-opacity lg:rotate-0 opacity-0" />
+    <img ref="boba" :src="bobaSVG" class="w-[clamp(80px,16%,171px)] h-fit boba transition-opacity hidden opacity-0" />
   </section>
 </template>
 
