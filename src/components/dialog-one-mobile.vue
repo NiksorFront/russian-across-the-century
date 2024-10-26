@@ -29,30 +29,27 @@ const handleScroll = () => {
   let scrollPercent = 0;
 
   //Определяем, когда скролл достигает компонента
+  // console.log(sectionTop, -windowHeight)
   if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
     bibaEl.classList.remove("hidden")
     bobaEl.classList.remove("hidden")
     imgEls.forEach(imgEl => imgEl.classList.remove("hidden"));
     //Вычисляем процент прокрутки всего компонента
-    if(windowWidth < 640){
-        scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight) - 0.5, 0), 1);
-    }else{ //windowWidth < 1024
-        scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight) - 0.3 , 0), 1);
-    }
+    scrollPercent = Math.min(Math.max((1 - (sectionHeight + sectionTop - windowHeight) / sectionHeight)- 0.3, 0), 1);
 
     // Управление прозрачностью biba и boba
     bibaEl.style.opacity = Math.min(scrollPercent * 3, 1);
     bobaEl.style.opacity = 0;
 
-
+    console.log(scrollPercent)
     // Управление показом картинок
 
     // Первая и вторая картинки: 0.375 < scrollPercent < 0.600
-    if (scrollPercent > 0.175 && scrollPercent < 0.400) {
-      imgEls[0].style.opacity = scrollPercent*4;
-      imgEls[0].style.scale = Math.min(scrollPercent*4, 1);
-      imgEls[1].style.opacity = scrollPercent*4.2;
-      imgEls[1].style.scale = Math.min(scrollPercent*4, 1);
+    if (scrollPercent > 0.2 && scrollPercent < 0.45) {
+      imgEls[0].style.opacity = 1;
+      imgEls[0].style.scale = 1;
+      imgEls[1].style.opacity = 1;
+      imgEls[1].style.scale = 1;
     } else {
       imgEls[0].style.opacity = 0;
       imgEls[0].style.scale = 0.75;
@@ -62,7 +59,7 @@ const handleScroll = () => {
     }
 
     // Третья и четвёртая картинка: 0.600 < scrollPercent < 0.800
-    if (scrollPercent > 0.400 && scrollPercent < 0.625) {
+    if (scrollPercent > 0.45 && scrollPercent < 0.7) {
       imgEls[2].style.opacity = 1;
       imgEls[2].style.scale = 1;
       imgEls[3].style.opacity = 1;
@@ -77,7 +74,7 @@ const handleScroll = () => {
 
 
     // Пятая картинка: 0.800 < scrollPercent < 0.900
-    if (scrollPercent > 0.625 && scrollPercent < 0.750) {
+    if (scrollPercent > 0.7 && scrollPercent < 0.825) {
       imgEls[4].style.opacity = 1;
       imgEls[4].style.scale = 1;
       bibaEl.style.opacity = 1;
@@ -87,7 +84,7 @@ const handleScroll = () => {
     }
 
     // Шестая картинка: 0.900 < scrollPercent < 0.975
-    if (scrollPercent > 0.750 && scrollPercent < 0.875) {
+    if (scrollPercent > 0.825 && scrollPercent < 0.95) {
       imgEls[5].style.opacity = 1;
       imgEls[5].style.scale = 1;
       bobaEl.style.opacity = 1;
@@ -165,8 +162,8 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
     }
 
     .sectionHeight{
-        height: max(1000px, 200vh);
-        min-height: max(1000px, 200vh);
-        margin-bottom: 400px;
+        height: max(1000px, 150vh);
+        min-height: max(1000px, 150vh);
+        margin-bottom: 100px;
     }
 </style>

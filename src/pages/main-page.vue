@@ -84,9 +84,7 @@
     wayBtn.value.addEventListener('click', (e) => {
       e.preventDefault();
       window.scrollTo({
-        top: parseInt(window.innerWidth) > 1024 ? (document.querySelector("header").offsetHeight + firstSection.value.offsetHeight) :
-             parseInt(window.innerWidth) > 640 ? (document.querySelector("header").offsetHeight + firstSection.value.offsetHeight)*1.5 
-                                               : (document.querySelector("header").offsetHeight + firstSection.value.offsetHeight)*1.75,
+        top: (document.querySelector("header").offsetHeight + firstSection.value.offsetHeight),
         behavior: 'smooth'
       })
     });
@@ -161,11 +159,11 @@
     <DialogTwoMobile v-if="small"/>
     <DialogTwo v-else />
 
-    <section class="md:py-6">
+   <!-- <section class="md:py-6">
       <SocialNetwork title="Telegram" description="Делимся новостями из мира искусства и обсуждаем их в чате с синхродрузьями" btnText="подписаться на канал" url="https://t.me/+gY7XBrs4xvQ0Njcy" />
       <SocialNetwork title="Email-рассылка" description="Присылаем секретные промокоды и эксклюзивный контент из курсов" btnText="подписаться на рассылку" url="#" />
-      <!-- <SocialNetwork title="YouTube-канал Синхронизация. Плюс" description="Подписывайтесь на наш канал, чтобы не пропустить ещё больше бесплатных лекций, интервью и подкастов" btnText="смотреть лекции" url="https://www.youtube.com/@synchronizeplus" /> -->
-    </section>
+      <SocialNetwork title="YouTube-канал Синхронизация. Плюс" description="Подписывайтесь на наш канал, чтобы не пропустить ещё больше бесплатных лекций, интервью и подкастов" btnText="смотреть лекции" url="https://www.youtube.com/@synchronizeplus" />
+    </section>-->
 
     <section class="w-11/12 max-w-[1200px] relative bg-white min-h-[700px] h-auto project-partners mx-auto my-16 rounded-[clamp(20px,5vw,50px)] flex flex-wrap">
       <h2 class="w-full h-fit helvetica-700 title-2">
