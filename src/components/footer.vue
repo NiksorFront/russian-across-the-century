@@ -25,14 +25,14 @@
             </div>
             
             <!-- Контакты -->
-            <div class="mx-4 my-0 sm:row-start-2 lg:row-start-1 space-y-2 mt-3">
+            <div class="mx-4 my-0 sm:row-start-2 lg:row-start-1 lg:col-start-2 space-y-2 mt-3">
                     <a href="tel:74996780120" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 transition-all">+7 499 678-01-20</a>
                     <a href="mailto:alcg@live.ru" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">alcg@live.ru</a>
                     <p class="block helvetica-500 footer__text transition-all">125375, Москва<br>ул. Тверская, дом 16, строение 1<br> БЦ «Галерея Актер», офис А-501</p>
             </div>
 
             <!-- Контакты 2-->
-            <div class="mx-4 my-0 sm:row-start-3 lg:row-start-1 space-y-2 mt-3">
+            <div class="mx-4 my-0 sm:row-start-3 lg:row-start-1 lg:col-start-3 space-y-2 mt-3">
                 <a href="tel:73432867053" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">+7 343 286-70-53</a>
                 <a href="mailto:alcg@live.ru" target="_blank" class="block helvetica-500 footer__text hover:opacity-75 cursor-pointer transition-all">alcg@live.ru</a>
                 <p class="block helvetica-500 footer__text transition-all">620144, Екатеринбург<br>ул. Шейнкмана, дом 121, 3 этаж<br>БЦ «Антарес-бизнес»</p>
