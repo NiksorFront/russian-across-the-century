@@ -37,8 +37,8 @@ const handleScroll = () => {
 
       // Управление прозрачностью biba и boba
       if (scrollPercent > 0.375 && scrollPercent < 1) {
-        bibaEl.style.opacity = Math.min(scrollPercent * 1.75, 1);
-        bobaEl.style.opacity = Math.min(scrollPercent * 1.75, 1);
+        bibaEl.style.opacity = Math.min(scrollPercent * 2.25, 1);
+        bobaEl.style.opacity = Math.min(scrollPercent * 2.25, 1);
       } else {
         bibaEl.style.opacity = 0;
         bobaEl.style.opacity = 0;
@@ -121,7 +121,7 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
 </script>
 
 <template>
-  <section ref="sctin" class="w-11/12 max-w-[1200px] sectionHeight mb-[500px] sm:mb-0 h-[1000px] md:h-[1300px] lg:h-[1500px] xl:h-[1800px] mx-auto flex justify-around relative">
+  <section ref="sctin" class="w-11/12 max-w-[1200px] sectionHeight h-[1500px] xl:h-[1800px] mx-auto flex justify-around relative">
     <img ref="biba" :src="bibaSVG" class="w-[clamp(80px,16%,195px)] h-fit biba transition-opacity hidden opacity-0" />
     <div ref="messages" class="w-4/5 sm:w-3/5 lg:mx-auto sm:mt-40 md:mt-96 lg:mt-40 xl:mt-60 z-10">
         <img :src="howResolveDispute1" class="w-[95%] m-[2.5%] opacity-0 image" />
@@ -165,6 +165,7 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
     .sectionHeight{
         min-height: clamp(575px, 135vw, 800px);
         margin-top: clamp(20px, 18vw,160px);
+        margin-bottom: -200px;
     }
 
     @media(min-width:400px){

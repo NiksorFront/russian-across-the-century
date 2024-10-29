@@ -125,26 +125,10 @@ onBeforeUnmount(() => window.removeEventListener("scroll", handleScroll));
       }
     }
 
-    @keyframes scaleImage {
-        0% {transform: scale(0.5);}
-        100% {transform: scale(1);}
-    }
-
     .sectionHeight{
-        min-height: clamp(575px, 135vw, 800px);
-        margin-top: clamp(20px, 18vw,160px);
-    }
-
-    @media(min-width:400px){
-        .biba {right: 80%; top:56%}
-        .boba {left: 79%; top:60%}
-        .sectionHeight{margin-top: clamp(20px, 45vw, 400px);}
-    }
-
-    @media(min-width:640px){
-        .biba {top: 46%;}
-        .boba {top: 50%;}
-        .sectionHeight{min-height: clamp(800px, 155vw, 1000px); margin-top: 0}
+        min-height: clamp(800px, 155vw, 1000px); 
+        margin-top: 0;
+        margin-bottom: -200px;
     }
 
     @media(min-width:1024px){

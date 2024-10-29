@@ -62,8 +62,8 @@
 
     @media(min-width: 1200px){
         .base-stick{
-            top: 23%;
-            right: 40%;
+            top: 16%;
+            right: 38%;
         }
     }
 

@@ -70,7 +70,7 @@
   }
 
 
-  import {ref, onMounted} from "vue";
+  import {ref, onMounted, onUnmounted} from "vue";
   const firstSection = ref(null);
   const wayBtn = ref(null);
   const animationBtn = ref(null);
@@ -80,40 +80,52 @@
     small.value = parseInt(window.innerWidth) < 1024;
   }
 
-  onMounted(() => {
-    wayBtn.value.addEventListener('click', (e) => {
+  const scrollToDialog = (e) => {
       e.preventDefault();
       window.scrollTo({
         top: (document.querySelector("header").offsetHeight + firstSection.value.offsetHeight),
         behavior: 'smooth'
       })
-    });
+    }
 
-    animationBtn.value.addEventListener('click', (e) => {
+  const scrollToLecture = (e) => {
       e.preventDefault();
       window.scrollTo({
-        top: window.innerHeight + document.querySelector("#diaolog-one").offsetHeight,
+        top: window.innerHeight + document.querySelector("#diaolog-one").offsetHeight - 250,
         behavior: 'smooth'
       })
-    });
+    }
+
+  onMounted(() => {
+    wayBtn.value.addEventListener('click', (e) => scrollToDialog(e));
+
+    animationBtn.value.addEventListener('click', (e) => scrollToLecture(e));
 
     window.addEventListener("scroll", handleScroll); // Подписываемся на событие скролла
+  })
+
+  onUnmounted(() => {
+    // wayBtn.value.removeEventListener('click', scrollToDialog(e));
+
+    // animationBtn.value.removeEventListener('click', scrollToLecture);
+
+    window.removeEventListener("scroll", handleScroll); // Подписываемся на событие скролла
   })
 </script>
 
 <template>
-  <header class="flex w-10/12 sm:w-11/12 max-w-[1200px] h-fit flex-wrap gap-5 mx-auto my-[35px] sm:my-[70px] xl:mb-[35px] justify-between castil-margin">
+  <header class="flex w-10/12 sm:w-11/12 max-w-[1200px] h-fit flex-wrap gap-5 mx-auto my-[35px] sm:my-[65px] lg:mb-[27px] lg:pl-6 justify-between castil-margin">
     <div class="flex justify-between w-full max-w-[135px] sm:max-w-[260px]">
-      <a href="https://online.synchronize.ru/" target="_blank" class="my-0.5 sm:my-1.5"> 
-        <img :src="synchronization" alt="Синхронизация" class="w-11 sm:w-20 lg:w-[91px] object-contain dark:invert" />
+      <a href="https://online.synchronize.ru/" target="_blank" class="my-0.5 sm:mt-2.5"> 
+        <img :src="synchronization" alt="Синхронизация" class="w-11 sm:w-20 lg:w-[90px] object-contain dark:invert" />
       </a>
-      <img :src="line" alt="line" class="h-7 sm:h-full object-contain pl-2 dark:invert" />
+      <img :src="line" alt="line" class="h-7 w-[10.25px] sm:h-full object-contain pl-2 dark:invert" />
       <a href="https://al-cg.com/" target="_blank" class="my-0 sm:my-1"> 
-        <img :src="allianceLegal" alt="Alliance Legal" class="w-11 sm:w-20 lg:w-[91px] object-contain dark:invert" />
+        <img :src="allianceLegal" alt="Alliance Legal" class="w-11 sm:w-20 lg:w-[90px] object-contain dark:invert" />
       </a>
     </div>
     
-    <div class="flex items-center mr-10 dark:opacity-50 castil-transform">
+    <div class="flex items-center mr-4 dark:opacity-50 castil-transform">
       <a ref="animationBtn" class="text-xs md:text-base lg:text-xl text-blue-700 dark:text-white helvetica-500 text-nowrap cursor-pointer z-10">
         анимационные лекции
       </a>
@@ -121,12 +133,12 @@
     </div>
   </header>
 
-  <main class="w-11/12 sm:w-full mx-auto overflow-hidden">
+  <main class="w-11/12 sm:w-full mx-auto overflow-hidden xl:pl-10">
     <section ref="firstSection" class="flex w-11/12 max-w-[1200px] h-[720px] sm:h-[800px] lg:h-[700px] flex-wrap mx-auto mt-[35px] gap-9 sm:gap-4 lg:gap-0 lg:flex-row-reverse relative">
       <div class="w-full h-1/2 lg:h-full sm:h-3/5 lg:w-2/5 relative -z-10">
         <AnimationScales />
       </div>
-      <div class="w-full lg:w-3/5 h-1/2 sm:h-3/5 lg:h-fit lg:my-auto flex flex-wrap flex-col lg:flex-row gap-4 sm:gap-8 lg:gap-0 lg:space-y-12 lg:translate-y-6">
+      <div class="w-full lg:w-3/5 h-1/2 sm:h-3/5 lg:h-fit lg:my-auto flex flex-wrap flex-col lg:flex-row gap-4 sm:gap-8 lg:gap-0 lg:space-y-12">
         <h1 class="title helvetica-700 lg:h-1/6 lg:ml-3 dark:text-white">Россия: право сквозь века</h1>
         <h3 class="subtitle whitespace-pre-line helvetica-500 h-fit lg:ml-3 law-changing dark:text-white">{{"Как менялось право в России:\nот древности до наших дней"}}</h3>
         <a ref="wayBtn" class="button text-nowrap helvetica-500 h-fit w-fit way px-4 lg:px-6 text-center lg:box-content bg-[#101fb3] sm:pb-1 rounded-xl sm:rounded-3xl text-white z-30 cursor-pointer dark:bg-[#FF4800]">в путь!</a>

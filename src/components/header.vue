@@ -1,7 +1,38 @@
 <script setup>
+    import { onMounted, watch } from 'vue';
+    import { useRoute, useRouter } from 'vue-router';
     import allianceLegal from "../assets/images/Alliance-Legal.svg";
     import synchronization from "../assets/images/synchronization.svg";
     import line from "../assets/images/line.svg";
+
+    const scrollToLecture = (e) => {
+        e && e.preventDefault();
+        window.scrollTo({
+            top: window.innerHeight*3,
+            behavior: 'smooth'
+        });
+    };
+
+    // Подключаем роутер и текущий маршрут
+    const route = useRoute();
+    const router = useRouter();
+
+    // Следим за изменением маршрута
+    watch(
+    () => route.path,
+    (newPath) => {
+        if (newPath === "/") {
+        scrollToLecture();
+        }
+    }
+    );
+
+    // Дополнительно можно вызвать скролл при первой загрузке
+    onMounted(() => {
+    if (route.path === "/") {
+        scrollToLecture();
+    }
+    });
 </script>
 
 <template>
@@ -17,7 +48,10 @@
         </div>
         
         <div class="flex items-center mr-10 dark:opacity-50">
-        <router-link to="/" ref="animationBtn" class="text-xs md:text-base lg:text-xl text-blue-700 dark:text-white helvetica-500 text-nowrap cursor-pointer z-10">
+        <router-link 
+            to="/" 
+            @click.native="scrollToLecture"
+            class="text-xs md:text-base lg:text-xl text-blue-700 dark:text-white helvetica-500 text-nowrap cursor-pointer z-10">
             анимационные лекции
         </router-link>
         <p class="text-xs md:text-base lg:text-xl helvetica-500 whitespace-pre text-black dark:text-white"> | памятки</p>

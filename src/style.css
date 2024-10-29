@@ -7,17 +7,17 @@
 
 .helvetica-700{
     font-family: 'HelveticaNeueCyr';
-    font-weight: 700;
+    font-weight: 750;
 }
 
 .helvetica-500{
     font-family: 'HelveticaNeueCyr';
-    font-weight: 500;
+    font-weight: 550;
 }
 
 .helvetica-400{
     font-family: 'HelveticaNeueCyr';
-    font-weight: 400;
+    font-weight: 450;
 }
 
 .title{ /*Главный заголовок всей страницы*/
@@ -51,9 +51,9 @@
 }
 
 
-@media(min-width: 1280px){
+@media(min-width: 1200px){
     .title{
-      font-size: 90px;
+      font-size: 89.75px;
       line-height: 90px;
     }
 }

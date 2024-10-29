@@ -295,7 +295,8 @@
     const handleTimelineUpdate = (e) => {
         const rect = timelineContainer.value.getBoundingClientRect();
         const percent = Math.min(Math.max(0, e.x - rect.x), rect.width) / rect.width;
-        const previewImgNumber = Math.max(1, Math.floor((percent * video.value.duration) / 10));
+        const previewImgNumber = Math.max(1, Math.floor(percent * video.value.duration));
+        console.log(previewImgNumber);
         const previewImgSrc = `${videoInfo.urlFrames}${previewImgNumber}.jpg`;
         previewImg.value.src = previewImgSrc;
         timelineContainer.value.style.setProperty("--preview-position", percent);
