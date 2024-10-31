@@ -52,12 +52,14 @@
 
         </div>
 
-        <div class="container w-fit sm:w-full h-28 lg:h-14 mt-5 mx-4 sm:mx-auto helvetica-500 text-[#81808f] flex flex-col justify-between border-y border-[#2a282f] lg:flex-row">
+        <div class="container w-fit sm:w-full h-28 lg:h-14 mt-5 mx-4 sm:mx-auto helvetica-500 text-[#81808f] flex flex-col justify-between border-t border-[#2a282f] lg:flex-row">
             <p class="text-xs mt-4">© 2011-2024 Консалтинговая группа «Альянс Лигал»</p>
-            <!-- <a href="https://docs.google.com/document/d/1pEuP2_b7xq5dhRkhLKW5RUYfgEl_Nesm/edit" target="_blank" class="text-xs sm:text-sm lg:mt-4">Пользовательское соглашение</a> -->
             <p class="text-xs  lg:mt-4">При использовании материалов сайта прямая индексируемая ссылка на al-cg.com обязательна</p>
-            <!-- <a href="https://docs.google.com/document/d/1YMnZH72TBClUCrCouuZuYsddu57FEsM0" target="_blank" class="text-xs sm:text-sm mb-4 lg:mt-4">Политика в отношении обработки персональных данных</a> -->
             <a :href="PDFka" target="_blank" class="text-xs  mb-4 lg:mt-4 underline">Политика обработки персональных данных</a>
+        </div>
+
+        <div class="container w-fit sm:w-full lg:w-fit h-28 lg:h-14 ml-4 sm:mx-auto pr-4 lg:px-4 helvetica-500 text-[#81808f] flex border-t border-[#2a282f]">
+            <p class="text-xs mt-4">created and support by <a href="https://service-v.ru" class="text-[#b15124]">service-v.ru</a></p>
         </div>
 
         <!-- <p class="container w-fit sm:w-full py-4 mx-4 sm:mx-auto helvetica-500 text-xs/[14px] sm:text-sm text-[#81808f]">© 2011-2024 Консалтинговая группа «Альянс Лигал».<a href="mailto:hello@synchronize.ru" target="_blank" class="text-white">hello@synchronize.ru</a>
